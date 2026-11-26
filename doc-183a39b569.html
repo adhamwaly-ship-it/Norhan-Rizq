@@ -1,0 +1,627 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strategy</title>
+<meta name="viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one blue hero band, then alternating white / brand-grey bands; the ٨ symbol marks every section, the zigzag border separates them, months read right-to-left like a calendar. */
+:root{
+  --paper:#FFFFFF; --mist:#EDEDED; --blue:#0C4CED; --blue-deep:#0A3CC0;
+  --ink:#0B1B4D; --soft:#4B5A84; --line:#D6DBEA; --tint:#E8EEFE;
+  --hero:#0C4CED; --onhero:#FFFFFF; --warn:#B4500F; --warn-bg:#FFF1E6;
+  --f-display:'Alexandria','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --f-body:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#071131; --mist:#0C1A45; --blue:#6E97FF; --blue-deep:#9BB7FF;
+  --ink:#EEF2FF; --soft:#AEBBE3; --line:#22336A; --tint:#12235A;
+  --hero:#0B3FCC; --onhero:#FFFFFF; --warn:#FFB27A; --warn-bg:#3A2412; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#071131; --mist:#0C1A45; --blue:#6E97FF; --blue-deep:#9BB7FF;
+  --ink:#EEF2FF; --soft:#AEBBE3; --line:#22336A; --tint:#12235A;
+  --hero:#0B3FCC; --onhero:#FFFFFF; --warn:#FFB27A; --warn-bg:#3A2412; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.page{direction:rtl;text-align:right}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.25}
+p{margin:0}
+.muted{color:var(--soft)}
+.num{font-variant-numeric:tabular-nums}
+
+/* brand marks via CSS masks so they take the theme colour */
+.m{display:inline-block;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat;flex:none}
+.m-sym{--src:url('assets/image-e5ccbaa785d4.png');aspect-ratio:109/131}
+.m-symo{--src:url('assets/image-495c0f7a302a.png');aspect-ratio:115/141}
+.m-hand{--src:url('assets/image-92154c3c32c5.png');aspect-ratio:95/123}
+.m-seal{--src:url('assets/image-6c0ac5bd6434.png');aspect-ratio:1}
+.m-smile{--src:url('assets/image-302b05ce9532.png');aspect-ratio:150/120}
+.m-slogan{--src:url('assets/image-6370f6f9e795.png');aspect-ratio:183/45}
+.m-logo{--src:url('assets/image-0cd65fd49cb2.png');aspect-ratio:185/140}
+.m-bil{--src:url('assets/image-e544b75996dd.png');aspect-ratio:200/145}
+.zig{height:14px;background:var(--blue);-webkit-mask:url('assets/image-63295481db8a.png') right center/auto 14px repeat-x;mask:url('assets/image-63295481db8a.png') right center/auto 14px repeat-x}
+
+/* hero */
+.hero{background:var(--hero);color:var(--onhero);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:var(--onhero);opacity:.07;-webkit-mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat;mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:44px 52px;display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
+.hero .m-bil{width:190px;color:var(--onhero)}
+.eyebrow{font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:.02em;opacity:.85}
+.hero h1{font-size:clamp(30px,4.6vw,50px);font-weight:900;margin-top:22px;line-height:1.2}
+.hero h1 small{display:block;font-size:.55em;font-weight:700;opacity:.9;margin-top:8px}
+.hero .lede{font-size:19px;margin-top:16px;max-width:36ch;opacity:.95}
+.hero .slog{display:flex;align-items:center;gap:12px;margin-top:22px}
+.hero .slog .m-slogan{width:220px;color:var(--onhero)}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.collage img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:14px;display:block;border:3px solid rgba(255,255,255,.9)}
+.collage img:first-child{grid-column:span 2;aspect-ratio:16/9}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;border-top:1px solid rgba(255,255,255,.35)}
+.facts div{padding:16px 0 0 14px}
+.facts b{display:block;font-family:var(--f-display);font-size:30px;font-weight:800;line-height:1.2}
+.facts span{font-size:14px;opacity:.9}
+
+/* nav */
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.toc a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--blue);color:#fff;border-color:var(--blue);outline:none}
+
+/* sections */
+section.band{padding-block:64px}
+section.band.alt{background:var(--mist)}
+.sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:30px}
+.sec-head .m-sym{width:34px;color:var(--blue);margin-top:6px}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px);font-weight:800}
+.sec-head p{margin-top:8px;color:var(--soft);max-width:62ch}
+.kicker{font-family:var(--f-display);color:var(--blue);font-weight:700;font-size:14px}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}
+.alt .card{background:var(--paper)}
+.card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+
+/* goals */
+.goal{display:flex;flex-direction:column;gap:10px}
+.goal .tag{align-self:flex-start;font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--blue);background:var(--tint);padding:3px 10px;border-radius:999px}
+.big-q{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.45;max-width:30ch;margin-bottom:28px}
+.big-q em{font-style:normal;color:var(--blue)}
+
+/* problems */
+.prob{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:0;padding:0;overflow:hidden}
+.prob .p-side{padding:22px;border-left:1px solid var(--line)}
+.prob .s-side{padding:22px;background:var(--tint)}
+.prob .lbl{font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--soft);display:block;margin-bottom:6px}
+.prob .s-side .lbl{color:var(--blue)}
+.prob h3{font-size:19px}
+.prob ul{margin:0;padding-right:18px}
+.prob li{margin-bottom:4px}
+.kpi-line{margin-top:12px;font-size:14px;color:var(--soft);border-top:1px dashed var(--line);padding-top:10px}
+.kpi-line b{color:var(--ink)}
+
+/* tables */
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:15.5px}
+th,td{padding:14px 16px;text-align:right;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--f-display);font-weight:700;background:var(--blue);color:#fff;font-size:15px}
+tbody th{font-family:var(--f-display);font-weight:700;color:var(--blue);white-space:nowrap;font-size:14.5px}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
+td.us{background:var(--tint)}
+.fill{display:inline-block;min-width:60px;border-bottom:2px dotted var(--soft);color:var(--soft);font-size:14px}
+.note{font-size:14px;color:var(--soft);margin-top:12px}
+
+/* pillars */
+.pillar{display:flex;flex-direction:column;gap:10px;position:relative}
+.pillar .pct{font-family:var(--f-display);font-weight:900;font-size:40px;color:var(--blue);line-height:1}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}
+.pillar ul{margin:0;padding-right:18px;font-size:15.5px}
+.pillar img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px}
+
+/* identity */
+.swatches{display:flex;gap:14px;flex-wrap:wrap}
+.sw{flex:1 1 160px;border-radius:14px;padding:16px;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line)}
+.sw b{font-family:var(--f-display)}
+.sw span{font-size:14px;font-variant-numeric:tabular-nums;direction:ltr;text-align:right}
+.marks{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:18px}
+.mk{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;font-size:13.5px;color:var(--soft)}
+.mk .m{color:var(--blue);height:56px;width:auto}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.dd ul{margin:0;padding-right:18px}
+.dd .do h3{color:var(--blue)}
+.dd .dont h3{color:var(--warn)}
+
+/* platforms */
+.plat{display:flex;flex-direction:column;gap:8px}
+.plat .role{font-family:var(--f-display);font-weight:700;color:var(--blue);font-size:14px}
+.plat .freq{margin-top:auto;font-size:14px;background:var(--mist);border-radius:10px;padding:8px 12px}
+.alt .plat .freq{background:var(--tint)}
+
+/* package split */
+.split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
+.rows{display:flex;flex-direction:column;gap:12px}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start}
+.row .n{font-family:var(--f-display);font-weight:900;font-size:28px;color:var(--blue);line-height:1.2;text-align:center}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}
+.day{border:1px solid var(--line);border-radius:10px;padding:8px 4px;text-align:center;font-size:12.5px;min-height:92px;display:flex;flex-direction:column;gap:6px;align-items:center;background:var(--paper)}
+.day b{font-family:var(--f-display);font-size:13px}
+.chip{font-size:11.5px;border-radius:6px;padding:2px 5px;font-weight:600;line-height:1.5}
+.c-d{background:var(--blue);color:#fff}
+.c-v{background:var(--ink);color:var(--paper)}
+.c-s{background:var(--tint);color:var(--blue)}
+
+/* season gantt */
+.gantt-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+.gantt{display:grid;grid-template-columns:repeat(12,minmax(92px,1fr));min-width:1104px;position:relative}
+.gm{grid-row:1;font-family:var(--f-display);font-weight:800;font-size:15px;padding:12px 10px;border-left:1px solid var(--line);background:var(--mist)}
+.gantt .ev{margin:5px 6px;border-radius:8px;padding:6px 10px;font-size:13.5px;font-weight:600;line-height:1.45;min-width:0}
+.ev small{display:block;font-weight:400;opacity:.85;font-size:12px}
+.ev.k{background:var(--blue);color:#fff}
+.ev.s{background:var(--tint);color:var(--ink);border:1px solid var(--line)}
+.ev.r{background:var(--ink);color:var(--paper)}
+.ev.w{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:12px;color:var(--soft)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-left:6px}
+.alert{display:flex;gap:12px;background:var(--warn-bg);color:var(--ink);border:1px solid var(--warn);border-radius:14px;padding:14px 16px;margin-top:16px;font-size:15.5px}
+.alert b{color:var(--warn)}
+
+/* months */
+.month{display:grid;grid-template-columns:230px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper);margin-bottom:22px}
+.mside{background:var(--blue);color:#fff;padding:24px 22px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.mside::after{content:"";position:absolute;inset:auto -20px -30px auto;width:150px;height:180px;background:#fff;opacity:.12;-webkit-mask:url('assets/image-e5ccbaa785d4.png') center/contain no-repeat;mask:url('assets/image-e5ccbaa785d4.png') center/contain no-repeat}
+.mside .mnum{font-family:var(--f-display);font-size:13px;font-weight:700;opacity:.85}
+.mside h3{font-size:30px;font-weight:900}
+.mside .theme{font-family:var(--f-display);font-weight:700;font-size:18px;line-height:1.45;background:rgba(255,255,255,.14);border-radius:10px;padding:8px 10px}
+.mside .goal-t{font-size:14.5px;opacity:.95;position:relative;z-index:1}
+.mbody{padding:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px}
+.mbody .full{grid-column:1/-1}
+.mbody h4{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.mbody h4 .m{width:12px;color:var(--blue)}
+.mbody ul{margin:0;padding-right:18px;font-size:15.5px}
+.mbody li{margin-bottom:3px}
+.dates{display:flex;flex-wrap:wrap;gap:8px}
+.dates span{background:var(--mist);border-radius:8px;padding:4px 10px;font-size:14px;font-weight:600}
+.camp{background:var(--tint);border-radius:12px;padding:14px 16px}
+.camp b{font-family:var(--f-display);font-size:18px;color:var(--blue);display:block;margin-bottom:4px}
+.offer{border:2px dashed var(--blue);border-radius:12px;padding:12px 14px;font-size:15.5px}
+
+/* kpi */
+td .tgt{font-family:var(--f-display);font-weight:700;color:var(--blue)}
+
+/* workflow */
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:st}
+.st{padding:18px 16px;border-top:4px solid var(--blue);background:var(--paper);border-left:1px solid var(--line);min-width:0}
+.st:first-child{border-radius:0 14px 14px 0}
+.st:last-child{border-radius:14px 0 0 14px;border-left:none}
+.st .when{font-family:var(--f-display);font-weight:800;color:var(--blue);font-size:15px}
+.st p{font-size:15px;margin-top:6px}
+.check{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:18px}
+.ck{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:14px;font-size:15px;display:flex;flex-direction:column;gap:6px}
+.ck b{font-family:var(--f-display);color:var(--blue)}
+
+/* closing */
+.closing{background:var(--hero);color:var(--onhero);text-align:center;position:relative;overflow:hidden}
+.closing .wrap{padding-block:60px;display:flex;flex-direction:column;align-items:center;gap:18px;position:relative;z-index:1}
+.closing .m-slogan{width:min(420px,80%);color:var(--onhero)}
+.closing .m-smile{width:70px;color:var(--onhero)}
+.closing::after{content:"";position:absolute;inset:0;background:#fff;opacity:.06;-webkit-mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat;mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat}
+.src{font-size:13.5px;color:var(--soft);padding-block:24px}
+.src a{color:var(--blue)}
+
+a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .marks{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .month{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .st,.st:first-child,.st:last-child{border-radius:0;border-left:none;border-top:4px solid var(--blue)}
+  .check{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .g2,.g3,.g4,.dd,.mbody{grid-template-columns:1fr}
+  .prob{grid-template-columns:1fr}
+  .prob .p-side{border-left:none;border-bottom:1px solid var(--line)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .week{grid-template-columns:repeat(4,minmax(0,1fr))}
+  section.band{padding-block:48px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="page" dir="rtl" lang="ar">
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="m m-bil" role="img" aria-label="شعار مشوي ثمانية"></span>
+      <h1>استراتيجية السوشيال ميديا<small>نوفمبر ٢٠٢٦ ← أبريل ٢٠٢٧</small></h1>
+      <p class="lede">خطة ٦ شهور تحل مشاكل مشوي ثمانية الحالية بالسوشيال، وتركب على مواسم الشتاء ورمضان والعيد، بهوية البراند وألوانها فقط.</p>
+      <div class="slog"><span class="m m-slogan" role="img" aria-label="الخلطة ولا غلطة"></span></div>
+      <div class="facts num">
+        <div><b>٣ سنين</b><span>في السوق</span></div>
+        <div><b>٦٠٪</b><span>عملاء يرجعون بأنفسهم</span></div>
+        <div><b>٨٠ / ٢٠</b><span>استلام / تطبيقات</span></div>
+        <div><b>١٢ + ٤</b><span>تصميم + فيديو شهرياً</span></div>
+      </div>
+    </div>
+    <div class="collage">
+      <img src="assets/image-ae7764dcafc0.jpg" alt="سندوتش مشوي ثمانية على خلفية زرقاء">
+      <img src="assets/image-a27937b56ea8.jpg" alt="طبق عربي مقطّع مع فرايز وصوصات">
+      <img src="assets/image-3a6d222c3b2f.jpg" alt="كوب مشوي فرايز بشعار الخلطة ولا غلطة">
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="أقسام الاستراتيجية">
+  <div class="wrap">
+    <a href="#summary">الخلاصة</a><a href="#problems">المشاكل والحلول</a><a href="#competitors">المنافسين</a><a href="#position">التموضع والجمهور</a><a href="#pillars">أعمدة المحتوى</a><a href="#identity">قواعد الهوية</a><a href="#platforms">المنصات</a><a href="#package">توزيع الباقة</a><a href="#seasons">تقويم المواسم</a><a href="#months">الخطة شهر بشهر</a>
+  </div>
+</nav>
+
+<!-- SUMMARY -->
+<section class="band" id="summary">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">الخلاصة</span><h2>وش نبي نوصل له خلال ٦ شهور؟</h2></div></div>
+    <p class="big-q">نخلي <em>مشوي ثمانية</em> أول اسم يجي في بال اللي يدوّر مشويات في أبها، ونحوّل فرق الريال من سبب للتردد إلى <em>سبب للطلب</em>.</p>
+    <div class="grid g3">
+      <div class="card goal"><span class="tag">الهدف ١ · وصول</span><h3>عملاء جدد من خارج الدائرة</h3><p class="muted">الراجعين ٦٠٪، يعني النمو الحقيقي لازم يجي من ناس ما جربونا. تيك توك وسناب هم الباب.</p></div>
+      <div class="card goal"><span class="tag">الهدف ٢ · إقناع</span><h3>الجودة تنشاف قبل ما تنذاق</h3><p class="muted">كل منشور يجاوب سؤال: ليش ثمانية تستاهل الريال الزيادة؟ اللحم، التتبيلة، الشوي، الصوص.</p></div>
+      <div class="card goal"><span class="tag">الهدف ٣ · مواسم وولاء</span><h3>نكسب كل موسم ونرجّع العميل</h3><p class="muted">خطة جاهزة لكل مناسبة من إجازة الخريف إلى العيد، وبرنامج ولاء باسم البراند: «الثامن علينا».</p></div>
+    </div>
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<!-- PROBLEMS -->
+<section class="band alt" id="problems">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">المشاكل والحلول</span><h2>٧ مشاكل عندنا، وكيف نحلها بالسوشيال</h2><p>كل مشكلة جاية من بيانات العميل أو من البحث في السوق، ومعها حل تنفيذي ومؤشر نقيس فيه.</p></div></div>
+    <div class="grid" style="gap:16px">
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ١</span><h3>السعر أعلى من المنافسين بريال أو ريالين</h3><p class="muted">العميل الجديد يشوف الرقم قبل ما يشوف الجودة، وما يعرف ليش يدفع أكثر.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>سلسلة ثابتة «الريال الزيادة رايح وين؟»: كل حلقة تبرز سبب واحد (نوع اللحم، التتبيلة، الشوي على النار، الصوص الخاص، حجم الحشوة).</li><li>فيديوهات قص السندوتش من النص (Cut shot) تبين الحشوة بدون كلام.</li><li>ما نذكر أسعار المنافسين أبداً، نتكلم عن قيمتنا فقط.</li></ul>
+          <p class="kpi-line">نقيس: <b>الحفظ والمشاركة</b> على منشورات الجودة، وقلة أسئلة «ليش غالي؟» في التعليقات.</p></div>
+      </article>
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ٢</span><h3>كلاود كيتشن بدون صالة</h3><p class="muted">ما فيه مكان يشوفه الناس ويتذكرونه. البراند كله عايش في الجوال والتغليف.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>لقطات كواليس داخل فيديوهات الشهر: الشوي، النظافة، تجهيز الطلب، التغليف الأزرق.</li><li>نخلي التغليف «بطل» المحتوى: كوب «الخلطة ولا غلطة» ولفّة السندوتش بالنقشة لازم تظهر في كل لقطة.</li><li>كل بوست وريل ينعاد نشره ستوري في نفس اليوم، عشان يوصل للمتابعين اللي ما يفتحون الصفحة.</li></ul>
+          <p class="kpi-line">نقيس: <b>نسبة إكمال</b> فيديوهات الكواليس ومشاهداتها.</p></div>
+      </article>
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ٣</span><h3>٨٠٪ من الطلبات استلام</h3><p class="muted">العميل لازم يجي بنفسه، فأي غموض في الموقع أو وقت الانتظار يخسرنا الطلب.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>جملة ثابتة في كل محتوى: «أبها، الحزام، مقابل كلية ابن رشد».</li><li>فيديو «طريقك لثمانية» ٢٠ ثانية من أقرب نقطة معروفة، يتثبت في الإنستقرام والتيك توك.</li><li>«اطلب بالواتساب واستلم بدون انتظار» على كل تصميم عرض، ورقم الواتساب في البايو.</li><li>تفعيل الموقع على سناب ماب وتحديث قوقل ماب بالصور والساعات.</li></ul>
+          <p class="kpi-line">نقيس: <b>ضغطات الاتجاهات</b> في قوقل ماب وعدد <b>طلبات الواتساب</b> أسبوعياً.</p></div>
+      </article>
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ٤</span><h3>النمو معتمد على نفس العملاء</h3><p class="muted">٦٠٪ يرجعون، وهذا ممتاز للولاء، لكنه يعني إن الوصول لعملاء جدد ضعيف.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>نحوّل الراجعين لسفراء: نجمع مراجعاتهم ولقطاتهم (UGC) في ريل أو تصميم مرة بالشهر.</li><li>مسابقات «منشن صديقك ما جرب ثمانية» في المواسم.</li><li>برنامج «الثامن علينا»: ٧ طلبات والثامن مجاناً، يربط الولاء باسم البراند نفسه.</li><li>سؤال بسيط عند الكاشير: «من وين عرفتنا؟» عشان نقيس الجدد.</li></ul>
+          <p class="kpi-line">نقيس: <b>نسبة العملاء الجدد</b> اللي عرفونا من السوشيال، وعدد بطاقات الولاء المفعّلة.</p></div>
+      </article>
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ٥</span><h3>المنافس أكبر انتشاراً</h3><p class="muted">مشاوي صح عنده حوالي ١٤ فرع منها فرعين في أبها، وأبو مهل ٣ فروع ويعتمد على مراجعات صناع المحتوى في تيك توك.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>ما ننافس بعدد الفروع، ننافس بالشخصية: هوية واضحة وترندات بطابع ثمانية.</li><li>تعاون مع ٢ إلى ٣ صناع محتوى محليين من أبها بالشهر (أصحاب ٥ إلى ٥٠ ألف متابع)، تجربة حقيقية مش إعلان جامد.</li><li>نملك منطقة الحزام وطلاب الكلية المقابلة كجمهور قريب.</li></ul>
+          <p class="kpi-line">نقيس: <b>متوسط مشاهدات الفيديو</b> مقارنة بالمنافسين، والمنشن من حسابات خارجية.</p></div>
+      </article>
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ٦</span><h3>الاسم يتلخبط مع «ثمانية» الإعلامية</h3><p class="muted">لما تبحث عن «ثمانية» أو thmanyah تطلع منصة البودكاست والبث، مش المطعم. هذا يضيع العميل اللي سمع عنا.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>نكتب الاسم دائماً كامل: «مشوي ثمانية» + «أبها» في البايو والكابشن والتصاميم.</li><li>هاشتاق موحد في كل منشور: <span class="num">#مشوي_ثمانية</span> مع هاشتاقات المكان.</li><li>اسم الحساب الظاهر في كل المنصات: «مشوي ثمانية | أبها».</li></ul>
+          <p class="kpi-line">نقيس: <b>زيارات البروفايل من البحث</b> وظهور الحساب عند البحث بـ «مشوي ثمانية».</p></div>
+      </article>
+
+      <article class="card prob">
+        <div class="p-side"><span class="lbl">المشكلة ٧</span><h3>العميل هو اللي ينشر</h3><p class="muted">إحنا نسلّم التصاميم والفيديوهات والنشر عليه، فأي تأخير يكسر الاستمرارية. ومع ١٢ تصميم و٤ فيديو بس، كل قطعة لازم تشتغل.</p></div>
+        <div class="s-side"><span class="lbl">الحل</span>
+          <ul><li>تسليم الشهر كامل قبل بدايته: تصميم + كابشن جاهز + هاشتاقات + يوم ووقت النشر.</li><li>جدول نشر ثابت (٣ تصاميم وفيديو بالأسبوع) سهل يتحفظ.</li><li>كل تصميم وفيديو ينعاد نشره ستوري، فنسلّم معه نسخة ٩:١٦ جاهزة.</li></ul>
+          <p class="kpi-line">نقيس: <b>الالتزام بالجدول</b>، الهدف ٩٠٪ أو أكثر من المنشورات في وقتها.</p></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section class="band" id="competitors">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">المنافسين</span><h2>أبو مهل ومشاوي صح: وين نكسب؟</h2><p>من صفحة روابط أبو مهل، ومنيو مشاوي صح المنشور، وقوائم تطبيقات التوصيل. أسعار التطبيقات عادة أعلى من سعر المحل.</p></div></div>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th style="width:16%">البند</th><th style="width:28%">مشوي ثمانية</th><th style="width:28%">أبو مهل</th><th style="width:28%">مشاوي صح</th></tr></thead>
+        <tbody>
+          <tr><th>الحضور</th><td class="us">كلاود كيتشن واحد: أبها، الحزام، مقابل كلية ابن رشد</td><td>٣ فروع: المحالة في أبها، والرصرص وطريق المية في خميس مشيط، وتوصيل لأغلب أحياء أبها عبر التطبيقات</td><td>سلسلة بحوالي ١٤ فرع في عسير وجازان، منها فرعين في أبها (طريق الملك فهد قرب المطار، وحي المنهل) و٥ في خميس مشيط</td></tr>
+          <tr><th>طريقة الخدمة</th><td class="us">٨٠٪ استلام و٢٠٪ تطبيقات</td><td>فروع وتطبيقات توصيل</td><td>الطلب من السيارة، وتطبيقات التوصيل</td></tr>
+          <tr><th>المنيو</th><td class="us">سندوتشات مشوي (مشوي ثمانية، كباب لحم ودجاج، شيش طاووق، تكا، سمك فيليه)، أطباق العربي والمقرمة، فرايز، صوصات وتبولة</td><td>سندوتشات مشوي وكباب حاشي، وبرجر (حاشي وغنم) وأطباق جانبية</td><td>أسياخ كباب دجاج ولحم وشيش طاووق، سندوتشات (برجر، تندوري، روبيان، سمك)، وجبات عربي دجاج ولحم وروبيان</td></tr>
+          <tr><th>مستوى السعر</th><td class="us">أعلى من المنافسين بريال أو ريالين بسبب الجودة (حسب العميل)</td><td>سندوتش كباب الدجاج ١٢٫٥ ر.س وكباب الحاشي ١٧ ر.س على هنقرستيشن (سعر التطبيق)</td><td>يقدّم نفسه بالسعر المنخفض: سيخ الكباب ٦٫٩ ر.س ووجبة العربي دجاج ١٧٫٢٥ ر.س في منيو منشور</td></tr>
+          <tr><th>رسالتهم</th><td class="us">الجودة والخلطة: «الخلطة ولا غلطة»</td><td>«المشوي على أصوله» في البايو، والسرعة في وصفهم بالتطبيقات</td><td>مشوي طازج على الفحم يومياً بسعر أقل، وراحة الطلب من السيارة</td></tr>
+          <tr><th>أسلوب السوشيال</th><td class="us">تصوير منتج نظيف بالأزرق والأبيض، تحتاج حيوية وترندات</td><td>يعتمد على مراجعات صناع محتوى محليين في تيك توك وهاشتاقات أبها وخميس، ورابط موحد لكل الحسابات والفروع</td><td>حساب واحد للسلسلة كلها (@mashawisah)، وقوته من عدد الفروع والسعر</td></tr>
+          <tr><th>التطبيقات</th><td class="us">٢٠٪ من الطلبات</td><td>هنقرستيشن بتقييم ٤٫٢ إلى ٤٫٦ حسب الحي</td><td>هنقرستيشن (٤٫١ في خميس مشيط) ونينجا</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g3" style="margin-top:18px">
+      <div class="card"><h3>مشاوي صح يكسب بالسعر والفروع</h3><p class="muted">ما ننزل للسعر. نبرر الريال الزيادة بالجودة المصورة، ونكسب بالقرب من الحزام والكلية.</p></div>
+      <div class="card"><h3>أبو مهل يكسب بالمراجعين</h3><p class="muted">ناخذ نفس الأداة بحجم أصغر وبشكل منتظم، ونضيف عليها محتوى ترند من حسابنا نفسه.</p></div>
+      <div class="card"><h3>منطقتنا لنا</h3><p class="muted">الحزام وطلاب الكلية المقابلة جمهور يومي قريب، محتوى مخصص لهم يقفل الحي علينا.</p></div>
+    </div>
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<!-- POSITION + AUDIENCE -->
+<section class="band alt" id="position">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">التموضع والجمهور</span><h2>مين إحنا، ونكلم مين؟</h2></div></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>جملة التموضع</h3>
+        <p style="font-size:19px;font-family:var(--f-display);font-weight:700;line-height:1.6">لشباب أبها اللي يبون مشوي يستاهل، مشوي ثمانية هو المكان اللي خلطته ما تغلط، لأننا نشوي كل طلب بنفس المقادير ونفس الجودة من ٣ سنين.</p>
+        <p class="note">الصوت: شبابي، ترندي، لهجة سعودية خفيفة ومفهومة، واثق بدون تعالي، وفيه نكتة لما تكون مناسبة.</p>
+      </div>
+      <div class="card">
+        <h3>أمثلة على نبرة الكابشن</h3>
+        <ul style="margin:0;padding-right:18px">
+          <li>«الريال الزيادة؟ رايح للخلطة.»</li>
+          <li>«محاضرتك خلصت؟ إحنا مقابلك بالضبط.»</li>
+          <li>«برد أبها يبي له شي حار. مر علينا.»</li>
+          <li>«اطلب بالواتساب، وتعال استلم وهو حار.»</li>
+          <li>ختام ثابت: «الخلطة ولا غلطة».</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card"><span class="kicker">١٨–٢٤ سنة</span><h3>طالب الكلية والجامعة</h3><p class="muted">قريب منا يومياً، يحب الترند والميمز، حساس للسعر فيحتاج يقتنع بالقيمة. منصته: تيك توك وسناب.</p></div>
+      <div class="card"><span class="kicker">٢٢–٣٥ سنة</span><h3>الموظف الشاب</h3><p class="muted">غداء سريع أو عشاء بعد الدوام، يبي طلب جاهز بدون انتظار. منصته: سناب وإنستقرام.</p></div>
+      <div class="card"><span class="kicker">مجموعات</span><h3>الشلة والعائلة</h3><p class="muted">طلبات العربي والمقرمة والفرايز، تزيد في السهرات والكشتات والمواسم. منصته: سناب وواتساب.</p></div>
+      <div class="card"><span class="kicker">موسمي</span><h3>الزائر والكشّات</h3><p class="muted">في الإجازات والشتاء، يدور «وش ناكل في أبها». يوصل لنا من البحث وسناب ماب وقوقل ماب.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="band" id="pillars">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">أعمدة المحتوى</span><h2>خمسة أنواع محتوى، كل واحد له وظيفة</h2><p>النسب من إجمالي المحتوى الشهري (التصاميم والفيديوهات).</p></div></div>
+    <div class="grid g3">
+      <div class="card pillar"><span class="pct num">٣٠٪</span><div class="bar"><i style="width:30%"></i></div><h3>الخلطة</h3><img src="assets/image-74215530f0fe.jpg" alt="سندوتش كباب لحم مقطوع من النص"><ul><li>المنتج قريب: قص السندوتش، البخار، الصوص.</li><li>سلسلة «الريال الزيادة رايح وين؟».</li><li>تعريف كل صنف في المنيو.</li></ul></div>
+      <div class="card pillar"><span class="pct num">٢٥٪</span><div class="bar"><i style="width:25%"></i></div><h3>ترند ثمانية</h3><img src="assets/image-78aa55e57708.jpg" alt="كرتون فرايز مشوي ثمانية"><ul><li>أصوات وترندات تيك توك بطابعنا.</li><li>ميمز طلاب ودوام وشتاء أبها.</li><li>تحديات: «خمّن الصوص»، «عضة وحدة».</li></ul></div>
+      <div class="card pillar"><span class="pct num">٢٠٪</span><div class="bar"><i style="width:20%"></i></div><h3>المواسم والعروض</h3><img src="assets/image-75dd0895bd3d.jpg" alt="طبق مقرمة مع صوصات وفرايز"><ul><li>بوكسات المواسم: السهرة، الكشتة، السحور.</li><li>تهاني المناسبات بالهوية.</li><li>عروض محدودة بوقت.</li></ul></div>
+      <div class="card pillar"><span class="pct num">١٥٪</span><div class="bar"><i style="width:15%"></i></div><h3>ناس ثمانية</h3><ul><li>ريل أو تصميم شهري يجمع مراجعات ولقطات العملاء.</li><li>تعاون صناع المحتوى المحليين.</li><li>«عميل الشهر» وبرنامج «الثامن علينا».</li></ul></div>
+      <div class="card pillar"><span class="pct num">١٠٪</span><div class="bar"><i style="width:10%"></i></div><h3>وين وكيف تطلب</h3><ul><li>الموقع: الحزام، مقابل كلية ابن رشد.</li><li>الطلب المسبق بالواتساب والاستلام السريع.</li><li>ساعات العمل، خصوصاً في رمضان والعيد.</li></ul></div>
+      <div class="card pillar" style="justify-content:center;align-items:center;text-align:center;background:var(--tint);border-color:transparent"><span class="m m-hand" style="width:64px;color:var(--blue)" aria-hidden="true"></span><p style="font-family:var(--f-display);font-weight:700;font-size:18px">كل قطعة محتوى تنتهي بنفس التوقيع</p><span class="m m-slogan" style="width:200px;color:var(--blue)" role="img" aria-label="الخلطة ولا غلطة"></span></div>
+    </div>
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<!-- IDENTITY -->
+<section class="band alt" id="identity">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">قواعد الهوية</span><h2>العميل يهتم بالهوية، فهذي القواعد ثابتة في كل تصميم وفيديو</h2><p>ملاحظة العميل الأساسية: لا لكثرة الألوان، ونلتزم برموز الهوية في الصور والفيديو. والطابع شبابي ترندي أكثر من الرسمي.</p></div></div>
+    <div class="swatches">
+      <div class="sw" style="background:#0C4CED;color:#fff;border-color:#0C4CED"><b>الأزرق الملكي</b><span>#0C4CED · RGB 12/76/237</span></div>
+      <div class="sw" style="background:#EDEDED;color:#0B1B4D"><b>الرمادي الفاتح</b><span>#EDEDED · RGB 237/237/237</span></div>
+      <div class="sw" style="background:#FFFFFF;color:#0B1B4D"><b>الأبيض</b><span>#FFFFFF · RGB 255/255/255</span></div>
+      <div class="sw" style="background:var(--paper)"><b>الخط</b><span style="direction:rtl">عربي: Mudir MT · إنجليزي: DejaVu Sans</span></div>
+    </div>
+    <div class="marks">
+      <div class="mk"><span class="m m-sym" aria-hidden="true"></span>رمز ٨ المصمت<br>في زاوية كل تصميم</div>
+      <div class="mk"><span class="m m-symo" aria-hidden="true"></span>رمز ٨ المحدد<br>للبوسترات الكبيرة</div>
+      <div class="mk"><span class="m m-hand" aria-hidden="true"></span>اليد المرسومة<br>للتفاعل والتأكيد</div>
+      <div class="mk"><span class="m m-seal" aria-hidden="true"></span>الختم النجمي<br>«جديد» و«عرض»</div>
+      <div class="mk"><span class="m m-smile" aria-hidden="true"></span>الوجه الغامز<br>للمحتوى المرح</div>
+      <div class="mk"><span class="m m-logo" aria-hidden="true"></span>الشعار<br>ختام الفيديو</div>
+    </div>
+    <div class="dd">
+      <div class="card do"><h3>نسوي</h3><ul><li>خلفيات المنتج: تقسيمة أزرق وأبيض مثل تصوير المنيو الحالي.</li><li>النقشة الزيقزاق كإطار سفلي أو فاصل.</li><li>الأسعار بالأرقام العربية ورمز الريال، بنفس أسلوب تصميم التبولة.</li><li>فيديو ٩:١٦، من ٧ إلى ١٥ ثانية، وأول ثانيتين فيها «هوك».</li><li>ترجمة نصية على كل فيديو، بالخط والأزرق.</li><li>الشعار أو رمز ٨ في آخر ثانية من كل فيديو.</li></ul></div>
+      <div class="card dont"><h3>ما نسوي</h3><ul><li>ألوان خارج الثلاثة، حتى في المواسم (الأحمر للحب، الأخضر للتأسيس… نعبر بالعناصر مش بالألوان).</li><li>تصاميم مزدحمة أو رسمية بشكل جامد.</li><li>فيديوهات طويلة أو مقدمات بطيئة.</li><li>صور منتج بإضاءة أو خلفية مختلفة عن تصوير البراند.</li><li>شعارات جهات رسمية في تصاميم المناسبات الوطنية.</li></ul></div>
+    </div>
+    <div class="grid g2" style="margin-top:18px;align-items:center">
+      <img src="assets/image-df3d35315051.jpg" alt="تصميم التبولة الحالي: كوب تبولة على خلفية بيضاء مع ختم جديد والسعر ٦ ريال بدل ٩" style="width:100%;border-radius:14px;border:1px solid var(--line)">
+      <div><h3 style="font-size:22px;margin-bottom:8px">المرجع الأقرب للأسلوب المطلوب</h3><p class="muted">تصميم التبولة الحالي يجمع كل القواعد: خلفية نظيفة، الأزرق فقط، الختم النجمي «جديد»، السعر القديم مشطوب بخط اليد، ورمز ٨ في الزاوية. نبني عليه ونضيف له حيوية الترند في الفيديو.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="band" id="platforms">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">المنصات</span><h2>كل منصة لها دور</h2><p>نفس القطعة تنشر في أكثر من منصة، لكن الكابشن والطول يتغير حسب المنصة.</p></div></div>
+    <div class="grid g4">
+      <div class="card plat"><h3>تيك توك</h3><span class="role">الوصول والترند</span><p class="muted">بيت الفيديوهات الأربعة والترندات. أكبر فرصة لعملاء جدد في أبها.</p><p class="freq">فيديو أسبوعياً</p></div>
+      <div class="card plat"><h3>سناب شات</h3><span class="role">القرب والاستلام</span><p class="muted">المنصة اليومية في السعودية. نفس البوستات والريلز تنعاد ستوري، مع تفعيل الموقع على سناب ماب.</p><p class="freq">إعادة نشر كل بوست وريل ستوري</p></div>
+      <div class="card plat"><h3>إنستقرام</h3><span class="role">واجهة المنيو</span><p class="muted">الشبكة المرتبة بالهوية، الريلز، وهايلايتس ثابتة: المنيو، الموقع، العروض، آراء العملاء.</p><p class="freq">٣ تصاميم + ريل أسبوعياً، ومشاركتها ستوري</p></div>
+      <div class="card plat"><h3>يوتيوب</h3><span class="role">أرشيف Shorts</span><p class="muted">نفس الفيديوهات كـ Shorts بعنوان فيه «مشوي ثمانية أبها» لدعم البحث.</p><p class="freq">إعادة نشر الفيديوهات الأربعة</p></div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>هاشتاقات ثابتة</h3>
+      <p class="num" style="direction:rtl">#مشوي_ثمانية · #أبها · #مطاعم_أبها · #ابها_الان · #خميس_مشيط · #الحزام · #مشويات_أبها</p>
+      <p class="note">ونضيف هاشتاق الموسم (مثل #كشتة، #رمضان، #يوم_التأسيس) في وقته فقط.</p>
+    </div>
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<!-- PACKAGE -->
+<section class="band alt" id="package">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">توزيع الباقة</span><h2>كيف نوزّع ١٢ تصميم و٤ فيديو كل شهر؟</h2><p>توزيع ثابت، وتتغير أفكاره حسب ثيم الشهر.</p></div></div>
+    <div class="split">
+      <div class="card">
+        <h3>التصاميم الـ ١٢</h3>
+        <div class="rows num">
+          <div class="row"><span class="n">٤</span><p><b>الخلطة:</b> منتج وجودة، منها حلقتين من «الريال الزيادة رايح وين؟».</p></div>
+          <div class="row"><span class="n">٣</span><p><b>الموسم:</b> تهنئة أو ثيم المناسبة أو بوكس الموسم.</p></div>
+          <div class="row"><span class="n">٢</span><p><b>العروض:</b> عرض نهاية الأسبوع أو عرض الموسم.</p></div>
+          <div class="row"><span class="n">٢</span><p><b>تفاعل:</b> اختار خلطتك، سؤال، مسابقة منشن.</p></div>
+          <div class="row"><span class="n">١</span><p><b>الموقع والطلب:</b> وين نكون وكيف تطلب مسبقاً.</p></div>
+        </div>
+        <h3 style="margin-top:22px">الفيديوهات الـ ٤</h3>
+        <div class="rows num">
+          <div class="row"><span class="n">٢</span><p><b>ترند:</b> صوت أو فكرة رائجة بطابع ثمانية.</p></div>
+          <div class="row"><span class="n">١</span><p><b>منتج قريب:</b> قص، بخار، صوص، صوت الشوي.</p></div>
+          <div class="row"><span class="n">١</span><p><b>موسم:</b> فيديو حملة الشهر.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>أسبوع نشر نموذجي</h3>
+        <p class="muted" style="font-size:15px">أفضل الأوقات: الغداء ١٢–٢ ظهراً، والمساء ٨–١١ مساءً، والخميس والجمعة أعلى أيام الطلب. في رمضان ننقل النشر لبعد التراويح.</p>
+        <div class="week">
+          <div class="day"><b>الأحد</b><span class="chip c-d">تصميم الخلطة</span><span class="chip c-s">إعادة ستوري</span></div>
+          <div class="day"><b>الإثنين</b></div>
+          <div class="day"><b>الثلاثاء</b><span class="chip c-v">فيديو</span><span class="chip c-s">إعادة ستوري</span></div>
+          <div class="day"><b>الأربعاء</b><span class="chip c-d">تفاعل أو موقع</span><span class="chip c-s">إعادة ستوري</span></div>
+          <div class="day"><b>الخميس</b><span class="chip c-d">عرض أو موسم</span><span class="chip c-s">إعادة ستوري</span></div>
+          <div class="day"><b>الجمعة</b></div>
+          <div class="day"><b>السبت</b></div>
+        </div>
+        <p class="note">الأزرق: تصميم · الكحلي: فيديو · الفاتح: إعادة نشر نفس المنشور ستوري.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONS -->
+<section class="band" id="seasons">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">تقويم المواسم</span><h2>المواسم من نوفمبر إلى أبريل</h2><p>كل شهر مقسوم نصين. التواريخ الهجرية تقديرية وتتأكد بالرؤية الرسمية.</p></div></div>
+    <div class="gantt-wrap">
+      <div class="gantt">
+        <div class="gm" style="grid-column:1/span 2">نوفمبر ٢٠٢٦</div>
+        <div class="gm" style="grid-column:3/span 2">ديسمبر</div>
+        <div class="gm" style="grid-column:5/span 2">يناير ٢٠٢٧</div>
+        <div class="gm" style="grid-column:7/span 2">فبراير</div>
+        <div class="gm" style="grid-column:9/span 2">مارس</div>
+        <div class="gm" style="grid-column:11/span 2">أبريل</div>
+
+        <div class="ev s" style="grid-column:1/span 4;grid-row:2">موسم الرياض <small>بدأ ٢١ أكتوبر لمدة ١٠ أسابيع · نركب ترنده وسهراته</small></div>
+        <div class="ev r" style="grid-column:7/span 3;grid-row:2">شهر رمضان <small>يبدأ تقريباً ٨ فبراير</small></div>
+        <div class="ev k" style="grid-column:2/span 1;grid-row:3">إجازة الخريف <small>٢٠–٢٨ نوفمبر</small></div>
+        <div class="ev k" style="grid-column:4/span 1;grid-row:3">رأس السنة <small>٣١ ديسمبر</small></div>
+        <div class="ev k" style="grid-column:5/span 1;grid-row:3">إجازة منتصف العام <small>٨–١٦ يناير</small></div>
+        <div class="ev w" style="grid-column:7/span 1;grid-row:3">يوم الحب <small>١٤ فبراير · داخل رمضان</small></div>
+        <div class="ev k" style="grid-column:8/span 1;grid-row:3">يوم التأسيس <small>٢٢ فبراير · منتصف رمضان</small></div>
+        <div class="ev k" style="grid-column:9/span 1;grid-row:3">عيد الفطر <small>٩ أو ١٠ مارس تقريباً</small></div>
+        <div class="ev s" style="grid-column:5/span 4;grid-row:4">موسم الكشتات والرحلات الشتوية <small>يناير – فبراير</small></div>
+      </div>
+    </div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>مناسبة لها حملة</span><span><i style="background:var(--ink)"></i>رمضان</span><span><i style="background:var(--tint);border:1px solid var(--line)"></i>موسم ممتد أو ترند</span><span><i style="background:var(--warn-bg);border:1px solid var(--warn)"></i>يحتاج انتباه</span></div>
+    <div class="alert"><span><b>ملاحظتين على التواريخ:</b> إجازة منتصف العام حسب تقويم ١٤٤٨ المعتمد تكون في يناير (٨–١٦) مش نوفمبر وديسمبر، اللي في نوفمبر هي إجازة الخريف (٢٠–٢٨). ويوم الحب ١٤ فبراير يجي في أول أسبوع من رمضان، فنستبدله بمحتوى «سحور مع اللي تحبهم» للأهل والشلة بدون طابع رومانسي.</span></div>
+    <div class="alert" style="background:var(--tint);border-color:var(--line)"><span><b style="color:var(--blue)">موسم الرياض وإحنا في أبها:</b> الحدث نفسه بعيد عن عملائنا، فما نروج له. نركب ترنداته فقط: ليالي النزالات والحفلات اللي الكل يتابعها من البيت تصير «سهرة ثمانية».</span></div>
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<!-- MONTHS -->
+<section class="band alt" id="months">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">الخطة شهر بشهر</span><h2>٦ شهور، ٦ حملات</h2><p>العروض مقترحات، والأسعار والمحتوى النهائي للبوكسات يحددها العميل. الخانات اللي بين أقواس تتعبى بعد موافقته.</p></div></div>
+
+    <article class="month" id="m-nov">
+      <div class="mside"><span class="mnum">الشهر ١</span><h3>نوفمبر</h3><p class="theme">تعرّف على الخلطة</p><p class="goal-t">الهدف: نعيد تقديم البراند ونثبت ليش الجودة تستاهل، ونملك الحي.</p></div>
+      <div class="mbody">
+        <div class="full"><h4><span class="m m-sym"></span>المناسبات</h4><div class="dates"><span>إجازة الخريف ٢٠–٢٨ نوفمبر</span><span>ترند موسم الرياض</span><span>بداية برد أبها</span></div></div>
+        <div class="full camp"><b>«الريال الزيادة رايح وين؟»</b>سلسلة من ٤ حلقات، كل وحدة تكشف سر من الخلطة: اللحم، التتبيلة، الشوي، الصوص. تنتهي كل حلقة بجملة «الخلطة ولا غلطة».</div>
+        <div><h4><span class="m m-sym"></span>أفكار التصاميم</h4><ul><li>٤ حلقات سلسلة الجودة.</li><li>منيو السندوتشات ومنيو العربي والمقرمة.</li><li>«إحنا مقابل كلية ابن رشد» تصميم موقع.</li><li>خطة إجازة الخريف (ميم).</li><li>«اختار خلطتك»: تصويت بين الأصناف.</li><li>عرض الطالب.</li></ul></div>
+        <div><h4><span class="m m-sym"></span>أفكار الفيديو</h4><ul><li>قص سندوتش مشوي ثمانية من النص، ٨ ثواني بصوت القرمشة.</li><li>ترند «لما أحد يقول المشوي كله واحد».</li><li>«طريقك لثمانية» من بوابة الكلية في ٢٠ ثانية.</li><li>«خطة الإجازة: نوم، بلايستيشن، ثمانية».</li></ul></div>
+        <div class="full offer"><b>عرض مقترح:</b> «كومبو الطالب» بإبراز البطاقة الجامعية أيام الدراسة <span class="fill">[السعر]</span>، و«بوكس الشلة» في إجازة الخريف.</div>
+      </div>
+    </article>
+
+    <article class="month" id="m-dec">
+      <div class="mside"><span class="mnum">الشهر ٢</span><h3>ديسمبر</h3><p class="theme">ليالي الشتا وسهرة ثمانية</p><p class="goal-t">الهدف: نرفع طلبات المجموعات في الليل ونربط ثمانية بالسهرة.</p></div>
+      <div class="mbody">
+        <div class="full"><h4><span class="m m-sym"></span>المناسبات</h4><div class="dates"><span>برد أبها في الليل</span><span>سهرات النزالات والحفلات (موسم الرياض)</span><span>رأس السنة ٣١ ديسمبر</span></div></div>
+        <div class="full camp"><b>«سهرة ثمانية»</b>بوكس السهرة: طبق عربي أو مقرمة + فرايز + صوصات، يتطلب بالواتساب قبل السهرة ويستلم حار. كل ليلة حدث كبير نذكّر فيها بالبوكس.</div>
+        <div><h4><span class="m m-sym"></span>أفكار التصاميم</h4><ul><li>إطلاق «بوكس السهرة» بتصوير المقرمة.</li><li>«الليلة نزال؟ السهرة علينا» يوم الحدث.</li><li>برد أبها: «شي حار يدفيك».</li><li>«خمّن الصوص» من صورة الصوصات.</li><li>رأس السنة: «ودّع ٢٠٢٦ بخلطة صح».</li><li>إعادة نشر مراجعات عملاء.</li></ul></div>
+        <div><h4><span class="m m-sym"></span>أفكار الفيديو</h4><ul><li>بخار السندوتش في برد الليل، ترند «برد أبها».</li><li>POV: الشلة تفتح بوكس السهرة.</li><li>تحدي «خمّن الصوص» مع عميل أو موظف.</li><li>«آخر طلب في ٢٠٢٦» ترند ختام السنة.</li></ul></div>
+        <div class="full offer"><b>عرض مقترح:</b> صوص إضافي مجاني مع بوكس السهرة في ليالي الأحداث الكبيرة.</div>
+      </div>
+    </article>
+
+    <article class="month" id="m-jan">
+      <div class="mside"><span class="mnum">الشهر ٣</span><h3>يناير</h3><p class="theme">كشتتك تبدأ من ثمانية</p><p class="goal-t">الهدف: نصير جزء من خطة الكشتة والإجازة، ونوصل للزوار.</p></div>
+      <div class="mbody">
+        <div class="full"><h4><span class="m m-sym"></span>المناسبات</h4><div class="dates"><span>إجازة منتصف العام ٨–١٦ يناير</span><span>موسم الكشتات والرحلات الشتوية</span></div></div>
+        <div class="full camp"><b>«كشتتك تبدأ من ثمانية»</b>بوكس الكشتة (عربي أو مقرمة + فرايز + صوصات + تبولة) بطلب مسبق من الليلة اللي قبل، والاستلام في الطريق للكشتة.</div>
+        <div><h4><span class="m m-sym"></span>أفكار التصاميم</h4><ul><li>إطلاق بوكس الكشتة.</li><li>«قائمة الكشتة: حطب، قهوة، ثمانية».</li><li>جدول الإجازة بطابع مرح.</li><li>«الجو يقول كشتة» تصميم موسمي.</li><li>تصميم «اطلب من الليل واستلم الصبح».</li><li>مسابقة: «صوّر كشتتك مع ثمانية».</li></ul></div>
+        <div><h4><span class="m m-sym"></span>أفكار الفيديو</h4><ul><li>POV تجهيز كشتة: طلب، استلام، نار، أول عضة.</li><li>ترند «أشياء لازم تكون في الكشتة».</li><li>ترند الإجازة: «أول يوم إجازة».</li><li>تجميع لقطات العملاء من كشتاتهم.</li></ul></div>
+        <div class="full offer"><b>عرض مقترح:</b> الطلب المسبق لبوكس الكشتة قبلها بيوم عليه هدية صوص أو تبولة <span class="fill">[يحدد العميل]</span>.</div>
+      </div>
+    </article>
+
+    <article class="month" id="m-feb">
+      <div class="mside"><span class="mnum">الشهر ٤</span><h3>فبراير</h3><p class="theme">رمضان مع ثمانية</p><p class="goal-t">الهدف: نجهّز العملاء لرمضان، ونملك وقت السحور والجمعات بعد التراويح.</p></div>
+      <div class="mbody">
+        <div class="full"><h4><span class="m m-sym"></span>المناسبات</h4><div class="dates"><span>تهيئة رمضان ١–٧ فبراير</span><span>بداية رمضان ~٨ فبراير</span><span>١٤ فبراير (داخل رمضان)</span><span>يوم التأسيس ٢٢ فبراير</span></div></div>
+        <div class="full camp"><b>«سحورك علينا»</b>منيو وساعات رمضان من أول يوم، «بوكس السحور» للجمعات بعد التراويح، وتذكير بالطلب المسبق قبل زحمة آخر الليل في تصاميم الشهر.</div>
+        <div><h4><span class="m m-sym"></span>أفكار التصاميم</h4><ul><li>«رمضان قرّب» مع ساعات العمل الجديدة.</li><li>تهنئة رمضان بالهوية (رمز ٨ والنقشة).</li><li>إطلاق بوكس السحور.</li><li>«سحور مع اللي تحبهم» بدل يوم الحب.</li><li>يوم التأسيس: النقشة الزيقزاق كنقش تراثي، بالأزرق فقط.</li><li>«مين يسحّر معنا الليلة؟» تفاعل.</li></ul></div>
+        <div><h4><span class="m m-sym"></span>أفكار الفيديو</h4><ul><li>«يومك في رمضان»: من الدوام إلى سحور ثمانية.</li><li>ASMR الشوي في ليل رمضان.</li><li>ترند يوم التأسيس بلمسة ثمانية.</li><li>زحمة الطلبات بعد التراويح (كواليس).</li></ul></div>
+        <div class="full offer"><b>عرض مقترح:</b> بوكس السحور للجمعات (٤ أشخاص فأكثر) <span class="fill">[السعر]</span>، ومعه تبولة مجانية لأول أسبوع.</div>
+      </div>
+    </article>
+
+    <article class="month" id="m-mar">
+      <div class="mside"><span class="mnum">الشهر ٥</span><h3>مارس</h3><p class="theme">العشر الأواخر وعيدكم ثمانية</p><p class="goal-t">الهدف: نخدم ليالي العشر بهدوء، ونكون جزء من جمعات العيد.</p></div>
+      <div class="mbody">
+        <div class="full"><h4><span class="m m-sym"></span>المناسبات</h4><div class="dates"><span>العشر الأواخر ~٢٨ فبراير – ٨ مارس</span><span>عيد الفطر ~٩ أو ١٠ مارس</span></div></div>
+        <div class="full camp"><b>«عيدكم ثمانية»</b>ساعات العيد واضحة قبلها بأيام، بوكس جمعات العيد للعائلة والشلة، وبعد العيد «رجعنا للروتين» لطلاب الكلية.</div>
+        <div><h4><span class="m m-sym"></span>أفكار التصاميم</h4><ul><li>تذكير العشر: «اطلب سحورك بدري».</li><li>ساعات العمل في آخر رمضان والعيد.</li><li>تهنئة عيد الفطر بالهوية.</li><li>بوكس جمعات العيد.</li><li>«شكراً يا رمضان»: أكثر الأصناف طلباً في الشهر.</li><li>«أول يوم دراسة بعد العيد؟ إحنا مقابلك».</li></ul></div>
+        <div><h4><span class="m m-sym"></span>أفكار الفيديو</h4><ul><li>كواليس آخر ليلة في رمضان.</li><li>ترند «عيدية ثمانية».</li><li>«أول سندوتش بعد رمضان» ترند.</li><li>تجميع لقطات العملاء في العيد.</li></ul></div>
+        <div class="full offer"><b>عرض مقترح:</b> «عيدية ثمانية»: كود للعملاء الراجعين أول ٣ أيام بعد العيد <span class="fill">[قيمة الخصم]</span>.</div>
+      </div>
+    </article>
+
+    <article class="month" id="m-apr">
+      <div class="mside"><span class="mnum">الشهر ٦</span><h3>أبريل</h3><p class="theme">الثامن علينا</p><p class="goal-t">الهدف: نثبت الولاء بعد المواسم، ونقيّم ٦ شهور.</p></div>
+      <div class="mbody">
+        <div class="full"><h4><span class="m m-sym"></span>المناسبات</h4><div class="dates"><span>بعد موسم رمضان والعيد</span></div></div>
+        <div class="full camp"><b>«الثامن علينا»</b>بطاقة ولاء: ٧ طلبات والثامن مجاناً. الاسم يربط العرض بالرقم ٨ في البراند، والراجعين (٦٠٪) يصيرون أول من يستفيد ويروج.</div>
+        <div><h4><span class="m m-sym"></span>أفكار التصاميم</h4><ul><li>إطلاق «الثامن علينا» وشرح طريقة البطاقة.</li><li>«عميل الشهر» من عملاء البطاقة.</li><li>أكثر صنف انطلب في ٦ شهور.</li><li>تذكير الموقع والطلب المسبق.</li><li>«وش طلبك المعتاد؟» تفاعل مع الراجعين.</li><li>إعادة نشر آراء العملاء.</li></ul></div>
+        <div><h4><span class="m m-sym"></span>أفكار الفيديو</h4><ul><li>عميل يختم الطلب الثامن ويستلمه مجاناً.</li><li>ترند «الرقم ٨ في حياتي».</li><li>منتج قريب: صنف جديد أو الأكثر مبيعاً.</li><li>«٦ شهور في ٦٠ ثانية» تجميع أفضل اللقطات.</li></ul></div>
+        <div class="full offer"><b>تقييم:</b> تقرير ٦ شهور بالمؤشرات، ومقترح خطة الشهور الجاية.</div>
+      </div>
+    </article>
+
+    <div class="card" style="margin-top:6px">
+      <h3>رمضان: قواعد خاصة</h3>
+      <div class="grid g3" style="margin-top:8px">
+        <p class="muted"><b style="color:var(--ink)">التوقيت:</b> النشر بعد التراويح (١٠م – ١ص)، ولا ننشر محتوى أكل في عز النهار.</p>
+        <p class="muted"><b style="color:var(--ink)">الساعات:</b> تتثبت ساعات رمضان في البايو والهايلايت، وتكون في أول تصميم للشهر.</p>
+        <p class="muted"><b style="color:var(--ink)">النبرة:</b> أهدى وأقرب، بدون مبالغة في الترندات خصوصاً في العشر الأواخر.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="closing">
+  <div class="wrap">
+    <span class="m m-smile" aria-hidden="true"></span>
+    <span class="m m-slogan" role="img" aria-label="الخلطة ولا غلطة"></span>
+    <p style="opacity:.9">مشوي ثمانية · أبها، الحزام، مقابل كلية ابن رشد</p>
+  </div>
+</footer>
+
+
+</div>
+<style>#competitors .wrap>*:not(.sec-head){filter:blur(7px);pointer-events:none;user-select:none}</style>
+

@@ -1,0 +1,776 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Content plan</title>
+<meta name="viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style id="app-css">
+/* Layout: same system as the strategy page; a month calendar up top, then 12 post cards, each pairing a brand mock-up with its hook, caption and keywords. */
+:root{
+  --paper:#FFFFFF; --mist:#EDEDED; --blue:#0C4CED; --ink:#0B1B4D; --soft:#4B5A84;
+  --line:#D6DBEA; --tint:#E8EEFE; --hero:#0C4CED; --onhero:#FFFFFF; --warn:#B4500F; --warn-bg:#FFF1E6;
+  --f-display:'Alexandria','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --f-body:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#071131; --mist:#0C1A45; --blue:#6E97FF; --ink:#EEF2FF; --soft:#AEBBE3;
+  --line:#22336A; --tint:#12235A; --hero:#0B3FCC; --onhero:#FFFFFF; --warn:#FFB27A; --warn-bg:#3A2412; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#071131; --mist:#0C1A45; --blue:#6E97FF; --ink:#EEF2FF; --soft:#AEBBE3;
+  --line:#22336A; --tint:#12235A; --hero:#0B3FCC; --onhero:#FFFFFF; --warn:#FFB27A; --warn-bg:#3A2412; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.page{direction:rtl;text-align:right}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.3}
+p{margin:0}
+.muted{color:var(--soft)}
+.m{display:inline-block;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat;flex:none}
+.m-sym{--src:url('assets/image-e5ccbaa785d4.png');aspect-ratio:109/131}
+.m-hand{--src:url('assets/image-92154c3c32c5.png');aspect-ratio:95/123}
+.m-seal{--src:url('assets/image-6c0ac5bd6434.png');aspect-ratio:1}
+.m-smile{--src:url('assets/image-302b05ce9532.png');aspect-ratio:150/120}
+.m-slogan{--src:url('assets/image-6370f6f9e795.png');aspect-ratio:183/45}
+.m-logo{--src:url('assets/image-0cd65fd49cb2.png');aspect-ratio:185/140}
+.m-bil{--src:url('assets/image-e544b75996dd.png');aspect-ratio:200/145}
+.zig{height:14px;background:var(--blue);-webkit-mask:url('assets/image-63295481db8a.png') right center/auto 14px repeat-x;mask:url('assets/image-63295481db8a.png') right center/auto 14px repeat-x}
+
+.hero{background:var(--hero);color:var(--onhero);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:var(--onhero);opacity:.07;-webkit-mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat;mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:40px 46px}
+.hero .m-bil{width:150px;color:var(--onhero)}
+.hero h1{font-size:clamp(30px,4.6vw,50px);font-weight:900;margin-top:20px}
+.hero h1 small{display:block;font-size:.5em;font-weight:700;opacity:.9;margin-top:6px}
+.hero .lede{font-size:18px;margin-top:14px;max-width:52ch;opacity:.95}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;border-top:1px solid rgba(255,255,255,.35)}
+.facts div{padding:14px 0 0 14px}
+.facts b{display:block;font-family:var(--f-display);font-size:28px;font-weight:800;line-height:1.2}
+.facts span{font-size:14px;opacity:.9}
+
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.toc a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--blue);color:#fff;border-color:var(--blue);outline:none}
+
+section.band{padding-block:60px}
+section.band.alt{background:var(--mist)}
+.sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:28px}
+.sec-head .m-sym{width:34px;color:var(--blue);margin-top:6px}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px);font-weight:800}
+.sec-head p{margin-top:8px;color:var(--soft);max-width:64ch}
+.kicker{font-family:var(--f-display);color:var(--blue);font-weight:700;font-size:14px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}
+.card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.card ul{margin:0;padding-right:18px}
+
+/* calendar */
+.cal-wrap{overflow-x:auto}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(92px,1fr));gap:6px;min-width:680px}
+.cal .dh{font-family:var(--f-display);font-weight:700;font-size:14px;color:var(--soft);padding:4px 8px}
+.cal .d{background:var(--paper);border:1px solid var(--line);border-radius:10px;min-height:92px;padding:8px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.cal .d .n{font-family:var(--f-display);font-weight:700;font-size:15px}
+.cal .d.brk{background:var(--tint)}
+.cal .d.brk .n::after{content:" · إجازة";font-size:11.5px;font-weight:600;color:var(--blue)}
+.cal a.pc{display:block;text-decoration:none;background:var(--blue);color:#fff;border-radius:7px;padding:4px 7px;font-weight:600;line-height:1.45;font-size:12.5px}
+.cal a.pc:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:12px;color:var(--soft)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-left:6px}
+
+.split-tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--paper);margin-top:18px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15.5px}
+th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--f-display);background:var(--blue);color:#fff;font-weight:700;font-size:14.5px}
+tbody tr:last-child td{border-bottom:none}
+td.c{font-family:var(--f-display);font-weight:800;color:var(--blue);font-size:20px}
+
+.alert{background:var(--warn-bg);border:1px solid var(--warn);border-radius:14px;padding:14px 16px;font-size:15.5px;margin-top:18px}
+.alert b{color:var(--warn)}
+.ph{background:var(--warn-bg);color:var(--warn);border-radius:4px;padding:0 4px;font-weight:600}
+
+/* posts */
+.post{display:grid;grid-template-columns:320px minmax(0,1fr);gap:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:22px;scroll-margin-top:70px}
+.mockside{background:var(--mist);padding:22px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.alt .mockside{background:var(--tint)}
+.mock{width:100%;max-width:276px;aspect-ratio:4/5;border-radius:12px;overflow:hidden;position:relative;display:flex;flex-direction:column;padding:18px;gap:10px;box-shadow:0 6px 22px rgba(12,40,120,.16)}
+.mock.blue{background:#0C4CED;color:#FFFFFF}
+.mock.white{background:#FFFFFF;color:#0C4CED}
+.mock.white::before{content:"";position:absolute;left:-30%;bottom:-30%;width:90%;height:70%;background:#0C4CED;transform:rotate(45deg);opacity:.95}
+.mock .corner{position:absolute;top:14px;left:14px;width:20px;color:inherit}
+.mock.white .corner{color:#0C4CED}
+.mock .mk-eye{font-family:var(--f-display);font-weight:700;font-size:12px;opacity:.85;position:relative}
+.mock .mk-hook{font-family:var(--f-display);font-weight:900;font-size:24px;line-height:1.3;position:relative;max-width:88%}
+.mock .mk-sub{font-family:var(--f-display);font-weight:700;font-size:13.5px;position:relative;opacity:.95}
+.mock img{width:100%;flex:1;min-height:0;object-fit:cover;border-radius:10px;position:relative}
+.mock .mk-foot{position:relative;font-size:11.5px;font-weight:700;font-family:var(--f-display);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.mock .mk-foot .m-logo{width:34px;color:inherit}
+.mock.white .mk-foot{color:#FFFFFF;background:#0C4CED;border-radius:8px;padding:6px 10px}
+.mock .seal{position:absolute;width:74px;aspect-ratio:1;right:12px;top:42%;display:grid;place-items:center;z-index:2}
+.mock .seal .m-seal{position:absolute;inset:0;width:100%;color:#FFFFFF}
+.mock.white .seal .m-seal{color:#0C4CED}
+.mock .seal b{position:relative;font-family:var(--f-display);font-size:13px;color:#0C4CED;line-height:1.2;text-align:center}
+.mock.white .seal b{color:#FFFFFF}
+.mock .vs{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1;min-height:0;position:relative}
+.mock .vs img{height:100%}
+.slides{display:flex;flex-direction:column;gap:6px;width:100%;max-width:276px}
+.slides .sl{font-size:13.5px;font-weight:600;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:5px 10px;text-align:right}
+.fmt{font-size:13.5px;color:var(--soft);text-align:center}
+
+.pbody{padding:22px 24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.meta .no{font-family:var(--f-display);font-weight:900;font-size:15px;background:var(--blue);color:#fff;border-radius:8px;padding:2px 10px}
+.meta span{font-size:13.5px;font-weight:600;background:var(--mist);border-radius:8px;padding:3px 10px}
+.post h3{font-size:22px;font-weight:800}
+.hook{border-right:4px solid var(--blue);background:var(--tint);border-radius:0 0 0 0;padding:10px 14px}
+.hook small{display:block;font-family:var(--f-display);font-weight:700;color:var(--blue);font-size:12.5px}
+.hook p{font-family:var(--f-display);font-weight:800;font-size:20px;line-height:1.5}
+.lbl{font-family:var(--f-display);font-weight:700;color:var(--blue);font-size:14px;margin-bottom:4px;display:block}
+.design ol{margin:0;padding-right:20px;font-size:15.5px}
+.cap{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cap-h{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--mist);gap:10px}
+.cap-h .lbl{margin:0}
+.copy{font-family:var(--f-display);font-weight:700;font-size:13px;border:1px solid var(--blue);background:var(--paper);color:var(--blue);border-radius:999px;padding:4px 12px;cursor:pointer}
+.copy:hover{background:var(--blue);color:#fff}
+.copy:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.cap pre{margin:0;padding:14px;white-space:pre-wrap;font-family:var(--f-body);font-size:16px;line-height:1.85;direction:rtl}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13.5px;border-radius:8px;padding:3px 10px;background:var(--tint);color:var(--ink);border:1px solid var(--line)}
+.cta{font-weight:600}
+
+.closing{background:var(--hero);color:var(--onhero);text-align:center;position:relative;overflow:hidden}
+.closing .wrap{padding-block:54px;display:flex;flex-direction:column;align-items:center;gap:16px;position:relative;z-index:1}
+.closing .m-slogan{width:min(400px,80%);color:var(--onhero)}
+.closing .m-smile{width:64px;color:var(--onhero)}
+.closing::after{content:"";position:absolute;inset:0;background:#fff;opacity:.06;-webkit-mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat;mask:url('assets/image-da8529948861.png') 0 0/150px auto repeat}
+
+@media (max-width:900px){
+  .post{grid-template-columns:1fr}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .g2,.g3,.two{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  section.band{padding-block:46px}
+  .pbody{padding:18px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+.ed{outline:2px dashed var(--blue);outline-offset:2px;border-radius:4px;white-space:pre-wrap;cursor:text;min-height:1.2em}
+span.ed{display:inline-block;min-width:2.5em}
+.ed:focus{outline-style:solid;background:var(--tint)}
+.mock .ed{outline-color:currentColor}
+.mock .ed:focus{background:transparent}
+.add{font-family:var(--f-display);font-weight:700;font-size:13px;border:1px dashed var(--blue);background:transparent;color:var(--blue);border-radius:8px;padding:3px 10px;cursor:pointer;margin-top:6px}
+.ednote{background:var(--tint);border-bottom:1px solid var(--line);padding-block:12px;font-size:15.5px}
+.ednote b{color:var(--blue);font-family:var(--f-display)}
+.edbar{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:calc(100% - 32px);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px;box-shadow:0 6px 24px rgba(12,40,120,.18);direction:rtl;font-family:var(--f-body)}
+.edbar button{font-family:var(--f-display);font-weight:700;font-size:14px;border-radius:999px;padding:8px 18px;border:1px solid var(--blue);background:var(--blue);color:var(--paper);cursor:pointer}
+.edbar button.sec{background:var(--paper);color:var(--blue)}
+.edbar button:disabled{opacity:.6;cursor:default}
+.edbar button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.edbar [role=status]{font-size:13.5px;color:var(--soft);padding-inline:8px}
+.edbar [role=status]:empty{display:none}
+.car{width:100%;max-width:276px;display:flex;flex-direction:column;gap:8px}
+.track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 14px;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.track>.mock{flex:0 0 100%;max-width:none;scroll-snap-align:center;box-shadow:0 4px 12px rgba(12,40,120,.14)}
+.track:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:12px}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:12px}
+.cbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--blue);background:var(--paper);color:var(--blue);font-size:16px;cursor:pointer;line-height:1}
+.cbtn:hover{background:var(--blue);color:var(--paper)}
+.cbtn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.dots{display:flex;gap:6px;align-items:center}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:width .2s}
+.dots i.on{background:var(--blue);width:18px;border-radius:4px}
+.mock .mk-hook.big{font-size:27px}
+.mk-pie{width:52%;aspect-ratio:1;border-radius:50%;align-self:center;position:relative;background:conic-gradient(currentColor 0 25%,transparent 0);border:3px solid currentColor}
+.mk-pie::before,.mk-pie::after{content:"";position:absolute;background:currentColor}
+.mk-pie::before{left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%)}
+.mk-pie::after{top:50%;left:0;right:0;height:3px;transform:translateY(-50%)}
+.mk-fill{flex:1}
+.dlinks{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.dlinks b{font-family:var(--f-display);font-size:16px}
+.dl-row{display:flex;flex-wrap:wrap;gap:8px}
+.dl-row a{background:#FFFFFF;color:#0C4CED;font-family:var(--f-display);font-weight:800;font-size:15px;padding:8px 18px;border-radius:999px;text-decoration:none;box-shadow:0 3px 0 #0B1B4D}
+.dl-row a:hover{background:#E8EEFE}
+.dl-row a:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}
+.mk-badge{position:relative;align-self:flex-start;background:#FFFFFF;color:#0C4CED;font-family:var(--f-display);font-weight:900;font-size:22px;line-height:1.2;padding:4px 16px;border-radius:8px;transform:rotate(-3deg);box-shadow:0 3px 0 #0B1B4D}
+.mock .seal b{max-width:66%;line-height:1.15;text-align:center}
+.mock .mk-sub ~ .seal{top:auto;bottom:62px}
+.dcopy{border-color:var(--blue)}
+.dcopy .cap-h{background:var(--tint)}
+.dcopy pre{font-family:var(--f-display);font-weight:600;font-size:15.5px}
+.refbox{margin-top:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:12px;padding:12px 14px;font-size:15.5px;max-width:64ch}
+.refbox b{font-family:var(--f-display)}
+.refnote{font-size:12.5px;font-weight:600;color:var(--soft);text-align:center;border:1px dashed var(--line);border-radius:999px;padding:2px 12px}
+.mock .seal::before{content:"";position:absolute;inset:16%;border-radius:50%;background:#0C4CED}
+.mock .seal .m-seal,.mock.white .seal .m-seal{color:#0C4CED}
+.mock .seal b,.mock.white .seal b{color:#FFFFFF;font-size:12.5px;padding:0 6px}
+.mock.white.txt::before{display:none}
+.mk-doc{background:#FFFFFF;color:#0B1B4D;border-radius:10px;padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:9px;position:relative;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.mk-doc b{font-family:var(--f-display);font-size:15px;color:#0C4CED}
+.mk-doc em{position:absolute;left:12px;top:10px;font-style:normal;font-family:var(--f-display);font-weight:900;font-size:16px;color:#0C4CED;border:2px solid #0C4CED;border-radius:6px;padding:0 8px;transform:rotate(-12deg)}
+.mk-doc i{display:block;height:11px;background:#0B1B4D;border-radius:3px}
+.mk-ph{flex:1;min-height:90px;border:2px dashed currentColor;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;position:relative;padding:8px}
+.mk-ph span{font-family:var(--f-display);font-weight:800;font-size:15px}
+.mk-ph small{font-size:12px;opacity:.85}
+.mock.white .mk-ph{background:#FFFFFF}
+.mk-word{display:flex;align-items:center;justify-content:center;height:100%;border:3px solid currentColor;border-radius:10px;font-family:var(--f-display);font-weight:900;font-size:30px}
+.mock .vs ~ .seal{right:auto;left:50%;top:57%;width:50px;transform:translate(-50%,-50%)}
+.vs .mk-word:first-child{background:#FFFFFF;color:#0C4CED;border-color:#FFFFFF}
+.mock.white.txt{border:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.dots i{transition:none}}
+</style>
+<div class="page" dir="rtl" lang="ar" id="app"><header class="hero">
+  <div class="wrap">
+    <span class="m m-bil" role="img" aria-label="شعار مشوي ثمانية"></span>
+    <h1>خطة محتوى نوفمبر ٢٠٢٦<small>الشهر ١: تعرّف على الخلطة</small></h1>
+    <p class="lede">١٢ بوست تصميم ٣ بالأسبوع بلهجة الشباب السعودي كل بوست ينعاد نشره ستوري في نفس اليوم الهدف: نعرّف الناس بالاسم نقول إن السعر أقل والجودة ما نقصت ونملك منطقة الحزام والكلية</p>
+    <p class="refbox"><b>ملاحظة للديزاينر:</b>الصور والتصاميم اللي في كل بوست ريفرينس للفكرة بس ومو التصميم النهائي<br>التصميم النهائي يشتغل عليه الديزاينر بهوية مشوي ثمانية</p>
+    <div class="dlinks"><b>ملفات الديزاينر</b><div class="dl-row"><a href="#" target="_blank" rel="noopener">الداتا</a><a href="#" target="_blank" rel="noopener">المنيو</a><a href="#" target="_blank" rel="noopener">البروفايل</a><a href="https://maps.app.goo.gl/SVJGsDpjwyJemhss7" target="_blank" rel="noopener">اللوكيشن</a><a href="https://www.instagram.com/thmanyahsa" target="_blank" rel="noopener">إنستقرام</a></div></div>
+    <div class="facts">
+      <div><b>١٢</b><span>بوست تصميم</span></div>
+      <div><b>٣</b><span>أيام نشر بالأسبوع</span></div>
+      <div><b>٤</b><span>حلقات «٤ أشياء ما نوفّر فيها»</span></div>
+      <div><b>٢٠–٢٨</b><span>إجازة الخريف</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="أقسام الخطة">
+  <div class="wrap">
+    <a href="#p1">البوستات ١–٤</a><a href="#p5">البوستات ٥–٨</a><a href="#p9">البوستات ٩–١٢</a><a href="#calendar">التقويم والتوزيع</a><a href="#voice">نبرة الشهر</a>
+  </div>
+</nav>
+
+<section class="band"><div class="wrap"><div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">الأسبوع ١ و٢</span><h2>البوستات ١–٤: التعارف وأول ٣ من السلسلة</h2></div></div><article class="post" id="p1"><div class="mockside"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">تعارف</span><p class="mk-hook">مو البودكاست</p><p class="mk-sub">ثمانية بس تنوكل</p><img src="assets/image-ae7764dcafc0.jpg" alt=""><div class="mk-foot"><span>الحزام مقابل كلية ابن رشد</span><span class="m m-logo"></span></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">بوست واحد</p></div><div class="pbody"><div class="meta"><span class="no">بوست ١</span><span>الأحد ١ نوفمبر</span><span>٨:٠٠ مساءً</span><span>الاسم والموقع</span></div><h3>مو البودكاست</h3><div class="hook"><small>الهوك على التصميم</small><p>مو البودكاست هذا ثمانية تنوكل</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy1">نسخ نص التصميم</button></div><pre>فوق: تعارف
+مو البودكاست
+ثمانية بس تنوكل
+تحت: الحزام مقابل كلية ابن رشد</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>العنوان ضخم بالأبيض وتحته سطر صغير</li><li>صورة السندوتش مقصوص من النص</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy1">نسخ الكابشن</button></div><pre>لا مو البودكاست
+إحنا ثمانية اللي تنوكل مشوي يرجّعك كل مرة
+
+أبها الحزام مقابل كلية ابن رشد
+اطلب واتساب 0507850888
+استلام من المحل أو توصيل
+
+فيه واحد في حياتك للحين يحسبنا بودكاست منشنه وخلّه يصحى
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #الحزام #مشويات</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>مشوي ثمانية أبها</span><span>مطاعم أبها</span><span>مشويات أبها</span><span>مطاعم الحزام أبها</span></div></div></div></article><article class="post" id="p2"><div class="mockside"><div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل"><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">١ / ٤</span><p class="mk-hook">أقل بريال؟<br>إيه وما نقص شي</p><img src="assets/image-74215530f0fe.jpg" alt=""><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock blue txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٢ / ٤</span><p class="mk-hook big">نوفّر في كل شي<br>إلا ٤</p><div class="mk-fill"></div><div class="mk-pie"></div><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٣ / ٤</span><p class="mk-hook">الأول:<br>اللحم</p><img src="assets/image-74215530f0fe.jpg" alt=""><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock blue txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٤ / ٤</span><div class="mk-fill"></div><p class="mk-hook big">باقي ٣<br>خلّك قريب</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div></div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots"><i class="on"></i><i></i><i></i><i></i></span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">كاروسيل ٤ شرائح</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٢</span><span>الأربعاء ٤ نوفمبر</span><span>١:٠٠ ظهراً</span><span>السلسلة ١ من ٤</span></div><h3>أقل بريال وما نقص شي</h3><div class="hook"><small>الهوك على التصميم</small><p>أقل بريال؟ إيه وما نقص شي</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy2">نسخ نص التصميم</button></div><pre>الشريحة ١
+أقل بريال؟
+إيه وما نقص شي
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٢
+نوفّر في كل شي
+إلا ٤
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٣
+الأول:
+اللحم
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٤
+باقي ٣
+خلّك قريب
+تحت: ٤ أشياء ما نوفّر فيها</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>كل شريحة جملة وحدة ٣ كلمات تقريباً</li><li>شريحة «إلا ٤»: دائرة مقسومة ٤ جزء ملوّن</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy2">نسخ الكابشن</button></div><pre>سعرنا أقل بريال أو ريالين؟ إيه صح
+وفّرنا لك في كل شي إلا ٤ أشياء ما نلعب فيها
+
+الأول: اللحم
+لأن الكباب الصح يبدأ من هنا
+كباب لحم بـ ١٠ ريال والفرق من أول عضة
+
+الأول انكشف والثاني عليك خمّنه تحت ونشوف مين يعرفنا من ريحتنا
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #كباب_لحم #مشويات</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>كباب لحم أبها</span><span>أفضل كباب في أبها</span><span>ساندويتش كباب</span><span>مشويات أبها</span></div></div></div></article><article class="post" id="p3"><div class="mockside"><div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">١ / ٤</span><p class="mk-hook">وصفة سرّية</p><div class="mk-doc"><b>وصفة التتبيلة</b><em>سرّي</em><i style="width:82%"></i><i style="width:58%"></i><i style="width:70%"></i><i style="width:46%"></i><i style="width:64%"></i></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock white txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٢ / ٤</span><div class="mk-fill"></div><p class="mk-hook big">مشطوبة؟<br>إيه عمداً</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock blue txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٣ / ٤</span><div class="mk-fill"></div><p class="mk-hook big">الثاني:<br>التتبيلة</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock white txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٤ / ٤</span><div class="mk-fill"></div><p class="mk-hook big">شيش طاووق<br>٩ ريال</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div></div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots"><i class="on"></i><i></i><i></i><i></i></span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">كاروسيل ٤ شرائح</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٣</span><span>الخميس ٥ نوفمبر</span><span>٩:٠٠ مساءً</span><span>السلسلة ٢ من ٤</span></div><h3>وصفة سرّية مشطوبة</h3><div class="hook"><small>الهوك على التصميم</small><p>وصفة سرّية</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy3">نسخ نص التصميم</button></div><pre>الشريحة ١
+وصفة سرّية
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٢
+مشطوبة؟
+إيه عمداً
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٣
+الثاني:
+التتبيلة
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٤
+شيش طاووق
+٩ ريال
+تحت: ٤ أشياء ما نوفّر فيها</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>شريحة ١: ورقة الوصفة والمكونات مشطوبة وختم «سرّي»</li><li>الشرايح الباقية: جملة قصيرة بخط ضخم</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy3">نسخ الكابشن</button></div><pre>لقينا وصفة تتبيلتنا وشطبناها
+المكونات ما تطلع من المطبخ
+بس النتيجة تذوقها كل مرة: نفس الطعم ما يتغير
+
+والثاني التتبيلة
+شيش طاووق بـ ٩ ريال
+
+عندك لسان شيف؟ خمّن مكوّن واحد من الوصفة المشطوبة وحطه تحت
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #شيش_طاووق #مشويات</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>شيش طاووق أبها</span><span>ساندويتش دجاج أبها</span><span>مشويات دجاج</span><span>مطاعم أبها</span></div></div></div></article><article class="post" id="p4"><div class="mockside"><div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل"><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">١ / ٣</span><p class="mk-hook">ريحة الشوي<br>توصل قبلك</p><img src="assets/image-3a6d222c3b2f.jpg" alt=""><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock blue txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٢ / ٣</span><div class="mk-fill"></div><p class="mk-hook big">الثالث:<br>الشوي</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٣ / ٣</span><p class="mk-hook">مشوي ثمانية<br>١٠ ريال</p><img src="assets/image-ae7764dcafc0.jpg" alt=""><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div></div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots"><i class="on"></i><i></i><i></i></span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">كاروسيل ٣ شرائح</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٤</span><span>الأحد ٨ نوفمبر</span><span>٨:٣٠ مساءً</span><span>السلسلة ٣ من ٤</span></div><h3>ريحة الشوي توصل قبلك</h3><div class="hook"><small>الهوك على التصميم</small><p>ريحة الشوي توصل قبلك</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy4">نسخ نص التصميم</button></div><pre>الشريحة ١
+ريحة الشوي
+توصل قبلك
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٢
+الثالث:
+الشوي
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٣
+مشوي ثمانية
+١٠ ريال
+تحت: ٤ أشياء ما نوفّر فيها</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>شريحة ١: الصورة قريبة جداً كأنك تشم الريحة</li><li>الشرايح الباقية: جملة وحدة بخط ضخم</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy4">نسخ الكابشن</button></div><pre>ريحة الشوي توصل قبلك وأنت باقي في الطريق
+والثالث الشوي
+ما يطلع من النار إلا وهو مثل ما نبيه
+
+مشوي ثمانية بـ ١٠ ريال
+باقي واحد بس
+
+منشن الخوي اللي يشم ريحة الشوي من آخر الشارع
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #مشويات #ساندويتش</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>أفضل مشويات أبها</span><span>ساندويتش مشوي</span><span>مشوي أبها</span><span>عشاء في أبها</span></div></div></div></article></div></section><div class="zig" aria-hidden="true"></div><section class="band alt"><div class="wrap"><div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">الأسبوع ٢ و٣</span><h2>البوستات ٥–٨: نقفل السلسلة ونكسب الطلاب</h2></div></div><article class="post" id="p5"><div class="mockside"><div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">١ / ٣</span><p class="mk-hook">الأخير<br>وأخطرهم</p><img src="assets/image-5858ced97d86.jpg" alt=""><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock white txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٢ / ٣</span><div class="mk-fill"></div><p class="mk-hook big">الرابع:<br>الصوص</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div><div class="mock blue txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٣ / ٣</span><div class="mk-fill"></div><p class="mk-hook big">أقل بريال<br>وما نوفّر في الخلطة</p><div class="mk-fill"></div><div class="mk-foot"><span>٤ أشياء ما نوفّر فيها</span><span class="m m-logo"></span></div></div></div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots"><i class="on"></i><i></i><i></i></span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">كاروسيل ٣ شرائح</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٥</span><span>الأربعاء ١١ نوفمبر</span><span>٨:٣٠ مساءً</span><span>السلسلة ٤ من ٤</span></div><h3>الأخير وأخطرهم</h3><div class="hook"><small>الهوك على التصميم</small><p>الأخير وأخطرهم</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy5">نسخ نص التصميم</button></div><pre>الشريحة ١
+الأخير
+وأخطرهم
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٢
+الرابع:
+الصوص
+تحت: ٤ أشياء ما نوفّر فيها
+
+الشريحة ٣
+أقل بريال
+وما نوفّر في الخلطة
+تحت: ٤ أشياء ما نوفّر فيها</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>شريحة ١: صورة الصوص قريبة</li><li>آخر شريحة: سؤال يقفل السلسلة</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy5">نسخ الكابشن</button></div><pre>الرابع والأخير وأخطرهم
+صوص ثمانية: وصفتنا وما تلقاه عند أحد غيرنا
+
+لحم وتتبيلة وشوي وصوص
+أقل بريال وما وفّرنا في الخلطة
+
+صوص ثمانية ولا سقنتشر؟ اكتب فريقك تحت ومنشن خويك اللي في الفريق الثاني
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #صوص #مشويات</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>صوص ثمانية</span><span>مشوي ثمانية</span><span>مشويات أبها</span><span>مطاعم أبها</span></div></div></div></article><article class="post" id="p6"><div class="mockside"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">للشلة</span><p class="mk-hook">خميس؟<br>مقرمة</p><img src="assets/image-75dd0895bd3d.jpg" alt=""><div class="seal"><span class="m m-seal"></span><b>١٨ ريال</b></div><div class="mk-foot"><span>٧ قطع مقرمشة</span><span class="m m-logo"></span></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">بوست واحد</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٦</span><span>الخميس ١٢ نوفمبر</span><span>٩:٠٠ مساءً</span><span>المنتج</span></div><h3>خميس؟ مقرمة</h3><div class="hook"><small>الهوك على التصميم</small><p>خميس؟ مقرمة</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy6">نسخ نص التصميم</button></div><pre>فوق: للشلة
+خميس؟
+مقرمة
+الختم: ١٨ ريال
+تحت: ٧ قطع مقرمشة</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>كلمتين بس على التصميم والصورة هي البطل</li><li>الختم النجمي فيه السعر</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy6">نسخ الكابشن</button></div><pre>خميس + الشلة + «وش نتعشى؟»
+الجواب واحد: المقرمة
+٧ قطع مقرمشة بـ ١٨ ريال والسهرة تبدأ صح
+
+اطلبها واتساب واستلمها من المحل أو خلّها توصلك
+الحزام مقابل كلية ابن رشد
+
+منشن صاحب جملة «مدري أي شي» وخلّه هو يقرر الليلة
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #مقرمة #عشاء #ويكند</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>مقرمة أبها</span><span>عشاء في أبها</span><span>وش ناكل في أبها</span><span>مطاعم أبها</span></div></div></div></article><article class="post" id="p7"><div class="mockside"><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">للطلاب</span><p class="mk-hook">محاضرة خلصت؟<br>إحنا قدامك</p><img src="assets/image-ae7764dcafc0.jpg" alt=""><div class="mk-foot"><span>مقابل كلية ابن رشد بالضبط</span><span class="m m-logo"></span></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">بوست واحد</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٧</span><span>الأحد ١٥ نوفمبر</span><span>١٢:٣٠ ظهراً</span><span>الاسم والموقع</span></div><h3>محاضرة خلصت؟ إحنا قدامك</h3><div class="hook"><small>الهوك على التصميم</small><p>محاضرة خلصت؟ إحنا قدامك</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy7">نسخ نص التصميم</button></div><pre>فوق: للطلاب
+محاضرة خلصت؟
+إحنا قدامك
+تحت: مقابل كلية ابن رشد بالضبط</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>العنوان بالأزرق ودبوس موقع صغير جنبه</li><li>رقم الواتساب تحت واضح</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy7">نسخ الكابشن</button></div><pre>طالع من المحاضرة وبطنك يصارخ؟
+لا تمشي بعيد إحنا مقابل الكلية بالضبط
+ارسل طلبك واتساب وأنت طالع توصل تلقاه جاهز ⏱
+
+0507850888
+أبها الحزام مقابل كلية ابن رشد
+
+منشن اللي يطلع من المحاضرة قبل الدكتور
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #طلاب_أبها #الحزام</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>مطاعم قريبة من كلية ابن رشد</span><span>مطاعم الحزام أبها</span><span>أكل طلاب أبها</span><span>غداء أبها</span></div></div></div></article><article class="post" id="p8"><div class="mockside"><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">للطلاب</span><p class="mk-hook">المكافأة<br>تأخرت؟</p><p class="mk-sub">سندوتشك من ٩ ريال</p><img src="assets/image-ae7764dcafc0.jpg" alt=""><div class="seal"><span class="m m-seal"></span><b>٩ ريال</b></div><div class="mk-foot"><span>مقابل كلية ابن رشد</span><span class="m m-logo"></span></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">بوست واحد</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٨</span><span>الأربعاء ١٨ نوفمبر</span><span>١٢:٣٠ ظهراً</span><span>المنيو</span></div><h3>المكافأة تأخرت؟</h3><div class="hook"><small>الهوك على التصميم</small><p>المكافأة تأخرت؟</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy8">نسخ نص التصميم</button></div><pre>فوق: للطلاب
+المكافأة
+تأخرت؟
+سندوتشك من ٩ ريال
+الختم: ٩ ريال
+تحت: مقابل كلية ابن رشد</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>العنوان سؤال والجواب في الختم: «٩ ريال»</li><li>صورة سندوتش قريبة</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy8">نسخ الكابشن</button></div><pre>المكافأة لسه ما نزلت؟ ولا يهمك
+سندوتشك عندنا يبدأ من ٩ ريال ويشبعك لين تنزل
+كباب دجاج شيش تكا كلها بـ ٩
+
+مقابل كلية ابن رشد الحزام
+0507850888
+
+ارسله لقروب الدفعة قبل لا أحد يقول لك سلّفني
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #طلاب_أبها #ساندويتش</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>أكل طلاب أبها</span><span>ساندويتش أبها</span><span>مطاعم الحزام أبها</span><span>غداء أبها</span></div></div></div></article></div></section><div class="zig" aria-hidden="true"></div><section class="band"><div class="wrap"><div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">الأسبوع ٣ و٤</span><h2>البوستات ٩–١٢: إجازة الخريف ونختم بالتفاعل</h2></div></div><article class="post" id="p9"><div class="mockside"><div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">من ٢٠ لـ ٢٨ نوفمبر</span><p class="mk-hook">خطة الإجازة<br>الرسمية</p><img src="assets/image-78aa55e57708.jpg" alt=""><div class="mk-foot"><span>إجازة الخريف</span><span class="m m-logo"></span></div></div><div class="mock white txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٢ / ٤</span><div class="mk-fill"></div><p class="mk-hook big">١٢ الظهر:<br>صحيان</p><div class="mk-fill"></div><div class="mk-foot"><span>إجازة الخريف</span><span class="m m-logo"></span></div></div><div class="mock blue txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٣ / ٤</span><div class="mk-fill"></div><p class="mk-hook big">٤ العصر:<br>قيمز</p><div class="mk-fill"></div><div class="mk-foot"><span>إجازة الخريف</span><span class="m m-logo"></span></div></div><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٤ / ٤</span><p class="mk-hook">٨ بالليل:<br>ثمانية</p><img src="assets/image-a27937b56ea8.jpg" alt=""><div class="mk-foot"><span>إجازة الخريف</span><span class="m m-logo"></span></div></div></div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots"><i class="on"></i><i></i><i></i><i></i></span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">كاروسيل ٤ شرائح</p></div><div class="pbody"><div class="meta"><span class="no">بوست ٩</span><span>الخميس ١٩ نوفمبر</span><span>٨:٠٠ مساءً</span><span>موسم إجازة الخريف</span></div><h3>الساعة ٨؟ وقت ثمانية</h3><div class="hook"><small>الهوك على التصميم</small><p>خطة الإجازة الرسمية</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy9">نسخ نص التصميم</button></div><pre>الشريحة ١
+فوق: من ٢٠ لـ ٢٨ نوفمبر
+خطة الإجازة
+الرسمية
+تحت: إجازة الخريف
+
+الشريحة ٢
+١٢ الظهر:
+صحيان
+تحت: إجازة الخريف
+
+الشريحة ٣
+٤ العصر:
+قيمز
+تحت: إجازة الخريف
+
+الشريحة ٤
+٨ بالليل:
+ثمانية
+تحت: إجازة الخريف</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>كل شريحة وقت وكلمة مثل جدول</li><li>آخر شريحة: «٨ بالليل: ثمانية» مع صورة العربي</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy9">نسخ الكابشن</button></div><pre>إجازة الخريف بدأت (من ٢٠ لـ ٢٨ نوفمبر)
+والخطة رسمية: صحيان ١٢ قيمز ٤
+والساعة ٨؟ وقت ثمانية
+
+عربي دجاج ٨ قطع بـ ١٧ ريال
+٨ قطع؟ طبيعي إحنا ثمانية
+اطلب واتساب استلام أو توصيل للشلة
+
+منشن الشلة واكتب ٨ بس وهم يفهمون
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #إجازة_الخريف #سهرة #عشاء</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>إجازة الخريف</span><span>وش نسوي في الإجازة</span><span>عشاء الشلة أبها</span><span>أكل سهرة</span></div></div></div></article><article class="post" id="p10"><div class="mockside"><div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل"><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">احفظه</span><p class="mk-hook">وش مودك<br>اليوم؟</p><img src="assets/image-75dd0895bd3d.jpg" alt=""><div class="mk-foot"><span>اسحب واختار</span><span class="m m-logo"></span></div></div><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٢ / ٥</span><p class="mk-hook">جوعان مرّة؟<br>مشوي + دبل جبن</p><img src="assets/image-ae7764dcafc0.jpg" alt=""><div class="mk-foot"><span>اسحب واختار</span><span class="m m-logo"></span></div></div><div class="mock white" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٣ / ٥</span><p class="mk-hook">تبي خفيف؟<br>شيش + تبولة</p><img src="assets/image-df3d35315051.jpg" alt=""><div class="mk-foot"><span>اسحب واختار</span><span class="m m-logo"></span></div></div><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٤ / ٥</span><p class="mk-hook">مع الشلة؟<br>عربي ٨ قطع</p><img src="assets/image-a27937b56ea8.jpg" alt=""><div class="mk-foot"><span>اسحب واختار</span><span class="m m-logo"></span></div></div><div class="mock white txt" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">٥ / ٥</span><div class="mk-fill"></div><p class="mk-hook big">تحب الحار؟<br>تكا + شطة</p><div class="mk-fill"></div><div class="mk-foot"><span>اسحب واختار</span><span class="m m-logo"></span></div></div></div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">كاروسيل ٥ شرائح</p></div><div class="pbody"><div class="meta"><span class="no">بوست ١٠</span><span>الأحد ٢٢ نوفمبر</span><span>١:٠٠ ظهراً</span><span>المنيو</span></div><h3>وش مودك اليوم؟</h3><div class="hook"><small>الهوك على التصميم</small><p>وش مودك اليوم؟</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy10">نسخ نص التصميم</button></div><pre>الشريحة ١
+فوق: احفظه
+وش مودك
+اليوم؟
+تحت: اسحب واختار
+
+الشريحة ٢
+جوعان مرّة؟
+مشوي + دبل جبن
+تحت: اسحب واختار
+
+الشريحة ٣
+تبي خفيف؟
+شيش + تبولة
+تحت: اسحب واختار
+
+الشريحة ٤
+مع الشلة؟
+عربي ٨ قطع
+تحت: اسحب واختار
+
+الشريحة ٥
+تحب الحار؟
+تكا + شطة
+تحت: اسحب واختار</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>كل شريحة مود وطلبه بكلمتين</li><li>بوست للحفظ: الحفظ يرفع الريتش أكثر من اللايك</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy10">نسخ الكابشن</button></div><pre>واقف ١٠ دقايق قدام المنيو؟ خلّ مودك يختار:
+
+جوعان مرّة: مشوي ثمانية + دبل جبن
+تبي شي خفيف: شيش طاووق + تبولة
+مع الشلة: عربي دجاج ٨ قطع
+تحب الحار: تكا + شطة (الشطة علينا )
+
+احفظ البوست وارجع له كل ما احترت
+
+وصّف مودك بإيموجي واحد تحت وإحنا نختار لك طلبك
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #منيو #تبولة #مشويات</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>منيو مشوي ثمانية</span><span>أسعار مشوي ثمانية</span><span>مطاعم أبها</span><span>وش ناكل في أبها</span></div></div></div></article><article class="post" id="p11"><div class="mockside"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-eye">قرّر</span><p class="mk-hook">لحم ولا شيش؟</p><div class="vs"><div class="mk-word">لحم</div><div class="mk-word">شيش</div></div><div class="seal"><span class="m m-seal"></span><b>ضد</b></div><div class="mk-foot"><span>علّق بفريقك</span><span class="m m-logo"></span></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">بوست واحد</p></div><div class="pbody"><div class="meta"><span class="no">بوست ١١</span><span>الأربعاء ٢٥ نوفمبر</span><span>٩:٠٠ مساءً</span><span>تفاعل</span></div><h3>لحم ولا شيش؟</h3><div class="hook"><small>الهوك على التصميم</small><p>لحم ولا شيش؟</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy11">نسخ نص التصميم</button></div><pre>فوق: قرّر
+لحم ولا شيش؟
+النص اليمين: لحم
+النص اليسار: شيش
+الختم: ضد
+تحت: علّق بفريقك</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>التصميم نصين: كلمة «لحم» ضد كلمة «شيش» بخط ضخم</li><li>في الستوري: ملصق تصويت بين الفريقين</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy11">نسخ الكابشن</button></div><pre>السؤال اللي خرّب صداقات
+فريق الكباب لحم ولا فريق الشيش ؟
+(والتكا تقول: وأنا؟ )
+
+اكتب فريقك تحت وشوف كم واحد ضدك
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #كباب #شيش_طاووق</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>كباب أبها</span><span>شيش طاووق</span><span>مشويات أبها</span><span>مطاعم أبها</span></div></div></div></article><article class="post" id="p12"><div class="mockside"><div class="mock blue" aria-hidden="true"><span class="m m-sym corner"></span><span class="mk-badge">مسابقة</span><span class="mk-eye"></span><p class="mk-hook">منشن خويك<br>وتعشّوا علينا</p><p class="mk-sub">تابع ومنشن ولايك وادخل السحب</p><img src="assets/image-75dd0895bd3d.jpg" alt=""><div class="seal"><span class="m m-seal"></span><b>٣ فائزين</b></div><div class="mk-foot"><span>السحب الأحد ٢٩ نوفمبر</span><span class="m m-logo"></span></div></div><p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p><p class="fmt">بوست واحد</p></div><div class="pbody"><div class="meta"><span class="no">بوست ١٢</span><span>الخميس ٢٦ نوفمبر</span><span>٩:٠٠ مساءً</span><span>تفاعل وريتش مسابقة</span></div><h3>منشن خويك وتعشّوا علينا</h3><div class="hook"><small>الهوك على التصميم</small><p>منشن خويك وتعشّوا علينا</p></div><div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy12">نسخ نص التصميم</button></div><pre>الشارة فوق: مسابقة
+منشن خويك
+وتعشّوا علينا
+تابع ومنشن ولايك وادخل السحب
+الختم: ٣ فائزين
+تحت: السحب الأحد ٢٩ نوفمبر</pre></div><div class="design"><span class="lbl">اتجاه التصميم</span><ol><li>كلمة «مسابقة» ضخمة في شارة فوق العنوان عشان أول ما يشوفه يعرف إنها مسابقة</li><li>الختم «٣ فائزين» على صورة الجايزة والشروط سطر واحد تحت العنوان</li></ol></div><div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span><button class="copy" type="button" data-label="نسخ الكابشن" id="copy12">نسخ الكابشن</button></div><pre>عندك خوي للحين ما جرّب ثمانية؟ عيب والله
+منشنه تحت وكل منشن فرصة
+
+٣ فائزين كل واحد يتعشى هو وخويه علينا: مقرمة + عربي دجاج
+
+الشروط:
+١ تابع الحساب
+٢ منشن خويك في التعليقات
+٣ لايك للبوست
+
+السحب الأحد ٢٩ نوفمبر ونعلن الفايزين في الستوري
+
+كل منشن فرصة زيادة يعني الشلة كلها تنمنشن
+
+#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #مسابقة #خميس_مشيط</pre></div><div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips"><span>مسابقة أبها</span><span>مطاعم أبها</span><span>مشوي ثمانية</span><span>عشاء في أبها</span></div></div></div></article></div></section>
+
+<div class="zig" aria-hidden="true"></div>
+<section class="band" id="calendar">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">التقويم</span><h2>نوفمبر على الجدول</h2><p>النشر الأحد والأربعاء والخميس اضغط على أي بوست في التقويم ويوديك لتفاصيله</p></div></div>
+    <div class="cal-wrap">
+      <div class="cal">
+        <div class="dh">الأحد</div><div class="dh">الإثنين</div><div class="dh">الثلاثاء</div><div class="dh">الأربعاء</div><div class="dh">الخميس</div><div class="dh">الجمعة</div><div class="dh">السبت</div><div class="d"><span class="n">١</span><a class="pc" href="#p1">بوست ١: مو البودكاست</a></div><div class="d"><span class="n">٢</span></div><div class="d"><span class="n">٣</span></div><div class="d"><span class="n">٤</span><a class="pc" href="#p2">بوست ٢: أقل بريال وما نقص شي</a></div><div class="d"><span class="n">٥</span><a class="pc" href="#p3">بوست ٣: وصفة سرّية مشطوبة</a></div><div class="d"><span class="n">٦</span></div><div class="d"><span class="n">٧</span></div><div class="d"><span class="n">٨</span><a class="pc" href="#p4">بوست ٤: ريحة الشوي توصل قبلك</a></div><div class="d"><span class="n">٩</span></div><div class="d"><span class="n">١٠</span></div><div class="d"><span class="n">١١</span><a class="pc" href="#p5">بوست ٥: الأخير وأخطرهم</a></div><div class="d"><span class="n">١٢</span><a class="pc" href="#p6">بوست ٦: خميس؟ مقرمة</a></div><div class="d"><span class="n">١٣</span></div><div class="d"><span class="n">١٤</span></div><div class="d"><span class="n">١٥</span><a class="pc" href="#p7">بوست ٧: محاضرة خلصت؟ إحنا قدامك</a></div><div class="d"><span class="n">١٦</span></div><div class="d"><span class="n">١٧</span></div><div class="d"><span class="n">١٨</span><a class="pc" href="#p8">بوست ٨: المكافأة تأخرت؟</a></div><div class="d"><span class="n">١٩</span><a class="pc" href="#p9">بوست ٩: الساعة ٨؟ وقت ثمانية</a></div><div class="d brk"><span class="n">٢٠</span></div><div class="d brk"><span class="n">٢١</span></div><div class="d brk"><span class="n">٢٢</span><a class="pc" href="#p10">بوست ١٠: وش مودك اليوم؟</a></div><div class="d brk"><span class="n">٢٣</span></div><div class="d brk"><span class="n">٢٤</span></div><div class="d brk"><span class="n">٢٥</span><a class="pc" href="#p11">بوست ١١: لحم ولا شيش؟</a></div><div class="d brk"><span class="n">٢٦</span><a class="pc" href="#p12">بوست ١٢: منشن خويك وتعشّوا علينا</a></div><div class="d brk"><span class="n">٢٧</span></div><div class="d brk"><span class="n">٢٨</span></div><div class="d"><span class="n">٢٩</span></div><div class="d"><span class="n">٣٠</span></div></div>
+    </div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>يوم بوست</span><span><i style="background:var(--tint);border:1px solid var(--line)"></i>إجازة الخريف</span></div>
+
+    <div class="split-tbl">
+      <table>
+        <thead><tr><th style="width:18%">العدد</th><th style="width:30%">النوع</th><th style="width:52%">البوستات</th></tr></thead>
+        <tbody>
+          <tr><td class="c">٤</td><td>سلسلة «٤ أشياء ما نوفّر فيها»</td><td>٢ و٣ و٤ و٥</td></tr>
+          <tr><td class="c">٢</td><td>الاسم والموقع</td><td>١ و٧</td></tr>
+          <tr><td class="c">٣</td><td>المنتج والمنيو</td><td>٦ و٨ و١٠</td></tr>
+          <tr><td class="c">١</td><td>موسم إجازة الخريف</td><td>٩</td></tr>
+          <tr><td class="c">٢</td><td>تفاعل وريتش</td><td>١١ و١٢</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</section>
+<div class="zig" aria-hidden="true"></div>
+
+<section class="band alt" id="voice">
+  <div class="wrap">
+    <div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">نبرة الشهر</span><h2>نتكلم مثل الشلة مو مثل الإعلان</h2><p>لهجة سعودية بيضاء يفهمها الكل فيها طقطقة خفيفة وثقة وكل بوست يخلص بتوقيع «الخلطة ولا غلطة»</p></div></div>
+    <div class="grid g3">
+      <div class="card"><h3>كلمات نستخدمها</h3><div class="chips"><span>مرّة</span><span>يا الحبيب</span><span>الحين</span><span>زين</span><span>على كيفك</span><span>فزعة</span><span>الشلة</span><span>القروب</span><span>خوي</span><span>وش</span><span>ليش</span><span>ترا</span><span>مدري</span><span>عيب والله</span><span>يا شيخ</span><span>يبيله</span><span>حدّه</span><span>قيمز</span><span>الدفعة</span><span>المكافأة</span></div></div>
+      <div class="card"><h3>أسلوب الهوك</h3><ul><li>سؤال يستفز الفضول: «تبي تعرف ليش؟»</li><li>موقف يعرفه كل شاب: المحاضرة المكافأة القروب</li><li>ثقة بالسعر: «إيه أقل بريال وما نقص شي»</li><li>طقطقة على نفسنا: «لا مو البودكاست»</li><li>أقل من ٨ كلمات على التصميم</li></ul></div>
+      <div class="card"><h3>نتجنب</h3><ul><li>الفصحى الرسمية: «نقدم لكم» «يسعدنا»</li><li>لهجات ثانية غير السعودية</li><li>ذكر أي منافس أو أسعاره</li><li>كلمة «رخيص» لوحدها: السعر الأقل دايماً معه الجودة</li><li>إيموجي داخل التصميم مكانها الكابشن بس</li></ul></div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="closing">
+  <div class="wrap">
+    <span class="m m-smile" aria-hidden="true"></span>
+    <span class="m m-slogan" role="img" aria-label="الخلطة ولا غلطة"></span>
+    <p style="opacity:.9">مشوي ثمانية وأبها الحزام مقابل كلية ابن رشد</p>
+  </div>
+</footer></div>
+<script type="application/json" id="app-state">{"posts": [{"day": 1, "wd": "الأحد", "time": "٨:٠٠ مساءً", "fmt": "بوست واحد", "pillar": "الاسم والموقع", "title": "مو البودكاست", "hook": "مو البودكاست هذا ثمانية تنوكل", "mock": {"v": "blue", "eye": "تعارف", "hook": "مو البودكاست", "sub": "ثمانية بس تنوكل", "img": "mashwi", "foot": "الحزام مقابل كلية ابن رشد"}, "design": ["العنوان ضخم بالأبيض وتحته سطر صغير", "صورة السندوتش مقصوص من النص"], "cap": "لا مو البودكاست\nإحنا ثمانية اللي تنوكل مشوي يرجّعك كل مرة\n\nأبها الحزام مقابل كلية ابن رشد\nاطلب واتساب 0507850888\nاستلام من المحل أو توصيل\n\nفيه واحد في حياتك للحين يحسبنا بودكاست منشنه وخلّه يصحى\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #الحزام #مشويات", "kw": ["مشوي ثمانية أبها", "مطاعم أبها", "مشويات أبها", "مطاعم الحزام أبها"], "slides": null}, {"day": 4, "wd": "الأربعاء", "time": "١:٠٠ ظهراً", "fmt": "كاروسيل ٤ شرائح", "pillar": "السلسلة ١ من ٤", "title": "أقل بريال وما نقص شي", "hook": "أقل بريال؟ إيه وما نقص شي", "mock": {"v": "white", "eye": "١ / ٤", "hook": "أقل بريال؟\nإيه وما نقص شي", "img": "kebab", "foot": "٤ أشياء ما نوفّر فيها"}, "design": ["كل شريحة جملة وحدة ٣ كلمات تقريباً", "شريحة «إلا ٤»: دائرة مقسومة ٤ جزء ملوّن"], "cap": "سعرنا أقل بريال أو ريالين؟ إيه صح\nوفّرنا لك في كل شي إلا ٤ أشياء ما نلعب فيها\n\nالأول: اللحم\nلأن الكباب الصح يبدأ من هنا\nكباب لحم بـ ١٠ ريال والفرق من أول عضة\n\nالأول انكشف والثاني عليك خمّنه تحت ونشوف مين يعرفنا من ريحتنا\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #كباب_لحم #مشويات", "kw": ["كباب لحم أبها", "أفضل كباب في أبها", "ساندويتش كباب", "مشويات أبها"], "slides": ["الهوك", "نوفّر في كل شي\nإلا ٤", "الأول:\nاللحم", "باقي ٣\nخلّك قريب"], "simg": ["pie", "kebab", null]}, {"day": 5, "wd": "الخميس", "time": "٩:٠٠ مساءً", "fmt": "كاروسيل ٤ شرائح", "pillar": "السلسلة ٢ من ٤", "title": "وصفة سرّية مشطوبة", "hook": "وصفة سرّية", "mock": {"v": "blue", "eye": "١ / ٤", "hook": "وصفة سرّية", "img": "redact", "foot": "٤ أشياء ما نوفّر فيها"}, "design": ["شريحة ١: ورقة الوصفة والمكونات مشطوبة وختم «سرّي»", "الشرايح الباقية: جملة قصيرة بخط ضخم"], "cap": "لقينا وصفة تتبيلتنا وشطبناها\nالمكونات ما تطلع من المطبخ\nبس النتيجة تذوقها كل مرة: نفس الطعم ما يتغير\n\nوالثاني التتبيلة\nشيش طاووق بـ ٩ ريال\n\nعندك لسان شيف؟ خمّن مكوّن واحد من الوصفة المشطوبة وحطه تحت\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #شيش_طاووق #مشويات", "kw": ["شيش طاووق أبها", "ساندويتش دجاج أبها", "مشويات دجاج", "مطاعم أبها"], "slides": ["الهوك", "مشطوبة؟\nإيه عمداً", "الثاني:\nالتتبيلة", "شيش طاووق\n٩ ريال"], "simg": [null, null, null]}, {"day": 8, "wd": "الأحد", "time": "٨:٣٠ مساءً", "fmt": "كاروسيل ٣ شرائح", "pillar": "السلسلة ٣ من ٤", "title": "ريحة الشوي توصل قبلك", "hook": "ريحة الشوي توصل قبلك", "mock": {"v": "white", "eye": "١ / ٣", "hook": "ريحة الشوي\nتوصل قبلك", "img": "mfries", "foot": "٤ أشياء ما نوفّر فيها"}, "design": ["شريحة ١: الصورة قريبة جداً كأنك تشم الريحة", "الشرايح الباقية: جملة وحدة بخط ضخم"], "cap": "ريحة الشوي توصل قبلك وأنت باقي في الطريق\nوالثالث الشوي\nما يطلع من النار إلا وهو مثل ما نبيه\n\nمشوي ثمانية بـ ١٠ ريال\nباقي واحد بس\n\nمنشن الخوي اللي يشم ريحة الشوي من آخر الشارع\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #مشويات #ساندويتش", "kw": ["أفضل مشويات أبها", "ساندويتش مشوي", "مشوي أبها", "عشاء في أبها"], "slides": ["الهوك", "الثالث:\nالشوي", "مشوي ثمانية\n١٠ ريال"], "simg": [null, "mashwi"]}, {"day": 11, "wd": "الأربعاء", "time": "٨:٣٠ مساءً", "fmt": "كاروسيل ٣ شرائح", "pillar": "السلسلة ٤ من ٤", "title": "الأخير وأخطرهم", "hook": "الأخير وأخطرهم", "mock": {"v": "blue", "eye": "١ / ٣", "hook": "الأخير\nوأخطرهم", "img": "sauce", "foot": "٤ أشياء ما نوفّر فيها"}, "design": ["شريحة ١: صورة الصوص قريبة", "آخر شريحة: سؤال يقفل السلسلة"], "cap": "الرابع والأخير وأخطرهم\nصوص ثمانية: وصفتنا وما تلقاه عند أحد غيرنا\n\nلحم وتتبيلة وشوي وصوص\nأقل بريال وما وفّرنا في الخلطة\n\nصوص ثمانية ولا سقنتشر؟ اكتب فريقك تحت ومنشن خويك اللي في الفريق الثاني\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #صوص #مشويات", "kw": ["صوص ثمانية", "مشوي ثمانية", "مشويات أبها", "مطاعم أبها"], "slides": ["الهوك", "الرابع:\nالصوص", "أقل بريال\nوما نوفّر في الخلطة"], "simg": [null, null]}, {"day": 12, "wd": "الخميس", "time": "٩:٠٠ مساءً", "fmt": "بوست واحد", "pillar": "المنتج", "title": "خميس؟ مقرمة", "hook": "خميس؟ مقرمة", "mock": {"v": "blue", "eye": "للشلة", "hook": "خميس؟\nمقرمة", "img": "muq", "seal": "١٨ ريال", "foot": "٧ قطع مقرمشة"}, "design": ["كلمتين بس على التصميم والصورة هي البطل", "الختم النجمي فيه السعر"], "cap": "خميس + الشلة + «وش نتعشى؟»\nالجواب واحد: المقرمة\n٧ قطع مقرمشة بـ ١٨ ريال والسهرة تبدأ صح\n\nاطلبها واتساب واستلمها من المحل أو خلّها توصلك\nالحزام مقابل كلية ابن رشد\n\nمنشن صاحب جملة «مدري أي شي» وخلّه هو يقرر الليلة\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #مقرمة #عشاء #ويكند", "kw": ["مقرمة أبها", "عشاء في أبها", "وش ناكل في أبها", "مطاعم أبها"], "slides": null}, {"day": 15, "wd": "الأحد", "time": "١٢:٣٠ ظهراً", "fmt": "بوست واحد", "pillar": "الاسم والموقع", "title": "محاضرة خلصت؟ إحنا قدامك", "hook": "محاضرة خلصت؟ إحنا قدامك", "mock": {"v": "white", "eye": "للطلاب", "hook": "محاضرة خلصت؟\nإحنا قدامك", "img": "mashwi", "foot": "مقابل كلية ابن رشد بالضبط"}, "design": ["العنوان بالأزرق ودبوس موقع صغير جنبه", "رقم الواتساب تحت واضح"], "cap": "طالع من المحاضرة وبطنك يصارخ؟\nلا تمشي بعيد إحنا مقابل الكلية بالضبط\nارسل طلبك واتساب وأنت طالع توصل تلقاه جاهز ⏱\n\n0507850888\nأبها الحزام مقابل كلية ابن رشد\n\nمنشن اللي يطلع من المحاضرة قبل الدكتور\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #طلاب_أبها #الحزام", "kw": ["مطاعم قريبة من كلية ابن رشد", "مطاعم الحزام أبها", "أكل طلاب أبها", "غداء أبها"], "slides": null}, {"day": 18, "wd": "الأربعاء", "time": "١٢:٣٠ ظهراً", "fmt": "بوست واحد", "pillar": "المنيو", "title": "المكافأة تأخرت؟", "hook": "المكافأة تأخرت؟", "mock": {"v": "white", "eye": "للطلاب", "hook": "المكافأة\nتأخرت؟", "sub": "سندوتشك من ٩ ريال", "img": "mashwi", "seal": "٩ ريال", "foot": "مقابل كلية ابن رشد"}, "design": ["العنوان سؤال والجواب في الختم: «٩ ريال»", "صورة سندوتش قريبة"], "cap": "المكافأة لسه ما نزلت؟ ولا يهمك\nسندوتشك عندنا يبدأ من ٩ ريال ويشبعك لين تنزل\nكباب دجاج شيش تكا كلها بـ ٩\n\nمقابل كلية ابن رشد الحزام\n0507850888\n\nارسله لقروب الدفعة قبل لا أحد يقول لك سلّفني\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #طلاب_أبها #ساندويتش", "kw": ["أكل طلاب أبها", "ساندويتش أبها", "مطاعم الحزام أبها", "غداء أبها"], "slides": null}, {"day": 19, "wd": "الخميس", "time": "٨:٠٠ مساءً", "fmt": "كاروسيل ٤ شرائح", "pillar": "موسم إجازة الخريف", "title": "الساعة ٨؟ وقت ثمانية", "hook": "خطة الإجازة الرسمية", "mock": {"v": "blue", "eye": "من ٢٠ لـ ٢٨ نوفمبر", "hook": "خطة الإجازة\nالرسمية", "img": "fries", "foot": "إجازة الخريف"}, "design": ["كل شريحة وقت وكلمة مثل جدول", "آخر شريحة: «٨ بالليل: ثمانية» مع صورة العربي"], "cap": "إجازة الخريف بدأت (من ٢٠ لـ ٢٨ نوفمبر)\nوالخطة رسمية: صحيان ١٢ قيمز ٤\nوالساعة ٨؟ وقت ثمانية\n\nعربي دجاج ٨ قطع بـ ١٧ ريال\n٨ قطع؟ طبيعي إحنا ثمانية\nاطلب واتساب استلام أو توصيل للشلة\n\nمنشن الشلة واكتب ٨ بس وهم يفهمون\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #إجازة_الخريف #سهرة #عشاء", "kw": ["إجازة الخريف", "وش نسوي في الإجازة", "عشاء الشلة أبها", "أكل سهرة"], "slides": ["الهوك", "١٢ الظهر:\nصحيان", "٤ العصر:\nقيمز", "٨ بالليل:\nثمانية"], "simg": [null, null, "arabi"]}, {"day": 22, "wd": "الأحد", "time": "١:٠٠ ظهراً", "fmt": "كاروسيل ٥ شرائح", "pillar": "المنيو", "title": "وش مودك اليوم؟", "hook": "وش مودك اليوم؟", "mock": {"v": "white", "eye": "احفظه", "hook": "وش مودك\nاليوم؟", "img": "muq", "foot": "اسحب واختار"}, "design": ["كل شريحة مود وطلبه بكلمتين", "بوست للحفظ: الحفظ يرفع الريتش أكثر من اللايك"], "cap": "واقف ١٠ دقايق قدام المنيو؟ خلّ مودك يختار:\n\nجوعان مرّة: مشوي ثمانية + دبل جبن\nتبي شي خفيف: شيش طاووق + تبولة\nمع الشلة: عربي دجاج ٨ قطع\nتحب الحار: تكا + شطة (الشطة علينا )\n\nاحفظ البوست وارجع له كل ما احترت\n\nوصّف مودك بإيموجي واحد تحت وإحنا نختار لك طلبك\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #منيو #تبولة #مشويات", "kw": ["منيو مشوي ثمانية", "أسعار مشوي ثمانية", "مطاعم أبها", "وش ناكل في أبها"], "slides": ["الهوك", "جوعان مرّة؟\nمشوي + دبل جبن", "تبي خفيف؟\nشيش + تبولة", "مع الشلة؟\nعربي ٨ قطع", "تحب الحار؟\nتكا + شطة"], "simg": ["mashwi", "tab", "arabi", null]}, {"day": 25, "wd": "الأربعاء", "time": "٩:٠٠ مساءً", "fmt": "بوست واحد", "pillar": "تفاعل", "title": "لحم ولا شيش؟", "hook": "لحم ولا شيش؟", "mock": {"v": "blue", "eye": "قرّر", "hook": "لحم ولا شيش؟", "vs": ["w:لحم", "w:شيش"], "seal": "ضد", "foot": "علّق بفريقك"}, "design": ["التصميم نصين: كلمة «لحم» ضد كلمة «شيش» بخط ضخم", "في الستوري: ملصق تصويت بين الفريقين"], "cap": "السؤال اللي خرّب صداقات\nفريق الكباب لحم ولا فريق الشيش ؟\n(والتكا تقول: وأنا؟ )\n\nاكتب فريقك تحت وشوف كم واحد ضدك\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #كباب #شيش_طاووق", "kw": ["كباب أبها", "شيش طاووق", "مشويات أبها", "مطاعم أبها"], "slides": null}, {"day": 26, "wd": "الخميس", "time": "٩:٠٠ مساءً", "fmt": "بوست واحد", "pillar": "تفاعل وريتش مسابقة", "title": "منشن خويك وتعشّوا علينا", "hook": "منشن خويك وتعشّوا علينا", "mock": {"v": "blue", "badge": "مسابقة", "eye": "", "hook": "منشن خويك\nوتعشّوا علينا", "sub": "تابع ومنشن ولايك وادخل السحب", "img": "muq", "seal": "٣ فائزين", "foot": "السحب الأحد ٢٩ نوفمبر"}, "design": ["كلمة «مسابقة» ضخمة في شارة فوق العنوان عشان أول ما يشوفه يعرف إنها مسابقة", "الختم «٣ فائزين» على صورة الجايزة والشروط سطر واحد تحت العنوان"], "cap": "عندك خوي للحين ما جرّب ثمانية؟ عيب والله\nمنشنه تحت وكل منشن فرصة\n\n٣ فائزين كل واحد يتعشى هو وخويه علينا: مقرمة + عربي دجاج\n\nالشروط:\n١ تابع الحساب\n٢ منشن خويك في التعليقات\n٣ لايك للبوست\n\nالسحب الأحد ٢٩ نوفمبر ونعلن الفايزين في الستوري\n\nكل منشن فرصة زيادة يعني الشلة كلها تنمنشن\n\n#مشوي_ثمانية #الخلطة_ولا_غلطة #أبها #مطاعم_أبها #ابها_الان #مسابقة #خميس_مشيط", "kw": ["مسابقة أبها", "مطاعم أبها", "مشوي ثمانية", "عشاء في أبها"], "slides": null}], "groups": [{"a": 1, "b": 4, "k": "الأسبوع ١ و٢", "h": "البوستات ١–٤: التعارف وأول ٣ من السلسلة"}, {"a": 5, "b": 8, "k": "الأسبوع ٢ و٣", "h": "البوستات ٥–٨: نقفل السلسلة ونكسب الطلاب"}, {"a": 9, "b": 12, "k": "الأسبوع ٣ و٤", "h": "البوستات ٩–١٢: إجازة الخريف ونختم بالتفاعل"}], "img": {"mashwi": "assets/image-ae7764dcafc0.jpg", "arabi": "assets/image-a27937b56ea8.jpg", "mfries": "assets/image-3a6d222c3b2f.jpg", "kebab": "assets/image-74215530f0fe.jpg", "fries": "assets/image-78aa55e57708.jpg", "muq": "assets/image-75dd0895bd3d.jpg", "tab": "assets/image-df3d35315051.jpg", "sauce": "assets/image-5858ced97d86.jpg"}, "static": {"head": "\u003cmeta charset=\"utf-8\">\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n\u003ctitle>خطة نوفمبر مشوي ثمانية\u003c/title>\n\u003cmeta name=\"viewport-fit-sides\" content=\"cover\">\n\u003clink rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n\u003clink rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n\u003clink rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap\">\n", "before": "\u003cheader class=\"hero\">\n  \u003cdiv class=\"wrap\">\n    \u003cspan class=\"m m-bil\" role=\"img\" aria-label=\"شعار مشوي ثمانية\">\u003c/span>\n    \u003ch1>خطة محتوى نوفمبر ٢٠٢٦\u003csmall>الشهر ١: تعرّف على الخلطة\u003c/small>\u003c/h1>\n    \u003cp class=\"lede\">١٢ بوست تصميم ٣ بالأسبوع بلهجة الشباب السعودي كل بوست ينعاد نشره ستوري في نفس اليوم الهدف: نعرّف الناس بالاسم نقول إن السعر أقل والجودة ما نقصت ونملك منطقة الحزام والكلية\u003c/p>\n    \u003cp class=\"refbox\">\u003cb>ملاحظة للديزاينر:\u003c/b>الصور والتصاميم اللي في كل بوست ريفرينس للفكرة بس ومو التصميم النهائي\u003cbr>التصميم النهائي يشتغل عليه الديزاينر بهوية مشوي ثمانية\u003c/p>\n    \u003cdiv class=\"dlinks\">\u003cb>ملفات الديزاينر\u003c/b>\u003cdiv class=\"dl-row\">\u003ca href=\"#\" target=\"_blank\" rel=\"noopener\">الداتا\u003c/a>\u003ca href=\"#\" target=\"_blank\" rel=\"noopener\">المنيو\u003c/a>\u003ca href=\"#\" target=\"_blank\" rel=\"noopener\">البروفايل\u003c/a>\u003ca href=\"https://maps.app.goo.gl/SVJGsDpjwyJemhss7\" target=\"_blank\" rel=\"noopener\">اللوكيشن\u003c/a>\u003ca href=\"https://www.instagram.com/thmanyahsa\" target=\"_blank\" rel=\"noopener\">إنستقرام\u003c/a>\u003c/div>\u003c/div>\n    \u003cdiv class=\"facts\">\n      \u003cdiv>\u003cb>١٢\u003c/b>\u003cspan>بوست تصميم\u003c/span>\u003c/div>\n      \u003cdiv>\u003cb>٣\u003c/b>\u003cspan>أيام نشر بالأسبوع\u003c/span>\u003c/div>\n      \u003cdiv>\u003cb>٤\u003c/b>\u003cspan>حلقات «٤ أشياء ما نوفّر فيها»\u003c/span>\u003c/div>\n      \u003cdiv>\u003cb>٢٠–٢٨\u003c/b>\u003cspan>إجازة الخريف\u003c/span>\u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/header>\n\n\u003cnav class=\"toc\" aria-label=\"أقسام الخطة\">\n  \u003cdiv class=\"wrap\">\n    \u003ca href=\"#p1\">البوستات ١–٤\u003c/a>\u003ca href=\"#p5\">البوستات ٥–٨\u003c/a>\u003ca href=\"#p9\">البوستات ٩–١٢\u003c/a>\u003ca href=\"#calendar\">التقويم والتوزيع\u003c/a>\u003ca href=\"#voice\">نبرة الشهر\u003c/a>\n  \u003c/div>\n\u003c/nav>\n\n", "after": "\n\n\u003cdiv class=\"zig\" aria-hidden=\"true\">\u003c/div>\n\u003csection class=\"band\" id=\"calendar\">\n  \u003cdiv class=\"wrap\">\n    \u003cdiv class=\"sec-head\">\u003cspan class=\"m m-sym\" aria-hidden=\"true\">\u003c/span>\u003cdiv>\u003cspan class=\"kicker\">التقويم\u003c/span>\u003ch2>نوفمبر على الجدول\u003c/h2>\u003cp>النشر الأحد والأربعاء والخميس اضغط على أي بوست في التقويم ويوديك لتفاصيله\u003c/p>\u003c/div>\u003c/div>\n    \u003cdiv class=\"cal-wrap\">\n      \u003cdiv class=\"cal\">\n        \u003cdiv class=\"dh\">الأحد\u003c/div>\u003cdiv class=\"dh\">الإثنين\u003c/div>\u003cdiv class=\"dh\">الثلاثاء\u003c/div>\u003cdiv class=\"dh\">الأربعاء\u003c/div>\u003cdiv class=\"dh\">الخميس\u003c/div>\u003cdiv class=\"dh\">الجمعة\u003c/div>\u003cdiv class=\"dh\">السبت\u003c/div>%%CAL%%\u003c/div>\n    \u003c/div>\n    \u003cdiv class=\"legend\">\u003cspan>\u003ci style=\"background:var(--blue)\">\u003c/i>يوم بوست\u003c/span>\u003cspan>\u003ci style=\"background:var(--tint);border:1px solid var(--line)\">\u003c/i>إجازة الخريف\u003c/span>\u003c/div>\n\n    \u003cdiv class=\"split-tbl\">\n      \u003ctable>\n        \u003cthead>\u003ctr>\u003cth style=\"width:18%\">العدد\u003c/th>\u003cth style=\"width:30%\">النوع\u003c/th>\u003cth style=\"width:52%\">البوستات\u003c/th>\u003c/tr>\u003c/thead>\n        \u003ctbody>\n          \u003ctr>\u003ctd class=\"c\">٤\u003c/td>\u003ctd>سلسلة «٤ أشياء ما نوفّر فيها»\u003c/td>\u003ctd>٢ و٣ و٤ و٥\u003c/td>\u003c/tr>\n          \u003ctr>\u003ctd class=\"c\">٢\u003c/td>\u003ctd>الاسم والموقع\u003c/td>\u003ctd>١ و٧\u003c/td>\u003c/tr>\n          \u003ctr>\u003ctd class=\"c\">٣\u003c/td>\u003ctd>المنتج والمنيو\u003c/td>\u003ctd>٦ و٨ و١٠\u003c/td>\u003c/tr>\n          \u003ctr>\u003ctd class=\"c\">١\u003c/td>\u003ctd>موسم إجازة الخريف\u003c/td>\u003ctd>٩\u003c/td>\u003c/tr>\n          \u003ctr>\u003ctd class=\"c\">٢\u003c/td>\u003ctd>تفاعل وريتش\u003c/td>\u003ctd>١١ و١٢\u003c/td>\u003c/tr>\n        \u003c/tbody>\n      \u003c/table>\n    \u003c/div>\n    \n  \u003c/div>\n\u003c/section>\n\u003cdiv class=\"zig\" aria-hidden=\"true\">\u003c/div>\n\n\u003csection class=\"band alt\" id=\"voice\">\n  \u003cdiv class=\"wrap\">\n    \u003cdiv class=\"sec-head\">\u003cspan class=\"m m-sym\" aria-hidden=\"true\">\u003c/span>\u003cdiv>\u003cspan class=\"kicker\">نبرة الشهر\u003c/span>\u003ch2>نتكلم مثل الشلة مو مثل الإعلان\u003c/h2>\u003cp>لهجة سعودية بيضاء يفهمها الكل فيها طقطقة خفيفة وثقة وكل بوست يخلص بتوقيع «الخلطة ولا غلطة»\u003c/p>\u003c/div>\u003c/div>\n    \u003cdiv class=\"grid g3\">\n      \u003cdiv class=\"card\">\u003ch3>كلمات نستخدمها\u003c/h3>\u003cdiv class=\"chips\">\u003cspan>مرّة\u003c/span>\u003cspan>يا الحبيب\u003c/span>\u003cspan>الحين\u003c/span>\u003cspan>زين\u003c/span>\u003cspan>على كيفك\u003c/span>\u003cspan>فزعة\u003c/span>\u003cspan>الشلة\u003c/span>\u003cspan>القروب\u003c/span>\u003cspan>خوي\u003c/span>\u003cspan>وش\u003c/span>\u003cspan>ليش\u003c/span>\u003cspan>ترا\u003c/span>\u003cspan>مدري\u003c/span>\u003cspan>عيب والله\u003c/span>\u003cspan>يا شيخ\u003c/span>\u003cspan>يبيله\u003c/span>\u003cspan>حدّه\u003c/span>\u003cspan>قيمز\u003c/span>\u003cspan>الدفعة\u003c/span>\u003cspan>المكافأة\u003c/span>\u003c/div>\u003c/div>\n      \u003cdiv class=\"card\">\u003ch3>أسلوب الهوك\u003c/h3>\u003cul>\u003cli>سؤال يستفز الفضول: «تبي تعرف ليش؟»\u003c/li>\u003cli>موقف يعرفه كل شاب: المحاضرة المكافأة القروب\u003c/li>\u003cli>ثقة بالسعر: «إيه أقل بريال وما نقص شي»\u003c/li>\u003cli>طقطقة على نفسنا: «لا مو البودكاست»\u003c/li>\u003cli>أقل من ٨ كلمات على التصميم\u003c/li>\u003c/ul>\u003c/div>\n      \u003cdiv class=\"card\">\u003ch3>نتجنب\u003c/h3>\u003cul>\u003cli>الفصحى الرسمية: «نقدم لكم» «يسعدنا»\u003c/li>\u003cli>لهجات ثانية غير السعودية\u003c/li>\u003cli>ذكر أي منافس أو أسعاره\u003c/li>\u003cli>كلمة «رخيص» لوحدها: السعر الأقل دايماً معه الجودة\u003c/li>\u003cli>إيموجي داخل التصميم مكانها الكابشن بس\u003c/li>\u003c/ul>\u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/section>\n\n\n\u003cfooter class=\"closing\">\n  \u003cdiv class=\"wrap\">\n    \u003cspan class=\"m m-smile\" aria-hidden=\"true\">\u003c/span>\n    \u003cspan class=\"m m-slogan\" role=\"img\" aria-label=\"الخلطة ولا غلطة\">\u003c/span>\n    \u003cp style=\"opacity:.9\">مشوي ثمانية وأبها الحزام مقابل كلية ابن رشد\u003c/p>\n  \u003c/div>\n\u003c/footer>"}}</script>
+<script id="app-js">(function(){
+var SKEL='<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>\n';
+var STATE=JSON.parse(document.getElementById('app-state').textContent);
+var P=STATE.posts, IMG=STATE.img, G=STATE.groups, ST=STATE.static;
+var app=document.getElementById('app');
+var editing=false, ART=null;
+var AR='٠١٢٣٤٥٦٧٨٩';
+var PT=(function(){try{var d=document.createElement('div');d.contentEditable='plaintext-only';return d.contentEditable==='plaintext-only';}catch(e){return false;}})();
+
+function ar(n){return String(n).replace(/\d/g,function(d){return AR[+d];});}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function ph(s){return esc(s).replace(/\[([^\]]+)\]/g,'<span class="ph">[$1]</span>');}
+
+/* one text field: plain view, or an editable box in edit mode */
+function f(val,key,o){
+  o=o||{}; var tag=o.tag||'span', cls=o.cls||'';
+  if(editing){
+    return '<'+tag+' class="ed '+cls+'" data-k="'+key+'"'+(o.ml?' data-ml="1"':'')+' contenteditable="'+(PT?'plaintext-only':'true')+'" spellcheck="false">'+esc(val)+'</'+tag+'>';
+  }
+  var inner=o.br?ph(val).replace(/\n/g,'<br>'):ph(val);
+  return '<'+tag+(cls?' class="'+cls+'"':'')+'>'+inner+'</'+tag+'>';
+}
+function addBtn(key,label){return editing?'<button type="button" class="add" data-add="'+key+'">+ '+label+'</button>':'';}
+
+/* picture slot: photo, quarters graphic, crossed-out recipe, or a box asking for the client's photo */
+function vis(key){
+  if(!key) return '';
+  if(key==='pie') return '<div class="mk-fill"></div><div class="mk-pie"></div><div class="mk-fill"></div>';
+  if(key==='redact') return '<div class="mk-doc"><b>وصفة التتبيلة</b><em>سرّي</em><i style="width:82%"></i><i style="width:58%"></i><i style="width:70%"></i><i style="width:46%"></i><i style="width:64%"></i></div>';
+  if(key.indexOf('w:')===0) return '<div class="mk-word">'+esc(key.slice(2))+'</div>';
+  return '<img src="'+IMG[key]+'" alt="">';
+}
+function mock(m,i){
+  var k='p'+i+'.mock.';
+  var o='<div class="mock '+m.v+'"'+(editing?'':' aria-hidden="true"')+'><span class="m m-sym corner"></span>';
+  if(m.badge) o+=f(m.badge,k+'badge',{cls:'mk-badge'});
+  o+=f(m.eye,k+'eye',{cls:'mk-eye'});
+  o+=f(m.hook,k+'hook',{tag:'p',cls:'mk-hook',br:true,ml:true});
+  if(m.sub||editing&&m.sub!=null) o+=f(m.sub||'',k+'sub',{tag:'p',cls:'mk-sub'});
+  if(m.vs) o+='<div class="vs">'+m.vs.map(vis).join('')+'</div>';
+  else if(m.img) o+=vis(m.img);
+  if(m.seal||editing&&m.seal!=null) o+='<div class="seal"><span class="m m-seal"></span>'+f(m.seal||'',k+'seal',{tag:'b'})+'</div>';
+  o+='<div class="mk-foot">'+f(m.foot,k+'foot')+'<span class="m m-logo"></span></div></div>';
+  return o;
+}
+
+/* slide 2+ of a carousel: its own design, colours alternating with slide 1 */
+function slideMock(p,i,j,n){
+  var m=p.mock, v=(j%2)?(m.v==='blue'?'white':'blue'):m.v;
+  var img=(p.simg||[])[j-1];
+  var o='<div class="mock '+v+(img&&img!=='pie'?'':' txt')+'"'+(editing?'':' aria-hidden="true"')+'><span class="m m-sym corner"></span><span class="mk-eye">'+ar(j+1)+' / '+ar(n)+'</span>';
+  var txt=f(p.slides[j],'p'+i+'.slides.'+j,{tag:'p',cls:'mk-hook'+(img&&img!=='pie'?'':' big'),br:true,ml:true});
+  if(img) o+=txt+vis(img);
+  else o+='<div class="mk-fill"></div>'+txt+'<div class="mk-fill"></div>';
+  o+='<div class="mk-foot"><span>'+esc(m.foot)+'</span><span class="m m-logo"></span></div></div>';
+  return o;
+}
+function visual(p,i){
+  var n=p.slides?p.slides.length:0;
+  if(n<2) return mock(p.mock,i);
+  var o='<div class="car"><div class="track" tabindex="0" aria-label="شرائح الكاروسيل، اسحب للتنقل">'+mock(p.mock,i);
+  for(var j=1;j<n;j++) o+=slideMock(p,i,j,n);
+  o+='</div><div class="car-nav"><button type="button" class="cbtn" data-dir="prev" aria-label="الشريحة السابقة">→</button><span class="dots">';
+  for(var d=0;d<n;d++) o+='<i'+(d?'':' class="on"')+'></i>';
+  o+='</span><button type="button" class="cbtn" data-dir="next" aria-label="الشريحة التالية">←</button></div></div>';
+  return o;
+}
+/* every line that goes on the design, slide by slide, for the designer to copy */
+function designCopy(p){
+  var m=p.mock, n=p.slides?p.slides.length:0, out=[], first=[];
+  if(m.badge) first.push('الشارة فوق: '+m.badge);
+  if(m.eye&&!/^[٠-٩]+ \/ [٠-٩]+$/.test(m.eye)) first.push('فوق: '+m.eye);
+  first.push(m.hook);
+  if(m.sub) first.push(m.sub);
+  if(m.vs){var w=m.vs.filter(function(x){return x.indexOf('w:')===0;}).map(function(x){return x.slice(2);}); if(w[0]) first.push('النص اليمين: '+w[0]); if(w[1]) first.push('النص اليسار: '+w[1]);}
+  if(m.seal) first.push('الختم: '+m.seal);
+  if(m.foot) first.push('تحت: '+m.foot);
+  out.push((n>1?'الشريحة ١\n':'')+first.join('\n'));
+  for(var j=1;j<n;j++) out.push('الشريحة '+ar(j+1)+'\n'+p.slides[j]+(m.foot?'\nتحت: '+m.foot:''));
+  return out.join('\n\n');
+}
+function post(p,i){
+  var k='p'+i+'.', n=ar(i+1);
+  return '<article class="post" id="p'+(i+1)+'">'+
+    '<div class="mockside">'+visual(p,i)+'<p class="refnote">ريفرينس للديزاينر مو التصميم النهائي</p>'+f(p.fmt,k+'fmt',{tag:'p',cls:'fmt'})+(p.slides?addBtn(k+'slides','شريحة'):'')+'</div>'+
+    '<div class="pbody">'+
+      '<div class="meta"><span class="no">بوست '+n+'</span><span>'+esc(p.wd)+' '+ar(p.day)+' نوفمبر</span>'+f(p.time,k+'time')+f(p.pillar,k+'pillar')+'</div>'+
+      f(p.title,k+'title',{tag:'h3'})+
+      '<div class="hook"><small>الهوك على التصميم</small>'+f(p.hook,k+'hook',{tag:'p'})+'</div>'+
+      (editing?'':'<div class="cap dcopy"><div class="cap-h"><span class="lbl">نص التصميم كامل</span><button class="copy" type="button" data-label="نسخ نص التصميم" id="dcopy'+(i+1)+'">نسخ نص التصميم</button></div><pre>'+esc(designCopy(p))+'</pre></div>')+
+      '<div class="design"><span class="lbl">اتجاه التصميم</span><ol>'+p.design.map(function(x,j){return f(x,k+'design.'+j,{tag:'li'});}).join('')+'</ol>'+addBtn(k+'design','سطر')+'</div>'+
+      '<div class="cap"><div class="cap-h"><span class="lbl">الكابشن</span>'+(editing?'':'<button class="copy" type="button" data-label="نسخ الكابشن" id="copy'+(i+1)+'">نسخ الكابشن</button>')+'</div>'+f(p.cap,k+'cap',{tag:'pre',ml:true})+'</div>'+
+      '<div><span class="lbl">كيوردز البحث والنص البديل</span><div class="chips">'+p.kw.map(function(x,j){return f(x,k+'kw.'+j);}).join('')+addBtn(k+'kw','كلمة')+'</div></div>'+
+    '</div></article>';
+}
+
+function calendar(){
+  var by={}; P.forEach(function(p,i){by[p.day]=i;});
+  var o='';
+  for(var d=1;d<=30;d++){
+    var cls=(d>=20&&d<=28)?'d brk':'d', inner='<span class="n">'+ar(d)+'</span>';
+    if(by[d]!=null){var i=by[d];inner+='<a class="pc" href="#p'+(i+1)+'">بوست '+ar(i+1)+': '+esc(P[i].title)+'</a>';}
+    o+='<div class="'+cls+'">'+inner+'</div>';
+  }
+  return o;
+}
+
+function html(){
+  var o=ST.before.replace('%%CAL%%',calendar());
+  var tail=ST.after.replace('%%CAL%%',calendar());
+  if(editing) o=o.replace('</nav>','</nav><div class="ednote"><div class="wrap"><b>وضع التعديل:</b> اضغط على أي نص عليه خط متقطع وعدّله، وبعد ما تخلص اضغط «حفظ التعديلات». السطر اللي تفضّيه بالكامل ينحذف.</div></div>');
+  G.forEach(function(g,gi){
+    o+='<section class="'+(gi%2?'band alt':'band')+'"><div class="wrap"><div class="sec-head"><span class="m m-sym" aria-hidden="true"></span><div><span class="kicker">'+esc(g.k)+'</span><h2>'+esc(g.h)+'</h2></div></div>';
+    for(var i=g.a-1;i<g.b;i++) o+=post(P[i],i);
+    o+='</div></section>';
+    if(gi<G.length-1) o+='<div class="zig" aria-hidden="true"></div>';
+  });
+  o+=tail;
+  return o;
+}
+function render(){
+  app.innerHTML=html();
+  document.body.classList.toggle('editing',editing);
+  app.querySelectorAll('.track').forEach(function(t){
+    t.addEventListener('scroll',function(){dots(t);},{passive:true});
+  });
+}
+function step(t){var s=t.firstElementChild;return s?s.getBoundingClientRect().width+12:t.clientWidth;}
+function cur(t){return Math.round(Math.abs(t.scrollLeft)/step(t));}
+function dots(t){
+  var k=cur(t);
+  t.parentNode.querySelectorAll('.dots i').forEach(function(d,j){d.classList.toggle('on',j===k);});
+}
+function go(t,dir){
+  var rtl=getComputedStyle(t).direction==='rtl', n=t.children.length;
+  var k=Math.max(0,Math.min(n-1,cur(t)+(dir==='next'?1:-1)));
+  var x=k*step(t)*(rtl?-1:1);
+  var smooth=!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  t.scrollTo({left:x,behavior:smooth?'smooth':'auto'});
+}
+
+/* edit mode */
+function setPath(path,v){
+  var a=path.split('.'), o=P[+a[0].slice(1)];
+  for(var j=1;j<a.length-1;j++) o=o[a[j]];
+  o[a[a.length-1]]=v;
+}
+function collect(){
+  app.querySelectorAll('[data-k]').forEach(function(el){
+    var v=(el.innerText||'').replace(/ /g,' ').replace(/\r/g,'');
+    v=el.dataset.ml?v.replace(/\n+$/,''):v.replace(/\s*\n\s*/g,' ').trim();
+    setPath(el.dataset.k,v);
+  });
+}
+function clean(){
+  P.forEach(function(p){
+    ['design','slides','kw'].forEach(function(f){ if(p[f]) p[f]=p[f].filter(function(x){return String(x).trim()!=='';}); });
+  });
+}
+var bar, bStart, bSave, bCancel, msg, snapshot=null;
+function say(t){msg.textContent=t||'';}
+function setMode(on){
+  editing=on;
+  bStart.hidden=on; bSave.hidden=!on; bCancel.hidden=!on;
+  render();
+}
+function buildDoc(){
+  var was=editing; editing=false; var view=html(); editing=was;
+  var css=document.getElementById('app-css').textContent;
+  var js=document.getElementById('app-js').textContent;
+  var json=JSON.stringify(STATE).replace(/</g,'\\u003c');
+  return SKEL+ST.head+'<style id="app-css">'+css+'</style>\n<div class="page" dir="rtl" lang="ar" id="app">'+view+'</div>\n<script type="application/json" id="app-state">'+json+'<\/script>\n<script id="app-js">'+js+'<\/script>\n</body></html>';
+}
+async function save(){
+  collect(); clean();
+  bSave.disabled=true; bCancel.disabled=true; say('جاري الحفظ…');
+  try{
+    await ART.publish(buildDoc());
+    say('تم الحفظ');
+  }catch(e){
+    var c=e&&e.code;
+    bSave.disabled=false; bCancel.disabled=false;
+    if(c==='conflict'){say('فيه نسخة أحدث انحفظت قبلك، الصفحة بتتحدث لها');}
+    else if(c==='not_writer'||c==='not_granted'||c==='consent_required'||c==='capability_disabled'||c==='capability_removed'||c==='not_declared'){
+      say('هذي النسخة للقراءة بس، ما تقدر تحفظ عليها'); bSave.hidden=true;
+    }
+    else if(c==='too_large'){say('الصفحة صارت كبيرة على الحفظ، قصّر بعض النصوص');}
+    else if(c==='rate_limited'){say('حفظت كثير ورا بعض، استنى شوي وجرب');}
+    else {say('ما انحفظ، جرّب مرة ثانية');}
+  }
+}
+function setupBar(){
+  bar=document.createElement('div'); bar.className='edbar';
+  bar.innerHTML='<button type="button" id="ed-start">تعديل</button><button type="button" id="ed-save" hidden>حفظ التعديلات</button><button type="button" id="ed-cancel" class="sec" hidden>إلغاء</button><span id="ed-msg" role="status" aria-live="polite"></span>';
+  document.body.appendChild(bar);
+  bStart=bar.querySelector('#ed-start'); bSave=bar.querySelector('#ed-save'); bCancel=bar.querySelector('#ed-cancel'); msg=bar.querySelector('#ed-msg');
+  bStart.addEventListener('click',function(){snapshot=JSON.stringify(P);say('');setMode(true);});
+  bCancel.addEventListener('click',function(){if(snapshot){P=JSON.parse(snapshot);STATE.posts=P;}say('');setMode(false);});
+  bSave.addEventListener('click',save);
+}
+
+/* clicks: copy caption, add list item */
+document.addEventListener('click',function(e){
+  var add=e.target.closest&&e.target.closest('[data-add]');
+  if(add){
+    collect();
+    var a=add.dataset.add.split('.'), p=P[+a[0].slice(1)];
+    p[a[1]].push('');
+    var key=add.dataset.add+'.'+(p[a[1]].length-1);
+    render();
+    var el=app.querySelector('[data-k="'+key+'"]'); if(el) el.focus();
+    return;
+  }
+  var cb=e.target.closest&&e.target.closest('.cbtn');
+  if(cb){go(cb.closest('.car').querySelector('.track'),cb.dataset.dir);return;}
+  var b=e.target.closest&&e.target.closest('.copy');
+  if(!b) return;
+  var pre=b.closest('.cap').querySelector('pre');
+  var done=function(t){b.textContent=t;setTimeout(function(){b.textContent=b.dataset.label||'نسخ';},1800);};
+  var fallback=function(){try{var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);done('حدّدنا النص، انسخه');}catch(x){done('انسخ النص يدوياً');}};
+  try{navigator.clipboard.writeText(pre.innerText).then(function(){done('تم النسخ');},fallback);}catch(x){fallback();}
+});
+
+render();
+
+(async function(){
+  if(!window.page||typeof window.page.use!=='function') return;
+  var a=await window.page.use('artifact');
+  if(!a) return;
+  try{ var u=await window.page.use('user'); if(u&&!(await u.canEdit())) return; }catch(e){}
+  ART=a; setupBar();
+})();
+})();
+</script>
+

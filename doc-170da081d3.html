@@ -1,0 +1,758 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Content plan</title>
+<meta name="viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Lalezar&display=swap">
+<style>
+/* Layout: RTL content plan — brick hero like the strategy, a 4-chapter story strip, a week calendar, then post cards (brief left, caption right) */
+:root{
+  --bg:#FFFFFF;--surface:#F7EFEE;--line:#E8D6D4;--fg:#2B1515;--muted:#6E5452;
+  --brick:#AE4241;--maroon:#7A1517;--on-brick:#FFFFFF;--gold:#C98A2B;
+  --c1:#AE4241;--c2:#8A5A2B;--c3:#5E6B3A;--c4:#2F6B7A;--c5:#B7701A;--c6:#6B3A7A;
+  --display:"Lalezar","Alexandria",system-ui,sans-serif;
+  --body:"Alexandria","Segoe UI",Tahoma,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#170C0C;--surface:#231312;--line:#3A2220;--fg:#F4E7E5;--muted:#BFA3A0;
+  --brick:#C9524F;--maroon:#5E1012;--on-brick:#FFFFFF;--gold:#E0A64A;
+  --c1:#E07572;--c2:#D3A06A;--c3:#A9B97A;--c4:#7EC0CF;--c5:#E3A04A;--c6:#C595D3;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#170C0C;--surface:#231312;--line:#3A2220;--fg:#F4E7E5;--muted:#BFA3A0;
+  --brick:#C9524F;--maroon:#5E1012;--on-brick:#FFFFFF;--gold:#E0A64A;
+  --c1:#E07572;--c2:#D3A06A;--c3:#A9B97A;--c4:#7EC0CF;--c5:#E3A04A;--c6:#C595D3;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.85}
+.page{direction:rtl;text-align:right}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.hero{background:var(--brick);color:var(--on-brick)}
+.hero .wrap{padding-block:40px 34px;display:flex;flex-direction:column;gap:8px}
+.eyebrow{font-size:13px;font-weight:600;opacity:.9}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,7vw,76px);line-height:1.1}
+.sub{max-width:62ch;font-size:16px;opacity:.95}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip-l{border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:2px 12px;font-size:13px}
+
+section{padding-block:40px;border-bottom:1px solid var(--line)}
+.sh{display:flex;flex-direction:column;gap:4px;margin-bottom:20px;max-width:72ch}
+.sh h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,36px);color:var(--brick);line-height:1.25}
+.sh p{color:var(--muted)}
+
+/* story strip */
+.story{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ch{padding:16px 18px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:4px;position:relative}
+.ch:first-child{border-inline-start:0}
+.ch .k{font-size:12.5px;color:var(--muted)}
+.ch b{font-family:var(--display);font-weight:400;font-size:24px;color:var(--brick);line-height:1.2}
+.ch p{font-size:13.5px}
+.thread{margin-top:14px;font-size:14px;background:var(--surface);border-radius:10px;padding:12px 16px}
+
+/* calendar */
+.cal{display:flex;flex-direction:column;gap:10px}
+.wk{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;align-items:stretch}
+.wl{display:flex;flex-direction:column;justify-content:center;padding:10px 14px;background:var(--surface);border-radius:10px;font-size:13px}
+.wl b{font-size:15px}
+.wl .wt{color:var(--brick);font-weight:600}
+.cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cell{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border:1px solid var(--line);border-top:4px solid var(--pc);border-radius:10px;text-decoration:none;color:var(--fg);transition:background .15s}
+.cell:hover{background:var(--surface)}
+.cell .cd{font-size:12px;color:var(--muted)}
+.cell b{font-size:14.5px;font-weight:600;line-height:1.5}
+.cell .cp{font-size:12px;color:var(--pc);font-weight:600}
+.p1{--pc:var(--c1)}.p2{--pc:var(--c2)}.p3{--pc:var(--c3)}.p4{--pc:var(--c4)}.p5{--pc:var(--c5)}.p6{--pc:var(--c6)}
+.mix{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.mx{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:3px 14px 3px 6px;font-size:13px}
+.mx b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--pc);color:var(--bg);font-size:13px}
+
+/* keywords */
+.kwgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.kwg{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kwg h3{font-size:15px;margin-bottom:8px}
+.kws{display:flex;flex-wrap:wrap;gap:6px}
+.kw{font-size:13px;background:var(--surface);border-radius:6px;padding:2px 10px}
+.howkw{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:13.5px}
+.howkw div{border-inline-start:3px solid var(--brick);padding:2px 12px}
+.howkw b{display:block}
+
+/* posts */
+.posts{display:flex;flex-direction:column;gap:18px}
+.wkh{font-family:var(--display);font-weight:400;font-size:24px;color:var(--fg);margin-top:16px}
+.wkh span{font-family:var(--body);font-size:14px;color:var(--muted);font-weight:500}
+.post{border:1px solid var(--line);border-radius:12px;overflow:hidden;scroll-margin-top:16px}
+.ph{display:flex;align-items:center;gap:14px;padding:12px 18px;background:var(--surface);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.pn{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--pc);color:var(--bg);font-weight:700;font-size:16px;flex:0 0 auto}
+.pmeta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13.5px;flex:1}
+.pd{font-weight:600}
+.chip{color:var(--pc);border:1px solid var(--pc);border-radius:999px;padding:0 10px;font-size:12.5px;font-weight:600}
+.fmt{color:var(--muted)}
+.goal{margin-inline-start:auto;font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 10px}
+.goal b{color:var(--brick)}
+.pb{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:0}
+.pl{padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.pr{padding:16px 18px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.lbl{font-size:12px;font-weight:600;color:var(--muted);margin-top:8px}
+.lbl:first-child{margin-top:0}
+.headline{font-family:var(--display);font-size:clamp(22px,3vw,28px);line-height:1.3;color:var(--brick)}
+.idea{font-size:14.5px;font-weight:500}
+.prod{font-size:14px}
+.vis{margin:0;padding-right:18px;font-size:14px}
+.vis li{margin-bottom:2px}
+.why,.link{font-size:13.5px;padding:8px 12px;border-radius:8px;margin-top:8px}
+.why{background:var(--surface)}
+.why b,.link b{color:var(--brick)}
+.link{border:1px dashed var(--line)}
+.note{font-size:13px;color:var(--muted);margin-top:6px}
+.caphead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.copy{font:inherit;font-size:12.5px;padding:3px 12px;border-radius:6px;border:1px solid var(--brick);background:transparent;color:var(--brick);cursor:pointer}
+.copy:hover{background:var(--brick);color:var(--on-brick)}
+.dt{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.dtl{font-size:12.5px;font-weight:700;color:var(--brick)}
+.dtx{font-size:15px;line-height:1.9;font-weight:600;background:var(--surface);border-radius:8px;padding:10px 14px;border-inline-start:3px solid var(--brick)}
+.pl .dt+.dt{margin-top:10px}
+.cap{font-size:14.5px;line-height:1.95;background:var(--surface);border-radius:8px;padding:12px 14px;white-space:normal}
+.tags{color:var(--brick);font-size:13.5px}
+.pkw{display:flex;flex-wrap:wrap;gap:6px}
+
+.rules{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 24px}
+.rules li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.res{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+.res th,.res td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.res th{background:var(--surface);font-size:12.5px;color:var(--muted)}
+.tscroll{overflow-x:auto}
+
+/* ===== mockups (fixed brand colors: they depict the actual post, same in both themes) ===== */
+.mockrow{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;padding:18px;background:var(--surface);border-bottom:1px solid var(--line)}
+.mockwrap{display:flex;flex-direction:column;align-items:center;gap:6px;width:min(290px,100%)}
+.mockrow.multi .mockwrap{width:min(220px,100%)}
+.slab{font-size:12px;color:var(--muted)}
+.mk{--r:#8E1A1C;--rd:#5E0E10;--br:#AE4241;--mr:#7A1517;--cr:#F6EEE9;--gd:#C98A2B;--w:#fff;
+  container-type:inline-size;position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:6px;
+  background:radial-gradient(120% 90% at 50% 45%,#A3262A 0%,var(--r) 55%,var(--rd) 100%);color:var(--w);
+  font-family:var(--body);direction:rtl;box-shadow:0 6px 18px rgba(60,10,10,.18)}
+.mk *{box-sizing:border-box}
+.mk .lg{position:absolute;top:5cqw;left:50%;transform:translateX(-50%);width:26cqw;height:auto}
+.mk .lg.bt{top:auto;bottom:4.5cqw}
+.mk .hd{font-family:var(--display);font-weight:400;line-height:1.15;text-align:center}
+.mk .sm{font-size:4.2cqw;line-height:1.5;text-align:center}
+.mk .fp{position:absolute;object-fit:cover}
+.mk .cut{position:absolute;object-fit:contain}
+.mk .abs{position:absolute;left:0;right:0}
+.mk .pl2{display:inline-block;background:var(--w);color:var(--mr);border-radius:99px;padding:.6cqw 3.5cqw;font-size:3.8cqw;font-weight:700}
+.mk.cream{background:var(--cr);color:var(--mr)}
+.sadu{position:absolute;left:0;right:0;height:5cqw;
+  background:linear-gradient(135deg,var(--br) 25%,transparent 25%) -2.5cqw 0/5cqw 5cqw,
+             linear-gradient(225deg,var(--br) 25%,transparent 25%) -2.5cqw 0/5cqw 5cqw,
+             linear-gradient(315deg,var(--br) 25%,transparent 25%) 0 0/5cqw 5cqw,
+             linear-gradient(45deg,var(--br) 25%,transparent 25%) 0 0/5cqw 5cqw}
+.sadu.t{top:0}.sadu.b{bottom:0}
+.arch{position:absolute;border-radius:50% 50% 0 0/38% 38% 0 0;overflow:hidden;border:1.4cqw solid var(--br)}
+.arch img{width:100%;height:100%;object-fit:cover;display:block}
+.smoke{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.85) 0%,rgba(255,255,255,.35) 45%,transparent 70%);filter:blur(1.2cqw)}
+.bubble{position:absolute;background:var(--w);color:#3a1a1a;border-radius:3cqw;padding:2.2cqw 3cqw;font-size:3.6cqw;line-height:1.4;box-shadow:0 1cqw 2cqw rgba(0,0,0,.25)}
+.bubble::after{content:"";position:absolute;bottom:-2cqw;right:5cqw;border:2cqw solid transparent;border-top-color:var(--w);border-bottom:0}
+.polaroid{position:absolute;background:#fbf8f2;padding:3cqw 3cqw 11cqw;box-shadow:0 2cqw 4cqw rgba(0,0,0,.35)}
+.polaroid img{display:block;width:100%;aspect-ratio:1;object-fit:cover;filter:sepia(.55) saturate(.8) contrast(.95)}
+.stamp{position:absolute;font-family:"Courier New",monospace;color:#ff8a2a;font-weight:700;font-size:4cqw;letter-spacing:.05em;text-shadow:0 0 1cqw rgba(255,120,30,.6)}
+.pad{position:absolute;background:#fffdf6;color:#2b1515;box-shadow:0 2cqw 4cqw rgba(0,0,0,.3);
+  background-image:repeating-linear-gradient(#fffdf6 0 7.6cqw,#d9e3f0 7.6cqw 7.9cqw)}
+.chk{display:flex;align-items:center;gap:2cqw;font-size:4.6cqw;height:7.9cqw}
+.chk i{font-style:normal;color:#2f7d4f;font-weight:700}
+.tl{position:absolute;display:flex;flex-direction:column;gap:3.4cqw}
+.tl div{border-inline-start:.8cqw solid var(--w);padding-inline-start:2.6cqw;font-size:3.5cqw;line-height:1.35}
+.tl b{display:block;font-size:4.4cqw}
+.num-c{display:inline-grid;place-items:center;border-radius:50%;background:var(--w);color:var(--mr);font-family:var(--display)}
+.cert{position:absolute;inset:4cqw;border:1.2cqw double var(--gd);border-radius:2cqw}
+.pin{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.6cqw;font-size:3.8cqw;font-weight:700;color:var(--mr)}
+.pin i{display:block;width:6cqw;height:6cqw;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--br);border:1cqw solid var(--w);box-shadow:0 .8cqw 1.4cqw rgba(0,0,0,.3)}
+.spot{position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 55%,rgba(255,220,180,.28),transparent 70%)}
+.tag{position:absolute;background:var(--gd);color:#2b1515;font-weight:700;font-size:4cqw;padding:1cqw 4cqw;border-radius:1cqw}
+
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.gcard{border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14px;display:flex;flex-direction:column;gap:8px}
+.gcard h3{font-size:15px}
+.sw{display:flex;gap:8px;flex-wrap:wrap}
+.sw span{display:flex;align-items:center;gap:6px;font-size:12.5px}
+.sw i{width:22px;height:22px;border-radius:5px;border:1px solid var(--line)}
+
+
+/* client sidebar layout */
+.layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:28px;max-width:1440px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 0;align-items:start}
+.layout .wrap{max-width:none;padding-left:0;padding-right:0}
+.mainc section:first-child{padding-top:0}
+.client{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);overflow:auto;border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--surface);display:flex;flex-direction:column;gap:14px}
+.client h2{font-family:var(--display);font-weight:400;font-size:26px;color:var(--brick)}
+.cg{display:flex;flex-direction:column;gap:4px;font-size:13.5px;line-height:1.7;padding-top:12px;border-top:1px solid var(--line)}
+.ck{font-size:12px;font-weight:700;color:var(--muted)}
+.cg a{color:var(--brick);text-decoration:none;font-weight:600}
+.cg a:hover{text-decoration:underline}
+.client .sw span{font-size:11.5px;font-variant-numeric:tabular-nums}
+.plinks{display:flex;flex-wrap:wrap;gap:6px}
+.plinks a{font-size:13px;color:var(--brick);border:1px solid var(--line);border-radius:6px;padding:2px 10px;text-decoration:none;background:var(--bg)}
+.plinks a:hover{border-color:var(--brick)}
+@media (max-width:980px){.layout{grid-template-columns:1fr}.client{position:static;max-height:none}}
+@media (max-width:820px){
+  .story{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ch:nth-child(3){border-inline-start:0}
+  .ch:nth-child(n+3){border-top:1px solid var(--line)}
+  .wk{grid-template-columns:1fr}
+  .pb{grid-template-columns:1fr}
+  .pr{border-inline-start:0;border-top:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .cells{grid-template-columns:1fr}
+  .story{grid-template-columns:1fr}
+  .ch{border-inline-start:0!important;border-top:1px solid var(--line)}
+  .ch:first-child{border-top:0}
+  .goal{margin-inline-start:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cell{transition:none}}
+</style>
+
+<div class="page" dir="rtl" lang="ar">
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">خطة المحتوى · نوفمبر 2026 · حملة «دخنة العارض»</div>
+  <h1>بوستات نوفمبر</h1>
+  <p class="sub">12 بوست مترابطين في قصة وحدة من 4 فصول، تنزل بالترتيب: 8 بوستات مفردة و4 كاروسيل، على انستقرام وتيك توك. مع كل بوست صورة ريفرنس للديزاينر. الفيديوهات الثلاثة وفيديوهات المشاهير لها خطة منفصلة.</p>
+  <div class="meta"><span class="chip-l">#دخنة_العارض</span><span class="chip-l">12 بوست بالترتيب</span><span class="chip-l">بالصور الموجودة</span></div>
+</div></header>
+<div class="layout">
+
+<aside class="client" aria-label="داتا العميل">
+  <h2>داتا العميل</h2>
+  <div class="cg"><span class="ck">البراند</span><b>شاورما دخنة</b><span>الرسالة: «طعم زمان.. من بوابة دخنة»</span><span>شعار الهوية: «نكهة أصيلة بطابع عصري»</span></div>
+  <div class="cg"><span class="ck">ملفات الديزاين</span>
+    <a href="#" target="_blank" rel="noopener">الشعار</a>
+    <a href="#" target="_blank" rel="noopener">بروفايل وهوية العميل (PDF)</a>
+    <a href="#" target="_blank" rel="noopener">المنيو صفحة 1 (اللفّات والبروست)</a>
+    <a href="#" target="_blank" rel="noopener">المنيو صفحة 2 (البوكسات والوجبات)</a>
+    <a href="#" target="_blank" rel="noopener">مجلد صور المنتجات</a>
+  </div>
+  <div class="cg"><span class="ck">الألوان</span>
+    <div class="sw"><span><i style="background:#8E1A1C"></i><bdi dir="ltr">#8E1A1C</bdi></span><span><i style="background:#AE4241"></i><bdi dir="ltr">#AE4241</bdi></span><span><i style="background:#7A1517"></i><bdi dir="ltr">#7A1517</bdi></span><span><i style="background:#F6EEE9"></i><bdi dir="ltr">#F6EEE9</bdi></span><span><i style="background:#C98A2B"></i><bdi dir="ltr">#C98A2B</bdi></span></div>
+  </div>
+  <div class="cg"><span class="ck">الحسابات</span>
+    <a href="https://www.instagram.com/sh.dakhnah" target="_blank" rel="noopener">انستقرام: ‎@sh.dakhnah</a>
+    <a href="https://www.tiktok.com/@sh.dakhnah" target="_blank" rel="noopener">تيك توك: ‎@sh.dakhnah</a>
+    <a href="https://linktr.ee/shdakhnah" target="_blank" rel="noopener">لينك تري: linktr.ee/shdakhnah</a>
+  </div>
+  <div class="cg"><span class="ck">الفروع</span>
+    <span><b>العارض</b> · شارع الكوثر (فرع التركيز)</span>
+    <span><b>الروضة</b> · شارع عبدالرحمن الغافقي</span>
+    <span><b>النسيم الشرقي</b> · شارع أبي هريرة</span>
+    <span><b>البوليفارد</b> · <a href="https://maps.app.goo.gl/GX44c1Q1H35U5yD27?g_st=ic" target="_blank" rel="noopener">اللوكيشن ↗</a></span>
+  </div>
+  <div class="cg"><span class="ck">الهاشتاقات الثابتة</span><span>#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض</span></div>
+  <div class="cg"><span class="ck">تنبيهات</span><span>ما نذكر الأسعار. أسماء المنتجات مثل المنيو بالضبط. الصور من الموجود فقط.</span></div>
+</aside>
+<main class="mainc">
+
+
+
+
+
+<section id="design"><div class="wrap">
+  <div class="sh"><h2>دليل التصميم</h2><p>الصور اللي في الخطة ريفرنس للديزاينر بس، توضح الفكرة وتوزيع العناصر، وهي مو التصميم النهائي.</p></div>
+  <div class="guide">
+    <div class="gcard"><h3>الألوان</h3>
+      <div class="sw"><span><i style="background:#8E1A1C"></i>أحمر الخلفية</span><span><i style="background:#AE4241"></i>طوبي الهوية</span><span><i style="background:#7A1517"></i>عنابي</span><span><i style="background:#F6EEE9"></i>كريمي</span><span><i style="background:#C98A2B"></i>ذهبي للتمييز</span></div>
+      <p>الأحمر أساس أغلب البوستات، والكريمي لبوستات الدعوة والنتائج والخريطة عشان الجريد يتنوع.</p></div>
+    <div class="gcard"><h3>الخطوط</h3><p><b style="font-family:var(--display);font-weight:400;font-size:20px">عنوان عريض</b> للجملة الرئيسية، كلمتين لـ 6 كلمات بالكثير.</p><p>خط بسيط وواضح للنص الصغير. ما نستخدم أكثر من خطين.</p></div>
+    <div class="gcard"><h3>عناصر ثابتة</h3><p>اللوقو أعلى الوسط أو أسفله في كل تصميم. قوس البوابة كإطار للصور. نقش السدو في البوستات الكريمية.</p></div>
+    <div class="gcard"><h3>نطلّع أقوى شي من الصور الموجودة</h3><p>قص قريب على الحشوة بدل اللفّة كاملة، تفريغ المنتج ووضعه على خلفية الهوية، تعديل الإضاءة والألوان، وعناصر جرافيك (قوس، سدو، دخان) تكمّل الصورة.</p></div>
+    <div class="gcard"><h3>شكل الجريد</h3><p>ما نحط بوستين كريمي جنب بعض. البوستات 1 و6 و10 و12 كريمية وموزعة على الشهر، والباقي أحمر.</p></div>
+  </div>
+</div></section>
+<section><div class="wrap">
+  <div class="sh"><h2>تفاصيل البوستات</h2><p>كل بوست ينزل على انستقرام (بوست أو كاروسيل) وتيك توك (Photo Mode) بنفس التصميم والكابشن، ونعيد نشره ستوري على سناب.</p></div>
+  <div class="posts"><h3 class="wkh">الفصل 1: جيران العارض <span>· بوست 1 – 3</span></h3>
+<article class="post p6" id="post-1">
+  <header class="ph">
+    <span class="pn num">1</span>
+    <div class="pmeta"><span class="pd">بوست 1</span><span class="chip">وين أقرب دخنة</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk cream">
+  <div class="sadu t"></div><div class="sadu b"></div>
+  <img class="lg" src="assets/image-0c9c5f479be9.webp" style="top:8cqw;width:22cqw" alt="شعار شاورما دخنة">
+  <div class="abs sm" style="top:24cqw;font-size:3.6cqw;letter-spacing:.08em;color:#AE4241;font-weight:700">دعوة رسمية</div>
+  <div class="abs hd" style="top:30cqw;font-size:9cqw;color:#7A1517;padding:0 6cqw">يا أهل العارض..<br>الدعوة مفتوحة</div>
+  <div class="arch" style="left:24cqw;right:24cqw;top:52cqw;height:44cqw"><img src="assets/image-f322b3e28fbc.webp" alt=""></div>
+  <div class="abs sm" style="top:99cqw;color:#7A1517;font-weight:600">المكان: شارع الكوثر، حي العارض<br><span style="font-weight:400">الموعد: وقت ما تجوع</span></div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-1-0" id="copy-dt-1-0">نسخ</button></div><div class="dtx" id="dt-1-0">دعوة رسمية<br>يا أهل العارض.. الدعوة مفتوحة<br>المكان: شارع الكوثر، حي العارض<br>الموعد: وقت ما تجوع</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">ملف الهوية (صورة السور، السيخ، واجهة العارض) ↗</a><a href="#" target="_blank" rel="noopener">شعار دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-1" id="copy-1">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-1">شاورما العارض؟ عنوانها معروف 📍<br>يا أهل العارض وشمال الرياض، هذي دعوة مفتوحة من شاورما دخنة: للي جرّبنا ويبي يرجع، وللي للحين ما جرّب.<br>المكان: شارع الكوثر. الموعد: وقت ما تجوع.<br>أرسلها لجارك اللي ما جرّبنا 👀<br><br>وليش اسمنا «دخنة»؟ الجواب في البوست الجاي.. خلّك قريب 👀<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #شاورما_العارض #مطاعم_العارض</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p2" id="post-2">
+  <header class="ph">
+    <span class="pn num">2</span>
+    <div class="pmeta"><span class="pd">بوست 2</span><span class="chip">طعم زمان</span><span class="fmt">كاروسيل · 6 شرائح</span></div>
+  </header>
+  <div class="mockrow multi"><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-8739766db6bc.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="bottom:0;height:60%;background:linear-gradient(transparent,rgba(94,14,16,.95))"></div>
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs hd" style="bottom:16cqw;font-size:13cqw">وش يعني<br>دخنة؟</div>
+  <div class="abs sm" style="bottom:7cqw;opacity:.9">اسحب وتعرف القصة ←</div>
+</div><span class="slab">الشريحة 1 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs hd" style="top:26cqw;font-size:9.5cqw;padding:0 8cqw">زمان كان حول الرياض سور..</div>
+  <div class="abs sm" style="top:52cqw;font-size:5.4cqw">وله بوابات</div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:34cqw;background:#D9B48A"></div><div style="position:absolute;left:0;right:0;bottom:34cqw;height:6cqw;background:linear-gradient(135deg,#D9B48A 25%,transparent 25%) -3cqw 0/6cqw 6cqw,linear-gradient(225deg,#D9B48A 25%,transparent 25%) -3cqw 0/6cqw 6cqw"></div><div style="position:absolute;left:38cqw;width:24cqw;bottom:0;height:26cqw;background:#5E3A22;border-radius:12cqw 12cqw 0 0"></div>
+</div><span class="slab">الشريحة 2 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs sm" style="top:24cqw;font-size:5.2cqw">وحدة من أشهرها:</div>
+  <div style="position:absolute;left:22cqw;right:22cqw;top:36cqw;height:62cqw;border:1.4cqw solid rgba(255,255,255,.9);border-bottom:0;border-radius:50% 50% 0 0/40% 40% 0 0"></div>
+  <div class="abs hd" style="top:60cqw;font-size:11cqw;padding:0 24cqw">بوابة<br>دخنة</div>
+  <div style="position:absolute;left:10cqw;right:10cqw;top:98cqw;height:.8cqw;background:rgba(255,255,255,.6)"></div>
+</div><span class="slab">الشريحة 3 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-8739766db6bc.webp" style="inset:0;width:100%;height:100%;object-position:30% 70%;filter:saturate(.9)" alt="">
+  <div class="abs" style="top:0;height:55%;background:linear-gradient(rgba(94,14,16,.95),transparent)"></div>
+  <div class="abs hd" style="top:9cqw;font-size:9.5cqw;padding:0 6cqw">ولين اليوم قايمة<br>جنب قصر الحكم</div>
+  <div class="abs sm" style="bottom:6cqw"><span class="pl2">📍 قصر الحكم · وسط الرياض</span></div>
+</div><span class="slab">الشريحة 4 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-8a639ba532aa.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="top:0;height:45%;background:linear-gradient(rgba(94,14,16,.9),transparent)"></div>
+  <div class="abs hd" style="top:7cqw;font-size:9.5cqw">ومنها أخذنا اسمنا..<br>وطعمنا</div>
+  <img class="lg bt" src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+</div><span class="slab">الشريحة 5 من 6</span></div><div class="mockwrap"><div class="mk" style="background:radial-gradient(90% 70% at 50% 95%,#B3302F 0%,#7A1517 55%,#3E0809 100%)">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs sm" style="top:26cqw;font-size:5.2cqw;opacity:.9">وفي البوست الجاي..</div>
+  <div class="abs hd" style="top:36cqw;font-size:12cqw">عندنا إطلاق 🚀</div>
+  <div class="smoke" style="left:-4cqw;bottom:-6cqw;width:52cqw;height:34cqw"></div>
+  <div class="smoke" style="left:26cqw;bottom:-10cqw;width:50cqw;height:38cqw"></div>
+  <div class="smoke" style="right:-4cqw;bottom:-6cqw;width:52cqw;height:34cqw"></div>
+  <img class="cut" src="assets/image-9f6afab58d23.webp" style="left:30cqw;top:66cqw;width:40cqw;height:40cqw;transform:rotate(-72deg);filter:drop-shadow(0 2cqw 3cqw rgba(0,0,0,.45))" alt="">
+</div><span class="slab">الشريحة 6 من 6</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">الشريحة 1</span><button type="button" class="copy" data-target="dt-2-0" id="copy-dt-2-0">نسخ</button></div><div class="dtx" id="dt-2-0">وش يعني دخنة؟<br>اسحب وتعرف القصة ←</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 2</span><button type="button" class="copy" data-target="dt-2-1" id="copy-dt-2-1">نسخ</button></div><div class="dtx" id="dt-2-1">زمان كان حول الرياض سور..<br>وله بوابات</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 3</span><button type="button" class="copy" data-target="dt-2-2" id="copy-dt-2-2">نسخ</button></div><div class="dtx" id="dt-2-2">وحدة من أشهرها:<br>بوابة دخنة</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 4</span><button type="button" class="copy" data-target="dt-2-3" id="copy-dt-2-3">نسخ</button></div><div class="dtx" id="dt-2-3">ولين اليوم قايمة جنب قصر الحكم<br>📍 قصر الحكم · وسط الرياض</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 5</span><button type="button" class="copy" data-target="dt-2-4" id="copy-dt-2-4">نسخ</button></div><div class="dtx" id="dt-2-4">ومنها أخذنا اسمنا.. وطعمنا</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 6</span><button type="button" class="copy" data-target="dt-2-5" id="copy-dt-2-5">نسخ</button></div><div class="dtx" id="dt-2-5">وفي البوست الجاي..<br>عندنا إطلاق 🚀</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">ملف الهوية (صورة السور، السيخ، واجهة العارض) ↗</a><a href="#" target="_blank" rel="noopener">شاورما دخنة ↗</a><a href="#" target="_blank" rel="noopener">شاورما صاروخ ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-2" id="copy-2">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-2">وش يعني دخنة؟ وليش شاورما الرياض هذي اختارت الاسم؟ 🤔<br>دخنة اسم بوابة من بوابات الرياض القديمة، ولين اليوم قايمة جنب قصر الحكم.<br>ومنها أخذنا اسمنا وطعمنا: شاورما بطعم زمان.<br>احفظ البوست وكمّل القصة لين آخر شريحة 👉<br><br>والجاي؟ عدّ تنازلي.. 🚀<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #بوابة_دخنة #الرياض_زمان</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p1" id="post-3">
+  <header class="ph">
+    <span class="pn num">3</span>
+    <div class="pmeta"><span class="pd">بوست 3</span><span class="chip">المنتج بطل</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk" style="background:radial-gradient(90% 70% at 50% 85%,#B3302F 0%,#7A1517 55%,#3E0809 100%)">
+  <div class="abs hd" style="top:6cqw;font-size:15cqw;letter-spacing:.02em">3.. 2.. 1..</div>
+  <div class="abs hd" style="top:24cqw;font-size:7.5cqw;opacity:.95">إطلاق الصاروخ 🚀</div>
+  <div class="smoke" style="left:-6cqw;bottom:-4cqw;width:48cqw;height:34cqw"></div>
+  <div class="smoke" style="left:22cqw;bottom:-8cqw;width:56cqw;height:40cqw"></div>
+  <div class="smoke" style="right:-6cqw;bottom:-4cqw;width:48cqw;height:34cqw"></div>
+  <div class="smoke" style="left:30cqw;bottom:10cqw;width:40cqw;height:26cqw"></div>
+  <img class="cut" src="assets/image-9f6afab58d23.webp" style="left:12cqw;top:36cqw;width:76cqw;height:70cqw;transform:rotate(-72deg);filter:drop-shadow(0 2cqw 3cqw rgba(0,0,0,.45))" alt="">
+  <div class="abs sm" style="bottom:5cqw;font-size:4.2cqw;color:#5E0E10;font-weight:700;z-index:2">منصة الإطلاق: فروع دخنة</div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-3-0" id="copy-dt-3-0">نسخ</button></div><div class="dtx" id="dt-3-0">3.. 2.. 1..<br>إطلاق الصاروخ 🚀<br>منصة الإطلاق: فروع دخنة</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">شاورما صاروخ ↗</a><a href="#" target="_blank" rel="noopener">قرصان صاروخ ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-3" id="copy-3">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-3">شاورما صاروخ.. أطول لفّة عند شاورما دخنة 🚀<br>الجوع وصل، والعدّاد بدأ: 3.. 2.. 1..<br>منشن خويك اللي يخلّصها معك.<br><br>وترقّبوا.. البوست الجاي فيه سؤال يقسم الشلّة 👀<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #شاورما_صاروخ #عشاء_الويكند</span></div>
+    </div>
+  </div>
+</article><h3 class="wkh">الفصل 2: اختار لفّتك <span>· بوست 4 – 6</span></h3>
+<article class="post p1" id="post-4">
+  <header class="ph">
+    <span class="pn num">4</span>
+    <div class="pmeta"><span class="pd">بوست 4</span><span class="chip">المنتج بطل</span><span class="fmt">كاروسيل · 6 شرائح</span></div>
+  </header>
+  <div class="mockrow multi"><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs hd" style="top:24cqw;font-size:12cqw">انتخابات<br>دخنة 🗳️</div>
+  <div class="abs sm" style="top:56cqw;font-size:5.4cqw">خمس لفّات مرشحة.. وصوتك يحسم</div>
+  <div class="abs" style="top:72cqw;display:flex;justify-content:center;gap:3cqw">
+    <span class="num-c" style="width:13cqw;height:13cqw;font-size:7cqw">1</span><span class="num-c" style="width:13cqw;height:13cqw;font-size:7cqw">2</span><span class="num-c" style="width:13cqw;height:13cqw;font-size:7cqw">3</span><span class="num-c" style="width:13cqw;height:13cqw;font-size:7cqw">4</span><span class="num-c" style="width:13cqw;height:13cqw;font-size:7cqw">5</span>
+  </div>
+  <div class="abs sm" style="bottom:8cqw"><span class="pl2">اكتب رقم لفّتك في التعليقات</span></div>
+</div><span class="slab">الشريحة 1 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-a2f16b2108df.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="bottom:0;height:58%;background:linear-gradient(transparent,rgba(94,14,16,.96))"></div>
+  <div class="tag" style="top:5cqw;right:5cqw">🗳️ انتخابات دخنة</div>
+  <span class="num-c" style="position:absolute;top:4cqw;left:5cqw;width:16cqw;height:16cqw;font-size:10cqw">1</span>
+
+  <div class="abs sm" style="bottom:31cqw;font-size:4cqw;opacity:.9">المرشح رقم 1</div>
+  <div class="abs hd" style="bottom:18cqw;font-size:9cqw">شاورما دخنة</div>
+  <div class="abs sm" style="bottom:7cqw;font-size:4.6cqw">«الأصل ما يحتاج تعريف»</div>
+</div><span class="slab">الشريحة 2 من 6</span></div><div class="mockwrap"><div class="mk">
+  <div class="tag" style="top:5cqw;right:5cqw">🗳️ انتخابات دخنة</div>
+  <span class="num-c" style="position:absolute;top:4cqw;left:5cqw;width:16cqw;height:16cqw;font-size:10cqw">2</span>
+  <img class="cut" src="assets/image-fd27501e0995.webp" style="left:8cqw;right:8cqw;width:84cqw;top:24cqw;height:56cqw;filter:drop-shadow(0 2cqw 3cqw rgba(0,0,0,.4))" alt="">
+  <div class="abs sm" style="bottom:31cqw;font-size:4cqw;opacity:.9">المرشح رقم 2</div>
+  <div class="abs hd" style="bottom:18cqw;font-size:9cqw">المدخنة الخاصة</div>
+  <div class="abs sm" style="bottom:7cqw;font-size:4.6cqw">«للي يحب النكهة المدخنة»</div>
+</div><span class="slab">الشريحة 3 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-23139a97a08a.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="bottom:0;height:58%;background:linear-gradient(transparent,rgba(94,14,16,.96))"></div>
+  <div class="tag" style="top:5cqw;right:5cqw">🗳️ انتخابات دخنة</div>
+  <span class="num-c" style="position:absolute;top:4cqw;left:5cqw;width:16cqw;height:16cqw;font-size:10cqw">3</span>
+  <div class="abs sm" style="bottom:31cqw;font-size:4cqw;opacity:.9">المرشح رقم 3</div>
+  <div class="abs hd" style="bottom:18cqw;font-size:9cqw">دخنة عكاوي</div>
+  <div class="abs sm" style="bottom:7cqw;font-size:4.6cqw">«لمسة عكاوي تفرق»</div>
+</div><span class="slab">الشريحة 4 من 6</span></div><div class="mockwrap"><div class="mk">
+  <div class="tag" style="top:5cqw;right:5cqw">🗳️ انتخابات دخنة</div>
+  <span class="num-c" style="position:absolute;top:4cqw;left:5cqw;width:16cqw;height:16cqw;font-size:10cqw">4</span>
+  <img class="cut" src="assets/image-528aaad05f78.webp" style="left:8cqw;right:8cqw;width:84cqw;top:24cqw;height:56cqw;filter:drop-shadow(0 2cqw 3cqw rgba(0,0,0,.4))" alt="">
+  <div class="abs sm" style="bottom:31cqw;font-size:4cqw;opacity:.9">المرشح رقم 4</div>
+  <div class="abs hd" style="bottom:18cqw;font-size:9cqw">قرصان وسط</div>
+  <div class="abs sm" style="bottom:7cqw;font-size:4.6cqw">«على خبز القرصان»</div>
+</div><span class="slab">الشريحة 5 من 6</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-e92e0403ddee.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="bottom:0;height:58%;background:linear-gradient(transparent,rgba(94,14,16,.96))"></div>
+  <div class="tag" style="top:5cqw;right:5cqw">🗳️ انتخابات دخنة</div>
+  <span class="num-c" style="position:absolute;top:4cqw;left:5cqw;width:16cqw;height:16cqw;font-size:10cqw">5</span>
+  <div class="abs sm" style="bottom:31cqw;font-size:4cqw;opacity:.9">المرشح رقم 5</div>
+  <div class="abs hd" style="bottom:18cqw;font-size:9cqw">فليفلة دخنة</div>
+  <div class="abs sm" style="bottom:7cqw;font-size:4.6cqw">«للي يبي حرارة»</div>
+</div><span class="slab">الشريحة 6 من 6</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">الشريحة 1</span><button type="button" class="copy" data-target="dt-4-0" id="copy-dt-4-0">نسخ</button></div><div class="dtx" id="dt-4-0">انتخابات دخنة 🗳️<br>خمس لفّات مرشحة.. وصوتك يحسم<br>1 · 2 · 3 · 4 · 5<br>اكتب رقم لفّتك في التعليقات</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 2</span><button type="button" class="copy" data-target="dt-4-1" id="copy-dt-4-1">نسخ</button></div><div class="dtx" id="dt-4-1">🗳️ انتخابات دخنة<br>المرشح رقم 1<br>شاورما دخنة<br>«الأصل ما يحتاج تعريف»</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 3</span><button type="button" class="copy" data-target="dt-4-2" id="copy-dt-4-2">نسخ</button></div><div class="dtx" id="dt-4-2">🗳️ انتخابات دخنة<br>المرشح رقم 2<br>المدخنة الخاصة<br>«للي يحب النكهة المدخنة»</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 4</span><button type="button" class="copy" data-target="dt-4-3" id="copy-dt-4-3">نسخ</button></div><div class="dtx" id="dt-4-3">🗳️ انتخابات دخنة<br>المرشح رقم 3<br>دخنة عكاوي<br>«لمسة عكاوي تفرق»</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 5</span><button type="button" class="copy" data-target="dt-4-4" id="copy-dt-4-4">نسخ</button></div><div class="dtx" id="dt-4-4">🗳️ انتخابات دخنة<br>المرشح رقم 4<br>قرصان وسط<br>«على خبز القرصان»</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 6</span><button type="button" class="copy" data-target="dt-4-5" id="copy-dt-4-5">نسخ</button></div><div class="dtx" id="dt-4-5">🗳️ انتخابات دخنة<br>المرشح رقم 5<br>فليفلة دخنة<br>«للي يبي حرارة»</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">شاورما دخنة ↗</a><a href="#" target="_blank" rel="noopener">شاورما مدخنة الخاصة ↗</a><a href="#" target="_blank" rel="noopener">شاورما دخنة عكاوي ↗</a><a href="#" target="_blank" rel="noopener">قرصان وسط ↗</a><a href="#" target="_blank" rel="noopener">فليفلة دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-4" id="copy-4">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-4">انتخابات شاورما دخنة بدأت 🗳️<br>خمس لفّات مرشحة، وصوتك يحسم.<br>اكتب رقم لفّتك في التعليقات 👇<br>1 دخنة · 2 المدخنة الخاصة · 3 العكاوي · 4 القرصان · 5 الفليفلة<br>الصناديق مفتوحة، والنتيجة نعلنها قريب.. لا تفوّتها 🏆<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #انواع_الشاورما</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p1" id="post-5">
+  <header class="ph">
+    <span class="pn num">5</span>
+    <div class="pmeta"><span class="pd">بوست 5</span><span class="chip">المنتج بطل</span><span class="fmt">كاروسيل · 4 شرائح</span></div>
+  </header>
+  <div class="mockrow multi"><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs hd" style="top:22cqw;font-size:9.5cqw;padding:0 6cqw">قول لي وش صوصك..<br>أقولك مين أنت</div>
+  <div class="abs" style="top:56cqw;display:flex;justify-content:center;gap:2cqw">
+    <img src="assets/image-9407c1644af8.webp" alt="" style="width:30cqw;height:30cqw;object-fit:cover;border-radius:50%;border:1cqw solid #fff"><img src="assets/image-9407c1644af8.webp" alt="" style="width:30cqw;height:30cqw;object-fit:cover;border-radius:50%;border:1cqw solid #fff"><img src="assets/image-5ff773e6bcc4.webp" alt="" style="width:30cqw;height:30cqw;object-fit:cover;border-radius:50%;border:1cqw solid #fff">
+  </div>
+  <div class="abs sm" style="bottom:8cqw">اسحب وشوف وش يطلع لك ←</div>
+</div><span class="slab">الشريحة 1 من 4</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-9407c1644af8.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="top:0;height:42%;background:linear-gradient(rgba(94,14,16,.92),transparent)"></div>
+  <div class="abs hd" style="top:6cqw;font-size:10cqw">ثوم عادي</div>
+  <div class="abs sm" style="top:20cqw;font-size:5.2cqw">= الكلاسيكي اللي يعرف وش يبي</div>
+  <img class="lg bt" src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+</div><span class="slab">الشريحة 2 من 4</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-5ff773e6bcc4.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="top:0;height:42%;background:linear-gradient(rgba(94,14,16,.92),transparent)"></div>
+  <div class="abs hd" style="top:6cqw;font-size:10cqw">ثوم حار</div>
+  <div class="abs sm" style="top:20cqw;font-size:5.2cqw">= اللي يحب الحماس</div>
+  <img class="lg bt" src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+</div><span class="slab">الشريحة 3 من 4</span></div><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-9407c1644af8.webp" style="inset:0;width:100%;height:100%" alt="">
+  <div class="abs" style="top:0;height:42%;background:linear-gradient(rgba(94,14,16,.92),transparent)"></div>
+  <div class="abs hd" style="top:6cqw;font-size:10cqw">سيجنتشر</div>
+  <div class="abs sm" style="top:20cqw;font-size:5.2cqw">= اللي يبي شي ما يلقاه إلا عندنا</div>
+  <img class="lg bt" src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+</div><span class="slab">الشريحة 4 من 4</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">الشريحة 1</span><button type="button" class="copy" data-target="dt-5-0" id="copy-dt-5-0">نسخ</button></div><div class="dtx" id="dt-5-0">قول لي وش صوصك..<br>أقولك مين أنت<br>اسحب وشوف وش يطلع لك ←</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 2</span><button type="button" class="copy" data-target="dt-5-1" id="copy-dt-5-1">نسخ</button></div><div class="dtx" id="dt-5-1">ثوم عادي<br>= الكلاسيكي اللي يعرف وش يبي</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 3</span><button type="button" class="copy" data-target="dt-5-2" id="copy-dt-5-2">نسخ</button></div><div class="dtx" id="dt-5-2">ثوم حار<br>= اللي يحب الحماس</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 4</span><button type="button" class="copy" data-target="dt-5-3" id="copy-dt-5-3">نسخ</button></div><div class="dtx" id="dt-5-3">سيجنتشر<br>= اللي يبي شي ما يلقاه إلا عندنا</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">صوص ثوم عادي ↗</a><a href="#" target="_blank" rel="noopener">صوص ثوم حار ↗</a><a href="#" target="_blank" rel="noopener">صوص سيجنتشر ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-5" id="copy-5">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-5">قول لي وش صوصك.. أقولك مين أنت 😄<br>ثلاث صوصات عند شاورما دخنة: ثوم عادي، ثوم حار، وسيجنتشر.<br>أرسل البوست لخويك وشوف وش يطلع له.<br><br>وتذكير: صناديق التصويت على اللفّات لسه مفتوحة 🗳️ والنتيجة في البوست الجاي<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #صوص_ثوم</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p4" id="post-6">
+  <header class="ph">
+    <span class="pn num">6</span>
+    <div class="pmeta"><span class="pd">بوست 6</span><span class="chip">الناس</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk" style="background:#F6EEE9;color:#7A1517">
+  <div class="cert"></div>
+  <img class="lg" src="assets/image-0c9c5f479be9.webp" style="top:9cqw;width:20cqw" alt="">
+  <div class="abs hd" style="top:22cqw;font-size:10cqw;color:#7A1517">النتائج الرسمية 🏆</div>
+  <div class="abs sm" style="top:36cqw;font-size:4.6cqw;color:#7A1517">النتيجة طلعت مفاجأة..</div>
+  <div class="abs" style="top:52cqw;display:flex;justify-content:center;gap:1.6cqw">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:.6cqw"><span style="font-size:5cqw;line-height:1">👑</span><img src="assets/image-a2f16b2108df.webp" alt="" style="width:15.5cqw;height:15.5cqw;object-fit:cover;border-radius:50%;border:.8cqw solid #C98A2B"><span style="font-size:3.4cqw;font-weight:700;color:#7A1517">1</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:.6cqw"><span style="font-size:5cqw;line-height:1">👑</span><img src="assets/image-8a639ba532aa.webp" alt="" style="width:15.5cqw;height:15.5cqw;object-fit:cover;border-radius:50%;border:.8cqw solid #C98A2B"><span style="font-size:3.4cqw;font-weight:700;color:#7A1517">2</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:.6cqw"><span style="font-size:5cqw;line-height:1">👑</span><img src="assets/image-23139a97a08a.webp" alt="" style="width:15.5cqw;height:15.5cqw;object-fit:cover;border-radius:50%;border:.8cqw solid #C98A2B"><span style="font-size:3.4cqw;font-weight:700;color:#7A1517">3</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:.6cqw"><span style="font-size:5cqw;line-height:1">👑</span><img src="assets/image-36cb48710c3e.webp" alt="" style="width:15.5cqw;height:15.5cqw;object-fit:cover;border-radius:50%;border:.8cqw solid #C98A2B"><span style="font-size:3.4cqw;font-weight:700;color:#7A1517">4</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:.6cqw"><span style="font-size:5cqw;line-height:1">👑</span><img src="assets/image-e92e0403ddee.webp" alt="" style="width:15.5cqw;height:15.5cqw;object-fit:cover;border-radius:50%;border:.8cqw solid #C98A2B"><span style="font-size:3.4cqw;font-weight:700;color:#7A1517">5</span></div>
+  </div>
+  <div class="abs hd" style="top:84cqw;font-size:8.4cqw;color:#AE4241;padding:0 8cqw">الخمس لفّات فازت 😄</div>
+  <div class="abs sm" style="top:99cqw;font-size:4.6cqw;color:#7A1517">كل لفّة لها جمهورها</div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-6-0" id="copy-dt-6-0">نسخ</button></div><div class="dtx" id="dt-6-0">النتائج الرسمية 🏆<br>النتيجة طلعت مفاجأة..<br>الخمس لفّات فازت 😄<br>كل لفّة لها جمهورها</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">شاورما دخنة ↗</a><a href="#" target="_blank" rel="noopener">شاورما مدخنة الخاصة ↗</a><a href="#" target="_blank" rel="noopener">شاورما دخنة عكاوي ↗</a><a href="#" target="_blank" rel="noopener">قرصان وسط ↗</a><a href="#" target="_blank" rel="noopener">فليفلة دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-6" id="copy-6">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-6">صوّتوا، والنتيجة طلعت مفاجأة 🏆<br>كل لفّة في شاورما دخنة طلع لها جمهور يدافع عنها، فقررنا: الخمس لفّات فازت 😄<br>شكرًا لكل اللي صوّت وعلّق.<br>وأنت، لو بتختار وحدة بس.. وش تختار؟<br><br>والجاي سؤال يرجّعك لزمان ⏳<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #انواع_الشاورما</span></div>
+    </div>
+  </div>
+</article><h3 class="wkh">الفصل 3: طعم زمان <span>· بوست 7 – 9</span></h3>
+<article class="post p2" id="post-7">
+  <header class="ph">
+    <span class="pn num">7</span>
+    <div class="pmeta"><span class="pd">بوست 7</span><span class="chip">طعم زمان</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk">
+  <div class="abs hd" style="top:7cqw;font-size:9.5cqw;padding:0 6cqw">تذكر أول شاورما<br>أكلتها؟</div>
+  <div class="polaroid" style="left:17cqw;width:66cqw;top:34cqw;transform:rotate(-4deg)">
+    <img src="assets/image-36cb48710c3e.webp" alt="">
+    <div class="stamp" style="right:6cqw;bottom:14cqw">'98 11 05</div>
+    <div style="position:absolute;bottom:2.5cqw;left:0;right:0;text-align:center;color:#5a3a3a;font-size:4.4cqw;font-family:var(--display)">أول شاورما.. مع مين؟</div>
+  </div>
+  <img class="lg bt" src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-7-0" id="copy-dt-7-0">نسخ</button></div><div class="dtx" id="dt-7-0">تذكر أول شاورما أكلتها؟<br>أول شاورما.. مع مين؟</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">شاورما دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-7" id="copy-7">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-7">تذكر أول شاورما أكلتها؟ 🌯<br>وين كانت، ومع مين، وكم كان عمرك؟<br>شاورما دخنة جات عشان ترجعك لذاك الطعم.<br>احكِ لنا قصتك في التعليقات، وأحلى القصص نحولها لتصاميم ننشرها.<br><br>وبعده نوريكم وش يصير للسيخ قبل ما يوصلكم 👀<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #شاورما_زمان #الرياض_زمان</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p3" id="post-8">
+  <header class="ph">
+    <span class="pn num">8</span>
+    <div class="pmeta"><span class="pd">بوست 8</span><span class="chip">ورا السيخ</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk">
+  <img class="fp" src="assets/image-ce3d8979b1a5.webp" style="top:0;bottom:0;left:0;width:48%;height:100%" alt="">
+  <div style="position:absolute;top:0;bottom:0;left:40%;width:12%;background:linear-gradient(90deg,transparent,#8E1A1C)"></div>
+  <div class="hd" style="position:absolute;top:8cqw;right:5cqw;width:46cqw;font-size:8cqw;text-align:right">طعم زمان<br>ما يجي<br>بالصدفة</div>
+  <div class="tl" style="top:46cqw;right:5cqw;width:44cqw">
+    <div><b>الصبح</b>التتبيلة</div>
+    <div><b>بعدها</b>تركيب السيخ</div>
+    <div><b>على مهل</b>الشوي</div>
+    <div><b>مع كل طلب</b>التقطيع الطازج</div>
+  </div>
+  <img src="assets/image-3159bb03e0d9.webp" alt="" style="position:absolute;bottom:4cqw;right:5cqw;width:20cqw">
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-8-0" id="copy-dt-8-0">نسخ</button></div><div class="dtx" id="dt-8-0">طعم زمان ما يجي بالصدفة<br>الصبح: التتبيلة<br>بعدها: تركيب السيخ<br>على مهل: الشوي<br>مع كل طلب: التقطيع الطازج</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">ملف الهوية (صورة السور، السيخ، واجهة العارض) ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-8" id="copy-8">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-8">طعم زمان ما يجي بالصدفة 👀<br>يوم كامل في حياة سيخ شاورما دخنة: تتبيلة من الصبح، شوي على مهل، وتقطيع طازج مع كل طلب.<br>تابع الرحلة في الصورة 👇<br><br>واللي يخطط لطلعة.. البوست الجاي له 🚗<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #كواليس</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p5" id="post-9">
+  <header class="ph">
+    <span class="pn num">9</span>
+    <div class="pmeta"><span class="pd">بوست 9</span><span class="chip">المواسم والعروض</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk">
+  <div class="abs hd" style="top:5cqw;font-size:9cqw">قائمة الطلعة ✅</div>
+  <div class="pad" style="right:9cqw;top:19cqw;width:56cqw;padding:3cqw 5cqw;transform:rotate(2.5deg)">
+    <div class="chk"><i>✓</i> الشلّة</div>
+    <div class="chk"><i>✓</i> السيارة</div>
+    <div class="chk"><i>✓</i> الشاحن</div>
+    <div class="chk" style="font-weight:700;color:#AE4241"><i>✓</i> وجبة 6 دخنة</div>
+  </div>
+  <img src="assets/image-75ad67c43535.webp" alt="" style="position:absolute;left:4cqw;right:4cqw;width:92cqw;bottom:4cqw;height:52cqw;object-fit:cover;border-radius:2cqw">
+  <div class="tag" style="left:7cqw;top:20cqw;transform:rotate(-6deg)">إجازة الخريف</div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-9-0" id="copy-dt-9-0">نسخ</button></div><div class="dtx" id="dt-9-0">قائمة الطلعة ✅<br>إجازة الخريف<br>✓ الشلّة<br>✓ السيارة<br>✓ الشاحن<br>✓ وجبة 6 دخنة</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">وجبة 6 دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-9" id="copy-9">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-9">جات الإجازة 🙌 وطلعات الرياض تبي وجبة تكفّي الكل.<br>قائمة الطلعة: الشلّة ✅ السيارة ✅ وجبة 6 دخنة مع البطاطس والمشروبات ✅<br>منشن اللي بيطلع معك هالإجازة.<br><br>وين أقرب دخنة لطلعتك؟ الجواب جاي 📍<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #طلعات_الرياض #اجازة_الخريف</span></div>
+    </div>
+  </div>
+</article><h3 class="wkh">الفصل 4: لمّتك علينا <span>· بوست 10 – 12</span></h3>
+<article class="post p6" id="post-10">
+  <header class="ph">
+    <span class="pn num">10</span>
+    <div class="pmeta"><span class="pd">بوست 10</span><span class="chip">وين أقرب دخنة</span><span class="fmt">كاروسيل · 4 شرائح</span></div>
+  </header>
+  <div class="mockrow multi"><div class="mockwrap"><div class="mk cream" style="background:#EFE3D3;color:#7A1517">
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 9cqw,rgba(122,21,23,.07) 9cqw 9.3cqw),repeating-linear-gradient(90deg,transparent 0 9cqw,rgba(122,21,23,.07) 9cqw 9.3cqw)"></div>
+  <div class="abs hd" style="top:6cqw;font-size:9cqw;color:#7A1517">ثلاث بوابات<br>لطعم زمان</div>
+  <svg viewBox="0 0 100 80" style="position:absolute;left:8cqw;top:34cqw;width:84cqw;height:60cqw" aria-hidden="true">
+    <path d="M10 40 C 20 15, 45 8, 62 14 S 92 30, 88 52 S 60 76, 38 72 S 4 60, 10 40 Z" fill="none" stroke="#AE4241" stroke-width="1" stroke-dasharray="3 2"/>
+  </svg>
+  <div class="pin" style="left:58cqw;top:50cqw"><i></i>الروضة</div>
+  <div class="pin" style="left:24cqw;top:62cqw"><i></i>النسيم</div>
+  <div class="pin" style="left:46cqw;top:38cqw"><i></i>العارض</div>
+  <img class="lg bt" src="assets/image-0c9c5f479be9.webp" alt="" style="width:20cqw">
+</div><span class="slab">الشريحة 1 من 4</span></div><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="arch" style="left:18cqw;right:18cqw;top:24cqw;height:64cqw;border-color:#fff"><img src="assets/image-a2f16b2108df.webp" alt=""></div>
+  <div class="abs hd" style="top:94cqw;font-size:9cqw">بوابة الروضة</div>
+  <div class="abs sm" style="top:106cqw">📍 شارع عبدالرحمن الغافقي</div>
+  
+</div><span class="slab">الشريحة 2 من 4</span></div><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="arch" style="left:18cqw;right:18cqw;top:24cqw;height:64cqw;border-color:#fff"><img src="assets/image-3dd5f772b93d.webp" alt=""></div>
+  <div class="abs hd" style="top:94cqw;font-size:9cqw">بوابة النسيم</div>
+  <div class="abs sm" style="top:106cqw">📍 شارع أبي هريرة</div>
+  
+</div><span class="slab">الشريحة 3 من 4</span></div><div class="mockwrap"><div class="mk">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="arch" style="left:18cqw;right:18cqw;top:24cqw;height:64cqw;border-color:#fff"><img src="assets/image-f322b3e28fbc.webp" alt=""></div>
+  <div class="abs hd" style="top:94cqw;font-size:9cqw">بوابة العارض</div>
+  <div class="abs sm" style="top:106cqw">📍 شارع الكوثر</div>
+  <div class="abs sm" style="top:114cqw;font-size:3.8cqw"><span class="pl2">احفظ البوست 🔖</span></div>
+</div><span class="slab">الشريحة 4 من 4</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">الشريحة 1</span><button type="button" class="copy" data-target="dt-10-0" id="copy-dt-10-0">نسخ</button></div><div class="dtx" id="dt-10-0">ثلاث بوابات لطعم زمان<br>الروضة · النسيم · العارض</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 2</span><button type="button" class="copy" data-target="dt-10-1" id="copy-dt-10-1">نسخ</button></div><div class="dtx" id="dt-10-1">بوابة الروضة<br>📍 شارع عبدالرحمن الغافقي</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 3</span><button type="button" class="copy" data-target="dt-10-2" id="copy-dt-10-2">نسخ</button></div><div class="dtx" id="dt-10-2">بوابة النسيم<br>📍 شارع أبي هريرة</div></div><div class="dt"><div class="caphead"><span class="dtl">الشريحة 4</span><button type="button" class="copy" data-target="dt-10-3" id="copy-dt-10-3">نسخ</button></div><div class="dtx" id="dt-10-3">بوابة العارض<br>📍 شارع الكوثر<br>احفظ البوست 🔖</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">شاورما دخنة ↗</a><a href="#" target="_blank" rel="noopener">بوكس عربي ↗</a><a href="#" target="_blank" rel="noopener">ملف الهوية (صورة السور، السيخ، واجهة العارض) ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-10" id="copy-10">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-10">وين أقرب شاورما دخنة لك؟ 📍<br>الروضة، النسيم، والعارض.. ثلاث بوابات لطعم زمان.<br>احفظ البوست عشان تلقاه وقت الجوع، ومنشن أحد ساكن قريب.<br><br>وجهّزوا الكراسي.. عندنا ضيف قريب 🎙️<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #شاورما_الروضة #شاورما_النسيم #شاورما_العارض</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p1" id="post-11">
+  <header class="ph">
+    <span class="pn num">11</span>
+    <div class="pmeta"><span class="pd">بوست 11</span><span class="chip">المنتج بطل</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk" style="background:radial-gradient(90% 80% at 50% 55%,#5E0E10,#2a0506)">
+  <div class="spot"></div>
+  <div class="tag" style="top:6cqw;right:50%;transform:translateX(50%)">ضيف الحلقة</div>
+  <div class="abs hd" style="top:17cqw;font-size:10cqw">يعرف يقرمش 😄</div>
+  <img class="cut" src="assets/image-0b86df73bc20.webp" style="left:4cqw;top:38cqw;width:56cqw;height:46cqw" alt="">
+  <img class="cut" src="assets/image-5a669c76226a.webp" style="right:4cqw;top:52cqw;width:52cqw;height:42cqw" alt="">
+  <div class="abs sm" style="bottom:12cqw;font-size:4.4cqw">بروست · مسحب · ستربس</div>
+  <div class="abs sm" style="bottom:5cqw"><span class="pl2">أنت فريق مين؟ قول لنا</span></div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-11-0" id="copy-dt-11-0">نسخ</button></div><div class="dtx" id="dt-11-0">ضيف الحلقة<br>يعرف يقرمش 😄<br>بروست · مسحب · ستربس<br>أنت فريق مين؟ قول لنا</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">المنيو (صور البروست والمسحب والستربس) ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-11" id="copy-11">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-11">ضيف الحلقة عند شاورما دخنة.. يعرف يقرمش 😄<br>بروست، مسحب، وستربس، عادي أو حار.<br>جرّبه مع الصوص السيجنتشر، وقول لنا: أنت فريق البروست، المسحب، ولا الستربس؟<br><br>وآخر بوست في الشهر.. دعوة ثانية، والمعزوم هالمرة الشلّة كلها 💌<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #بروست #مسحب</span></div>
+    </div>
+  </div>
+</article>
+<article class="post p5" id="post-12">
+  <header class="ph">
+    <span class="pn num">12</span>
+    <div class="pmeta"><span class="pd">بوست 12</span><span class="chip">المواسم والعروض</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk cream">
+  <div class="sadu t"></div><div class="sadu b"></div>
+  <img class="lg" src="assets/image-0c9c5f479be9.webp" style="top:8cqw;width:22cqw" alt="شعار شاورما دخنة">
+  <div class="abs sm" style="top:24cqw;font-size:3.6cqw;letter-spacing:.08em;color:#AE4241;font-weight:700">دعوة رسمية</div>
+  <div class="abs hd" style="top:30cqw;font-size:9cqw;color:#7A1517;padding:0 6cqw">يا شلّة..<br>أنتم معزومين</div>
+  <div class="arch" style="left:24cqw;right:24cqw;top:52cqw;height:44cqw"><img src="assets/image-40680c8ed793.webp" alt=""></div>
+  <div class="abs sm" style="top:99cqw;color:#7A1517;font-weight:600">لمّة شاورما كلوب · 24 قطعة<br><span style="font-weight:400">عشا الاستراحة جاهز</span></div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-12-0" id="copy-dt-12-0">نسخ</button></div><div class="dtx" id="dt-12-0">دعوة رسمية<br>يا شلّة.. أنتم معزومين<br>لمّة شاورما كلوب · 24 قطعة<br>عشا الاستراحة جاهز</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="#" target="_blank" rel="noopener">لمة شاورما كلوب ↗</a><a href="#" target="_blank" rel="noopener">شعار دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-12" id="copy-12">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-12">بدأنا الشهر بدعوة لأهل العارض، ونختمه بدعوة للشلّة 🌙<br>عشا الاستراحة الليلة؟ لمّة شاورما كلوب، 24 قطعة تكفّي الكل.<br>وديسمبر.. عندنا ليالي ما تنتسى 👀<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #شاورما_كلوب #استراحة</span></div>
+    </div>
+  </div>
+</article><h3 class="wkh">الفصل 5: افتتاح البوليفارد <span>· بوست 13</span></h3>
+<article class="post p6" id="post-13">
+  <header class="ph">
+    <span class="pn num">13</span>
+    <div class="pmeta"><span class="pd">بوست 13</span><span class="chip">وين أقرب دخنة</span><span class="fmt">بوست واحد</span></div>
+  </header>
+  <div class="mockrow"><div class="mockwrap"><div class="mk" style="background:radial-gradient(90% 70% at 30% 70%,#B3302F,#8E1A1C 55%,#5E0E10)">
+  <img class="lg " src="assets/image-3159bb03e0d9.webp" alt="شعار شاورما دخنة">
+  <div class="abs hd" style="top:29cqw;font-size:8.5cqw">ثلاث بوابات..</div>
+  <div class="abs hd" style="top:41cqw;font-size:12cqw;color:#FFE08A">صاروا أربع 🔓</div>
+  <div class="abs" style="top:62cqw;display:flex;justify-content:center;align-items:flex-end;gap:2.6cqw">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1.4cqw"><div style="width:16cqw;height:24cqw;border:1cqw solid rgba(255,255,255,.85);border-bottom:0;border-radius:8cqw 8cqw 0 0"></div><span style="font-size:3.2cqw;font-weight:600">الروضة</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:1.4cqw"><div style="width:16cqw;height:24cqw;border:1cqw solid rgba(255,255,255,.85);border-bottom:0;border-radius:8cqw 8cqw 0 0"></div><span style="font-size:3.2cqw;font-weight:600">النسيم</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:1.4cqw"><div style="width:16cqw;height:24cqw;border:1cqw solid rgba(255,255,255,.85);border-bottom:0;border-radius:8cqw 8cqw 0 0"></div><span style="font-size:3.2cqw;font-weight:600">العارض</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:1.4cqw"><div style="width:30cqw;height:40cqw;border:1.4cqw solid #F3D58A;border-bottom:0;border-radius:15cqw 15cqw 0 0;background:radial-gradient(circle at 50% 70%,rgba(255,226,140,.95),rgba(255,200,90,.35) 55%,transparent 75%);box-shadow:0 0 6cqw rgba(255,210,110,.75);display:grid;place-items:center;font-size:10cqw">🔓</div><span style="font-weight:800;font-size:4.4cqw;color:#FFE08A">البوليفارد</span></div>
+  </div>
+  <div class="abs sm" style="top:112cqw"><span class="pl2">البوابة الرابعة: البوليفارد · حيّاكم 📍</span></div>
+</div><span class="slab">بوست واحد</span></div></div>
+  <div class="pb">
+    <div class="pl">
+      <p class="lbl">المكتوب على التصميم</p>
+      <div class="dt"><div class="caphead"><span class="dtl">التصميم</span><button type="button" class="copy" data-target="dt-13-0" id="copy-dt-13-0">نسخ</button></div><div class="dtx" id="dt-13-0">ثلاث بوابات..<br>صاروا أربع 🔓<br>الروضة · النسيم · العارض<br>البوابة الرابعة: البوليفارد<br>حيّاكم 📍</div></div>
+      <p class="lbl">صور المنتج</p>
+      <div class="plinks"><a href="https://maps.app.goo.gl/GX44c1Q1H35U5yD27?g_st=ic" target="_blank" rel="noopener">لوكيشن فرع البوليفارد ↗</a><a href="#" target="_blank" rel="noopener">شعار دخنة ↗</a></div>
+    </div>
+    <div class="pr">
+      <div class="caphead"><p class="lbl">الكابشن والهاشتاقات</p><button type="button" class="copy" data-target="cap-13" id="copy-13">نسخ الكابشن</button></div>
+      <div class="cap" id="cap-13">ثلاث بوابات.. صاروا أربع 🔓<br>شاورما دخنة فتحت بوابتها الرابعة في البوليفارد، وطعم زمان صار أقرب لك.<br>📍 اللوكيشن في البايو<br>منشن اللي بتجيبه معك أول مرة 👀<br><br><span class="tags">#شاورما_دخنة #شاورما_الرياض #مطاعم_الرياض #شاورما_البوليفارد #مطاعم_البوليفارد</span></div>
+    </div>
+  </div>
+</article></div>
+</div></section>
+
+<section id="keywords"><div class="wrap">
+  <div class="sh"><h2>الكلمات المفتاحية</h2><p>انستقرام وتيك توك صاروا محركات بحث. الناس تكتب «شاورما العارض» أو «مطاعم شمال الرياض»، وهذي الكلمات تخلي بوستاتنا تطلع لهم.</p></div>
+  <div class="kwgrid"><div class="kwg"><h3>الأساسية (في كل بوست تقريبًا)</h3><div class="kws"><span class=kw>شاورما الرياض</span><span class=kw>شاورما دخنة</span><span class=kw>مطاعم الرياض</span></div></div><div class="kwg"><h3>الأحياء والفروع</h3><div class="kws"><span class=kw>شاورما العارض</span><span class=kw>مطاعم العارض</span><span class=kw>مطاعم شمال الرياض</span><span class=kw>شاورما الروضة</span><span class=kw>شاورما النسيم</span></div></div><div class="kwg"><h3>المنتجات</h3><div class="kws"><span class=kw>شاورما صاروخ</span><span class=kw>أنواع الشاورما</span><span class=kw>صوص ثوم</span><span class=kw>شاورما كلوب</span><span class=kw>بروست الرياض</span><span class=kw>مسحب حار</span></div></div><div class="kwg"><h3>المناسبات والمواقف</h3><div class="kws"><span class=kw>عشاء الويكند</span><span class=kw>طلعات الرياض</span><span class=kw>إجازة الخريف</span><span class=kw>عشا استراحة</span><span class=kw>وجبات عائلية الرياض</span></div></div><div class="kwg"><h3>قصة البراند</h3><div class="kws"><span class=kw>بوابة دخنة</span><span class=kw>الرياض زمان</span><span class=kw>شاورما زمان</span></div></div></div>
+</div></section>
+</main>
+</div>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.dataset.label=btn.textContent;
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.dataset.target);
+    var txt=el.innerText;
+    var done=function(){btn.textContent='تم النسخ';setTimeout(function(){btn.textContent=btn.dataset.label},1600)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='النص محدد، انسخه'};
+    try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(err){fallback()}
+  });
+});
+</script>
+
+</body></html>
+

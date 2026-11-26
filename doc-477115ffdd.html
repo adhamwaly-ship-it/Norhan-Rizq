@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>عهود · خطة المحتوى 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* VOICE: calm, literary, a wise friend — same voice as the @ohoud_almutlaq feed.
+   IDEA: the plan behaves like the feed itself: butter-yellow textured paper, sage cut-out collage, black scribbles, dragonflies.
+   PICTURE: real posts from the feed fanned in the hero; every post mock-up is a 4:5 artboard in that exact system.
+   COLOUR and TYPE: paper #dfd798 dominant, sage #66765c support, black ink accent; Alexandria heavy for headlines, IBM Plex Sans Arabic body.
+   LAYOUT: hero + mix row, insights, 4-week calendar, then one sheet per post: brief + mock-up right, copy-ready caption left. */
+:root{color-scheme:light dark;
+--paper:#dfd798;--paper2:#d3c97f;--sage:#66765c;--sage2:#55644c;--black:#151513;
+--bg:light-dark(#e7e0ad,#1d2019);--card:light-dark(#efe9bd,#262a21);
+--ink:light-dark(#151513,#efe9cf);--ink2:light-dark(#4f5a46,#b9c2ac);--line:light-dark(#c9bf78,#3a4133);--acc:light-dark(#55644c,#a9bb98)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 "IBM Plex Sans Arabic",Tahoma,sans-serif;overflow-x:clip;
+background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.01) 0 1px,transparent 1px 4px)}
+h1,h2,h3,h4,p{margin:0}h1,h2,h3{text-wrap:balance}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:max(16px,4vw)}
+.top{background:var(--paper);color:var(--black);border-bottom:6px solid var(--sage);
+background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.018) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.015) 0 1px,transparent 1px 4px)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:32px;align-items:center;padding-block:40px 48px}
+.hero .logo{width:150px;display:block;margin-bottom:10px}
+.eyebrow{color:var(--sage);font-weight:700}
+.hero h1{font-family:Alexandria,sans-serif;font-weight:800;font-size:clamp(2.2rem,5.4vw,3.4rem);line-height:1.3;margin-top:6px}
+.hero h1 em{font-style:normal;color:var(--sage)}
+.hero .sub{margin-top:14px;max-width:52ch;font-size:1.05rem;color:#2c3026}
+.hero .src{margin-top:12px;font-size:.9rem;color:var(--sage2)}
+.fan{position:relative;height:clamp(320px,40vw,440px)}
+.fan img{position:absolute;width:54%;top:6%;box-shadow:0 18px 36px -16px rgba(0,0,0,.45);border-radius:2px}
+.fan img:nth-child(1){inset-inline-end:0;transform:rotate(7deg)}
+.fan img:nth-child(2){inset-inline-start:0;transform:rotate(-7deg)}
+.fan img:nth-child(3){inset-inline-start:23%;top:0;z-index:2}
+.fan small{position:absolute;bottom:0;inset-inline-start:0;font-size:.8rem;color:var(--sage2)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.fan{height:360px;max-width:460px}}
+.mix{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--black)}
+.mix div{padding:12px 10px;text-align:center;border-inline-start:1px solid rgba(0,0,0,.15)}
+.mix div:first-child{border:0}
+.mix b{display:block;font-family:Alexandria,sans-serif;font-weight:800;font-size:1.9rem;line-height:1.3}
+.mix small{color:var(--sage2);font-weight:600}
+section.blk{padding-block:48px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:20px}
+section.blk>h2{font-family:Alexandria,sans-serif;font-weight:800;font-size:2rem;line-height:1.35}
+section.blk>h2 em{font-style:normal;color:var(--acc)}
+.lead{max-width:70ch;font-size:1.05rem}
+.ins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ins div{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px}
+.ins b{display:block;font-family:Alexandria,sans-serif;font-weight:700;font-size:1.1rem;color:var(--acc);line-height:1.5;margin-bottom:4px}
+.ins p{font-size:.95rem;color:var(--ink2)}
+@media(max-width:760px){.ins{grid-template-columns:1fr}}
+.cal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.wk h3{font-size:.95rem;color:var(--ink2);font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px}
+.ci{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:8px}
+.ci:hover,.ci:focus-visible{border-color:var(--sage);outline:none}
+.ci span{font-size:.8rem;color:var(--ink2)}.ci b{font-weight:700;line-height:1.5}
+@media(max-width:860px){.cal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.cal{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:.78rem;font-weight:600;padding:1px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.f-c{background:var(--sage);color:#f3efd2;border-color:var(--sage)}
+.f-s{background:transparent;border-color:var(--ink);color:var(--ink)}
+.f-r{background:var(--black);color:var(--paper);border-color:var(--black)}
+.post{padding-block:40px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+.ph{display:flex;gap:18px;align-items:flex-start}
+.pn{font-family:Alexandria,sans-serif;font-size:3.2rem;line-height:1;color:var(--acc);font-weight:800;min-width:60px}
+.ph h3{font-family:Alexandria,sans-serif;font-weight:800;font-size:1.65rem;line-height:1.45}
+.pb{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:30px;margin-top:20px}
+.col{display:flex;flex-direction:column;gap:16px}
+@media(max-width:860px){.pb{grid-template-columns:1fr}}
+.lbl{font-size:.82rem;font-weight:700;color:var(--ink2);margin-bottom:6px}
+.note{font-size:.9rem;background:var(--card);border:1px dashed var(--sage);padding:8px 12px;border-radius:4px}
+.note b{color:var(--acc)}
+/* artboards in the feed's system */
+.art{position:relative;aspect-ratio:4/5;width:100%;max-width:340px;background:var(--paper);color:var(--black);overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:19% 8% 11%;gap:2px;box-shadow:0 10px 26px -18px rgba(0,0,0,.6);
+background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.018) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.015) 0 1px,transparent 1px 4px)}
+.art .lg{position:absolute;top:4.5%;left:50%;transform:translateX(-50%);width:20%}
+.art .h1{font-family:Alexandria,sans-serif;font-weight:800;color:var(--sage);font-size:clamp(.95rem,2.6vw,1.25rem);line-height:1.5}
+.art .h2{font-family:Alexandria,sans-serif;font-weight:800;color:var(--black);font-size:clamp(1.2rem,3.4vw,1.65rem);line-height:1.45}
+.art .cut{position:relative;flex:1;width:82%;margin-top:7%;display:flex;align-items:center;justify-content:center}
+.art .blob{position:absolute;inset:0;background:var(--sage);clip-path:polygon(14% 6%,46% 0,63% 9%,88% 4%,97% 30%,90% 52%,100% 78%,78% 98%,50% 92%,22% 100%,4% 80%,10% 55%,0 30%)}
+.art .cut span{position:relative;font-size:.72rem;line-height:1.6;color:#eeead0;padding:0 14%}
+.art .ft{position:absolute;bottom:3%;inset-inline-end:5%;font:italic .62rem/1 sans-serif;color:var(--sage);direction:ltr;letter-spacing:.02em}
+.art .xx{position:absolute;bottom:3%;inset-inline-start:5%;font-size:.65rem;color:var(--sage)}
+.art .df{position:absolute;width:7%;color:var(--sage)}
+.art .df.a{top:45%;inset-inline-start:7%;transform:rotate(25deg)}
+.art .df.b{top:58%;inset-inline-end:8%;transform:rotate(-20deg)}
+.art .sc{position:absolute;color:var(--black);pointer-events:none}
+.art .num{position:absolute;top:5%;inset-inline-start:6%;font-weight:700;font-size:.62rem;color:var(--sage)}
+.car{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.car .art{flex:0 0 250px;max-width:250px;scroll-snap-align:start;padding:16% 7% 9%}
+.car .art.hs{padding-bottom:20%}
+.car .art{justify-content:center}.car .art .h1{font-size:.92rem}.car .art .h2{font-size:1.12rem}.car .art .cut span{font-size:.58rem}
+.carnav{display:flex;gap:8px}
+.carnav button{min-width:44px;min-height:36px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:4px;font:inherit;cursor:pointer}
+.carnav button:focus-visible{outline:2px solid var(--sage)}
+.rv{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:16px;align-items:start}
+@media(max-width:600px){.rv{grid-template-columns:1fr}.rv .art{max-width:220px}}
+.reel{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.reel li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.reel .t{font-weight:700;color:var(--acc);font-size:.85rem;white-space:nowrap;direction:ltr;text-align:right}
+.reel .o{display:block;margin-top:4px;font-size:.85rem;color:var(--ink2)}
+.reel .o::before{content:"على الشاشة: ";font-weight:700}
+.cap{background:var(--sage2);color:#f3efd6;border-radius:4px;padding:14px 16px}
+.cap-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cap .lbl{color:#d9dcc4;margin:0}
+.cap pre{white-space:pre-wrap;font:inherit;font-size:.96rem;line-height:1.95;margin:10px 0 0}
+.tags{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.25);color:var(--paper);font-size:.9rem}
+.copy{font:inherit;font-size:.82rem;font-weight:700;background:var(--paper);color:var(--black);border:0;border-radius:3px;padding:6px 14px;min-height:36px;cursor:pointer}
+.copy:hover,.copy:focus-visible{background:#fff;outline:none}
+.srcc{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px}
+.srcc b{font-family:Alexandria,sans-serif;font-size:1.1rem;display:block}
+.srcc p:last-child{color:var(--ink2);font-size:.92rem}
+.cv{position:relative;flex:none;width:72px;aspect-ratio:2/3;background:var(--paper2);border:1px dashed var(--sage);border-radius:2px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cv span{font-size:.65rem;color:var(--sage2);text-align:center}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.art.hs{padding-bottom:22%}
+.art .bk{position:absolute;bottom:7.5%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;background:var(--paper);padding:3px 8px 3px 6px;border:1px solid var(--sage);border-radius:2px;z-index:2;white-space:nowrap}
+.art .bc{position:relative;width:16px;aspect-ratio:2/3;background:var(--sage);border-radius:1px;overflow:hidden;flex:none}
+.art .bc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.art .bk span{font-size:.5rem;line-height:1.35;color:var(--sage2);text-align:start}
+.art .bk b{display:block;font-size:.62rem;color:var(--black)}
+.car .art.hs{padding-bottom:22%}
+.art .bk{padding:2px 5px}.car .art .bk span{font-size:.42rem}.car .art .bk b{font-size:.5rem}
+footer{padding-block:32px;text-align:center;color:var(--ink2);font-size:.88rem}
+@media(prefers-reduced-motion:no-preference){.fan img{transition:transform .5s}.fan:hover img:nth-child(1){transform:rotate(11deg) translateX(-8px)}.fan:hover img:nth-child(2){transform:rotate(-11deg) translateX(8px)}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap hero">
+    <div>
+      <img class="logo" src="img/logo.png" alt="عهود">
+      <p class="eyebrow">مكتبة عهود · البلان رقم 3</p>
+      <h1><em>«أحلام على كرسي هزاز»</em><br>في 12 بوست</h1>
+      <p class="sub">شهر كامل من الثقة بالنفس، والدعم اللي يبني، ورفقاء الدرب، وألوان الحياة. كل فكرة من الكتاب مربوطة بحقيقة علمية أو قصة موثّقة، وبصوت عهود: صديقة حكيمة، هادية، وما تنظّر.</p>
+      <p class="src">المصدر: كتاب «أحلام على كرسي هزاز» للكاتبة ناهد أحمد</p>
+    </div>
+    <div class="fan"><img src="img/ref3.jpg" alt=""><img src="img/ref2.jpg" alt=""><img src="img/ref1.jpg" alt="تصميم من حساب عهود"></div>
+  </div>
+  <div class="wrap mix">
+    <div><b>12</b><small>بوست</small></div>
+    <div><b>7</b><small>كاروسيل</small></div>
+    <div><b>5</b><small>صورة مفردة</small></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+
+  <section id="posts"></section>
+</main>
+
+<script>
+{
+const BOOK='من «أحلام على كرسي هزاز»';
+const BK=`<div class="bk"><i class="bc"><img src="img/cover.jpg" alt="" onerror="this.remove()"></i><span>من كتاب<b>«أحلام على كرسي هزاز»</b>ناهد أحمد</span></div>`;
+const SRC='📖 اقتباس من كتاب «أحلام على كرسي هزاز» للكاتبة ناهد أحمد';
+const CARD=`<div class="srcc"><div class="cv"><img src="img/cover.jpg" alt="غلاف كتاب أحلام على كرسي هزاز" onerror="this.remove()"><span>غلاف الكتاب</span></div><div><p class="lbl">مصدر الاقتباس</p><b>«أحلام على كرسي هزاز»</b><p>للكاتبة ناهد أحمد</p></div></div>`;
+const P=[
+{id:1,t:'لا تقيس نفسك بعجز غيرك',ax:'وعي نفسي وتعافي',f:'c',
+idea:'نفكك الجملة اللي توقف كثير: «حتى فلان ما قدر». عجز الآخرين تجربتهم، مو سقفك.',
+slides:[['كم مرة قلت «ما أقدر»..','بس لأن غيرك ما قدر؟'],['عجزهم تجربتهم هم..','مو سقفك أنت.'],['صغر سنك، اختلافك، بدايتك المتأخرة..','ما تحدد وش تقدر تسوي.'],['القوة الحقيقية ما تبان في الراحة..','تبان أول ما تواجه.'],['اللي ظنيته مستحيل..','أحياناً كان بس «ما جرّبته».'],['قيمتك ما تنقاس بمسطرة أحد.','']],
+note:'الغلاف بكولاج شريط القياس، والشرائح الوسطى نص بس مع خربشة سوداء تحت الكلمة المهمة. آخر شريحة نفس كولاج الغلاف عشان تقفل الدائرة.',
+cap:`«حتى فلان ما قدر.. أجل أنا وش بسوي؟»
+هالجملة وقّفت أحلام كثيرة قبل لا تبدأ.
+
+نسمع قصص اللي حاولوا وتعثروا، ونقيس نفسنا عليهم بدون ما نحس. كأن حدود غيرنا صارت خريطة لنا.
+
+بس كل إنسان له ظروفه وتوقيته وأدواته. وعجز أحد عن شي ما هو حكم عليك.
+
+في «أحلام على كرسي هزاز» تقول ناهد أحمد إن قوتنا الحقيقية كثير مرات ما نكتشفها إلا وقت التحدي، واللي كنا نشوفه مستحيل يصير ممكن بالثقة والإرادة.
+
+فقبل «ما أقدر».. عطِ نفسك فرصة «خلني أشوف».
+
+وش الشي اللي قلت عنه «ما أقدر» وطلعت تقدر؟ 🤍 شاركنا في التعليقات.`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #الثقة_بالنفس #تطوير_الذات #وعي_نفسي #السعودية'},
+
+{id:2,t:'أمس كنا نحبو.. واليوم نمشي',ax:'مساحة تأمل',f:'s',
+idea:'تذكير لطيف إن التدرج طبيعي، والتعثر جزء من المشي مو نهايته. بوست حفظ أكثر منه تعليق.',
+art:['أمس كنا نحبو..<br>واليوم نمشي.','ليش مستعجلين على أنفسنا؟'],
+note:'مساحة فاضية كبيرة، و«نحبو» بالسيج و«نمشي» بالأسود مع مط في الحروف زي أسلوب الحساب.',
+cap:`محد انولد يمشي. 🤍
+
+كلنا بدينا نحبو، وطحنا، وقمنا.. ومحد كان يقول عننا «فاشلين».
+
+ليش إذا كبرنا صرنا نحاسب نفسنا على كل تعثر كأنه النهاية؟
+
+المهارة الجديدة، الوظيفة الجديدة، حتى التعافي من شي وجعك.. كلها تبدأ بخطوات صغيرة ومهزوزة. وهذا طبيعي جداً.
+
+التعثر المؤقت مو فشل.. هو جزء من المشي.
+
+احفظ هالبوست ليوم تحس فيه إنك متأخر عن الكل.`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #راحة_البال #تقدير_الذات #خطوات_صغيرة #السعودية'},
+
+{id:3,t:'الدعم اللي يبني.. والدعم اللي يقيّد',ax:'علاقات وحدود',f:'c',
+idea:'الفرق بين شريك يكبّرك وشريك يحتاجك صغير. الدعم الزايد ممكن يتحول لسيطرة واتكالية تقتل الطموح.',
+slides:[['مو كل «أنا معك»..','دعم.'],['فيه دعم يقول:','«روح.. وأنا وراك.»'],['وفيه دعم يقول:','«لا تروح.. أنا أسويها عنك.»'],['الأول يكبّرك..','والثاني يخليك محتاج له دايم.'],['متى يصير الدعم قيد؟','لما تستأذن في أحلامك..<br>وتتردد تقرر لحالك..<br>وتحس نجاحك يزعجه.'],['الشريك الحقيقي يفرح لما تقدر توقف بدونه..','ويختار يبقى جنبك.']],
+note:'شريحتي 2 و3 بنفس التكوين بالضبط، بس كولاج اليدين ممسكة في 2 ومتفكة في 3، عشان المقارنة تبان من أول نظرة.',
+cap:`«أنا أبيك ترتاح.. خلني أشيل عنك كل شي.»
+تبان حنية، صح؟ بس أحياناً هي أول خيط في قيد ما تشوفه.
+
+الدعم الصحي بين الشريكين يشبه اليد اللي تمسكك وأنت تتعلم المشي.. وتفكّك بالوقت المناسب.
+
+أما الدعم اللي يتحول لسيطرة، فيخليك تعتمد عليه في كل شي، لين تنسى إنك قادر أصلاً. ومع الوقت يضعف طموحك، وتصغر مساحتك، وتصير قراراتك بإذن.
+
+الحب ما ينقاس بكمية اللي يسويه عنك.. ينقاس بكمية اللي يساعدك تصيره.
+
+وأنت.. شريكك يكبّرك ولا يحتاجك صغير؟ 🤍
+ولو أحد على بالك يحتاج يقرا هذا.. أرسله له.`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #علاقات_صحية #حدود_نفسية #الاستقلالية #السعودية'},
+
+{id:4,t:'«ذكي» ولا «تعبت عليها»؟',ax:'حقيقة نفسية ملهمة',f:'r',
+idea:'تجربة كارول دويك على مدح الأطفال (1998) تثبت اللي يقوله الكتاب: امدح المحاولة مو الذكاء، وخلّه يجرّب بنفسه.',
+reel:[['0–3ث','لما تمدح طفلك وتقول «ذكي».. فيه احتمال إنك تخوّفه من الغلط.','«ذكي»؟ 🤔'],
+['3–15ث','في التسعينات، الباحثة كارول دويك وفريقها أعطوا أطفال ألغاز. نصهم انمدحوا على ذكائهم، والنص الثاني على مجهودهم.','نص: «أنت ذكي» · نص: «تعبت عليها»'],
+['15–30ث','بعدها خيّروهم بين لغز سهل وصعب. أغلب اللي انمدحوا على ذكائهم اختاروا السهل، خافوا يخسرون لقب «الذكي». واللي انمدحوا على تعبهم اختاروا التحدي.','الذكاء ← السهل · المجهود ← التحدي'],
+['30–42ث','ولما جات أسئلة صعبة، اللي انمدحوا على ذكائهم أداؤهم نزل أكثر بعدها.','الخوف من الغلط يوقف المحاولة'],
+['42–52ث','ناهد أحمد في «أحلام على كرسي هزاز» تقولها ببساطة: امدح جهده، لا تسوي كل شي عنه، وخلّه يخطي ويتعلم.','امدح المحاولة 🤍'],
+['52–60ث','الطفل اللي ينمدح على تعبه.. يكبر وهو مو خايف يحاول. وش أكثر كلمة تشجيع تذكرها من طفولتك؟','اكتبها في التعليقات']],
+note:'المصدر: Mueller & Dweck (1998) في مجلة Journal of Personality and Social Psychology. تصوير عهود للكاميرا مع لقطات B-roll لأطفال يلعبون بألغاز (بدون وجوه واضحة).',
+cap:`«شاطر.. ذكي».. ولا «تعبت عليها وطلعت حلوة»؟
+فرق كلمة، بس أثرها يكبر مع الطفل سنين. 🤍
+
+التجربة اللي في البوست من أشهر تجارب علم النفس التربوي (Mueller & Dweck, 1998)، وخلاصتها بسيطة: لما نمدح الذكاء، الطفل يخاف يغلط. ولما نمدح المحاولة، يتعلم إن الغلط طريق.
+
+وإنك تخليه يحاول بنفسه حتى لو تأخر.. هذا بحد ذاته رسالة ثقة.
+
+وش الكلمة اللي قالها لك أحد وأنت صغير وما نسيتها؟`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #التربية_الواعية #ثقة_الطفل #علم_النفس #السعودية'},
+
+{id:5,t:'صاحب النظارة السوداء',ax:'علاقات وحدود',f:'s',
+idea:'من فصل «رفقاء الدرب»: أصحاب النظارة الوردية والسوداء. كيف تحمي حلمك من التشاؤم بدون قسوة.',
+art:['مو كل اللي يمشي معك..<br>يشوف طريقك.','بعض الرفقة تطفّي الحماس بجملة: «لا تتعب نفسك».'],
+note:'كولاج امرأة بنظارة دائرية: عدسة مظللة أسود وعدسة بالسيج، وخربشة سوداء خفيفة حول العدسة الغامقة.',
+cap:`«لا تتعب نفسك.. ما راح تزبط.»
+جملة صغيرة، بس كم حلم وقّفت؟
+
+ناهد أحمد في «أحلام على كرسي هزاز» تقسم الناس لأصحاب نظارة وردية يشوفون في كل عقبة فرصة، وأصحاب نظارة سوداء يتراجعون من أول صعوبة.. ويسحبون اللي حولهم معهم.
+
+حماية طاقتك من التشاؤم مو قسوة ولا تكبّر. تقدر تحبهم وتسمعهم، بس ما تسلّمهم قرارك.
+
+الحد هنا بسيط: «أقدّر خوفك علي.. بس هالشي أبي أجربه.»
+
+مين في حياتك يشوف أحلامك أكبر مما تشوفها أنت؟ 🤍`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #حدود_نفسية #حماية_الطاقة #رفقاء_الدرب #السعودية'},
+
+{id:6,t:'ليش السجادة حمراء؟',ax:'قصة ثقافية ملهمة',f:'c',
+idea:'تاريخ السجادة الحمراء من مسرحية إغريقية لقطارات نيويورك، ونربطها بفكرة الكتاب: الأحمر لون الألفة، يقول للضيف «لست غريباً».',
+slides:[['ليش السجادة حمراء..','مو زرقاء ولا ذهبية؟'],['قبل أكثر من 2400 سنة','في مسرحية «أجاممنون» لإسخيلوس، يُفرش طريق أحمر لملك راجع من الحرب.'],['وقتها الأصباغ القوية كانت غالية ونادرة..','فالأحمر تحت رجلك يعني: أنت غالي.'],['وفي 1902','فرشت شركة قطارات في نيويورك سجاد أحمر لركاب قطارها الفاخر.. ومنها جات عبارة «red carpet treatment».'],['ناهد أحمد تشوفه لون الألفة:','رسالة للضيف إنه «مو غريب».'],['الناس اللي يدخلون حياتك..','يحسون إنهم غرباء؟ ولا في بيتهم؟']],
+note:'البوست الوحيد اللي يدخل فيه لون أحمر: السجادة بس ملونة أحمر غامق وسط الكولاج الأبيض والأسود، وتمتد عبر الشرائح كطريق واحد وقت السحب.',
+cap:`ليش السجادة حمراء بالذات؟ 🤍
+
+أقدم ذكر لها في مسرحية «أجاممنون» لإسخيلوس (458 قبل الميلاد)، لما يُفرش طريق أحمر لملك راجع من الحرب. وقتها الصبغة القوية كانت غالية، فالأحمر كان معناه: أنت مقدَّر.
+
+وبعد أكثر من ألفين سنة، في 1902، فرشت شركة قطارات في نيويورك سجاد أحمر لركاب قطارها الفاخر، ومن هنا انتشرت عبارة «red carpet treatment».
+
+ناهد أحمد في «أحلام على كرسي هزاز» تشوف فيه معنى أدفى: لون الانتماء والألفة، كأنك تقول للضيف «أنت مو غريب هنا».
+
+والسؤال الأجمل: الناس اللي يدخلون حياتك.. يحسون إنهم غرباء، ولا في بيتهم؟
+
+ولا تنسى تفرشها لنفسك بعد. 🤍
+احفظ البوست وشاركه مع أحد يخليك تحس إنك في بيتك.`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #معلومة_ملهمة #الألوان #علاقات #السعودية'},
+
+{id:7,t:'المعمل الداخلي: مين يلوّن يومك؟',ax:'وعي نفسي وتعافي',f:'c',
+idea:'الكتاب يقول تجاربنا من الطفولة تتخزن في «معمل خفي» يلوّن أفكارنا. نضيف أداة عملية: تسمية الشعور تهدّي الدماغ.',
+slides:[['نفس اليوم.. نفس الظروف.','ليش واحد يشوفه رمادي، وواحد يشوفه ملوّن؟'],['داخل كل واحد فينا «معمل» خفي..','يخزّن تجاربنا من الطفولة.'],['هالمعمل يلوّن أفكارنا..','قبل لا ننتبه.'],['الخبر الحلو:','الألوان القديمة مو قدر.'],['جرّب تسمّيها:','«هالإحساس من تجربة قديمة.. مو من اليوم.»'],['يومك يستاهل..','يتلوّن بألوانك أنت.']],
+note:'الكولاج يبدأ رمادي باهت في الشريحة 1 ويزيد فيه السيج شوي شوي لين الأخيرة. المصدر العلمي في الكابشن: Lieberman وآخرون، UCLA، 2007.',
+cap:`نفس اليوم، نفس الظروف.. بس واحد يشوفه رمادي، وواحد يشوفه ملوّن. ليش؟
+
+في «أحلام على كرسي هزاز» تقول ناهد أحمد إن داخلنا «معمل» خفي يخزّن كل تجاربنا من الطفولة، وهو اللي يلوّن أفكارنا ومشاعرنا: يا بألوان الطيف، يا بلون غيم الشتاء.
+
+بس الألوان القديمة مو قدر.
+
+دراسة من جامعة كاليفورنيا (2007) لاحظت إن مجرد تسمية الشعور بالكلمات يخفف نشاط «اللوزة الدماغية»، المسؤولة عن ردة الفعل العاطفية.
+
+يعني لما تقول لنفسك «هالضيق من تجربة قديمة، مو من اللي صار اليوم».. أنت فعلياً تهدّي دماغك.
+
+وش اللون اللي تبي يومك يتلون فيه هالأسبوع؟ 🤍`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #وعي_نفسي #الذكاء_العاطفي #تسمية_المشاعر #السعودية'},
+
+{id:8,t:'العمر قوس مطر',ax:'مساحة تأمل',f:'r',
+idea:'ريل تأملي هادئ: مراحل العمر ألوان متدرجة، ولكل لون جماله. عن تقبل العمر بسلام بدل مقاومته.',
+reel:[['0–3ث','متى آخر مرة قلت «كبرت».. وأنت متضايق؟','«كبرت» 🌧️'],
+['3–12ث','ناهد أحمد تشبّه العمر بقوس المطر.. ألوان متدرجة، ولكل لون سحره.','العمر قوس مطر'],
+['12–30ث','الطفولة.. الدهشة. المراهقة.. الأسئلة. الشباب.. المحاولة. النضج.. الهدوء. والكهولة.. الحكمة.','كل كلمة بلون من ألوان الطيف'],
+['30–42ث','فيه ناس يمشون مع ألوانهم بسلام.. وناس يقاومون كل لون جديد كأنه خسارة.','تقبّل ✦ مقاومة'],
+['42–52ث','وقوس المطر ما يقاوم.. يطلع في وقته، يترك أثره الجميل، ويمشي بهدوء.','اترك أثرك.. بهدوء'],
+['52–60ث','وش أحلى شي عطاك إياه عمرك الحالي؟','شاركنا في التعليقات 🤍']],
+note:'فويس أوفر بصوت عهود الهادي، مع لقطات سماء بعد المطر وموسيقى بيانو خفيفة. النص يظهر كلمة كلمة بتدرج ألوان الطيف.',
+cap:`العمر مو عدّاد ينقص.. العمر قوس مطر. 🌈
+
+من الطفولة للمراهقة، للشباب، لحكمة النضج.. كل مرحلة لها لون ما يتكرر.
+
+في «أحلام على كرسي هزاز» تقول ناهد أحمد إن الناس فريقين: فريق يتقبل تدرج العمر بسلام ويشوف كل مرحلة تجربة تنضاف لرحلته، وفريق يقاوم كل علامة جديدة كأنها خسارة.
+
+وقوس المطر ما يقاوم.. يطلع في وقته، لهدف معين، ويترك أثر جميل ويمشي.
+
+وش أحلى شي عطاك إياه عمرك الحالي؟ 🤍`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #تقبل_الذات #راحة_البال #مراحل_العمر #السعودية'},
+
+{id:9,t:'احمرار الوجه.. أكثر تعابيرنا إنسانية',ax:'حقيقة نفسية ملهمة',f:'s',
+idea:'الكتاب يقول احمرار الوجه يحمل الشي وعكسه: خجل وغضب. ونربطه بداروين وبحث حديث: اللي يحمر وجهه بعد غلطة، الناس تثق فيه أكثر.',
+art:['«احمرار الوجه..<br>أكثر التعابير إنسانية»','تشارلز داروين، 1872'],
+note:'تصميم اقتباس بنفس قالب الحساب، و«احمرار» بالسيج مع خربشة تحتها. المصادر: داروين (1872)، ودراسة Dijk وآخرين (2009).',
+cap:`اللي يحمرّ وجهه.. يهمّه. 🤍
+
+داروين في كتابه عن تعابير المشاعر (1872) وصف احمرار الوجه بأنه أغرب تعابير الإنسان وأكثرها إنسانية، لأنه ما نقدر نصطنعه ولا نخبّيه.
+
+وفي «أحلام على كرسي هزاز» تلفت ناهد أحمد إن الاحمرار نفسه يحمل الشي وعكسه: خجل وحياء مرة، وغضب مرة.
+
+والجميل؟ دراسة هولندية (2009) لاحظت إن الناس يسامحون ويثقون أكثر في اللي يحمرّ وجهه بعد غلطة.. لأنه يبيّن إنه يهتم.
+
+فلا تخجل من خجلك. حساسيتك مو ضعف، هي دليل إنك تحس.
+
+متى آخر مرة احمرّ وجهك؟ 😅`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #علم_النفس #معلومة_ملهمة #تقبل_الذات #السعودية'},
+
+{id:10,t:'إلى الأم اللي ما أحد يشوف تعبها',ax:'مساحة تأمل',f:'c',
+idea:'رسالة دافية لأمهات الأطفال ذوي الإعاقة: الطفل المختلف هبة وأمانة، لا تقارنيه، ونظرات الناس مو مسؤوليتك، وأنتِ تستاهلين الفخر.',
+slides:[['إلى الأم اللي','ما أحد يشوف تعبها..'],['طفلك مو نقص ولا عيب..','هو هبة وأمانة.'],['لا تقيسينه بمسطرة غيره.','خطوته الصغيرة إنجاز كبير.'],['نظرات الناس مو مسؤوليتك..','حقه في حياة كريمة هو اللي يستاهل وقفتك.'],['وأنتِ؟','تستاهلين الراحة، والفخر، وأحد يسألك «كيفك أنتِ؟»'],['ارفعي راسك.','اللي تسوينه أمومة بأصفى صورها.']],
+note:'هذا البوست الوحيد بخطاب مؤنث مقصود. بدون صور أطفال، فقط يدين أو عناصر رمزية، احتراماً للخصوصية.',
+cap:`هذا البوست لأم وحدة.. يمكن تعرفينها، ويمكن تكونين أنتِ. 🤍
+
+الأم اللي طفلها «مختلف» تعيش جهد مضاعف ما أحد يشوفه: مواعيد، وتعب، وصبر، ونظرات ناس أحياناً أقسى من الظرف نفسه.
+
+في «أحلام على كرسي هزاز» تقول ناهد أحمد إن هالطفل مو وصمة ولا نقص، بل هبة وأمانة، وإنه قادر يعطي وينتج بطريقته هو.
+
+فلا تقارنينه بغيره، ولا تخلين جهل الناس يكسر معنوياتك أو يخليك تعزلينه. ولا تنسين نفسك وسط كل هذا.
+
+ارفعي راسك.. اللي تسوينه أمومة صافية بدون انتظار مقابل.
+
+منشني أم تستاهل تسمع هالكلام اليوم. 🤍`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #ذوي_الإعاقة #أصحاب_الهمم #أمومة #السعودية'},
+
+{id:11,t:'تأثير بيجماليون: لما أحد يؤمن فيك',ax:'قصة علمية ملهمة',f:'r',
+idea:'تجربة روزنثال وجاكوبسون (1968): توقعات المعلمين غيّرت نتائج طلابهم. نفس فكرة الكتاب عن رفيق الدرب اللي يؤمن فيك لما تشك.',
+reel:[['0–3ث','تقدر تخلي أحد ينجح.. بس لأنك صدّقت فيه؟','صدّقت فيه.. فنجح؟'],
+['3–18ث','في 1968، باحثين اختبروا طلاب مدرسة ابتدائية، وقالوا للمعلمين إن مجموعة منهم «راح يزهرون» هالسنة. الحقيقة؟ الأسماء كانت مختارة عشوائياً.','الأسماء كانت عشوائية'],
+['18–32ث','بعد سنة، كثير من هالطلاب تحسنت نتائجهم أكثر من زملائهم. ليش؟ لأن المعلمين عاملوهم بطريقة ثانية: انتباه أكثر، ودفا أكثر، وفرص أكثر.','التوقع غيّر المعاملة'],
+['32–45ث','وهذا اللي تقوله ناهد أحمد عن رفيق الدرب الحقيقي: يؤمن بقدراتك لما تشك فيها، ويعطيك القوة لما تضعف.','رفيق الدرب = إيمان فيك'],
+['45–55ث','والعكس صحيح.. التوقعات السلبية بعد تأثر. فانتبه مين يتوقع منك.. وكن أنت التوقع الحلو لأحد.','كن التوقع الحلو لأحد'],
+['55–60ث','مين أول شخص آمن فيك؟','منشنه 🤍']],
+note:'المصدر: Rosenthal & Jacobson (1968)، «Pygmalion in the Classroom». حجم التأثير عليه نقاش علمي، فالريل يقول «كثير منهم» بدون أرقام مبالغ فيها.',
+cap:`صدّقت فيه.. فنجح. 🤍
+
+في 1968 قال باحثين لمعلمين في مدرسة ابتدائية إن مجموعة من الطلاب متوقع منهم «يزهرون» هالسنة. الأسماء كانت عشوائية، بس كثير من هالطلاب تحسنوا أكثر من غيرهم، لأن المعلمين صاروا يعاملونهم بثقة وانتباه أكبر.
+
+اسمها «تأثير بيجماليون»: توقعات الناس منا تأثر في معاملتهم لنا، ومعاملتهم تأثر فينا.
+
+وهذا معنى رفيق الدرب في «أحلام على كرسي هزاز»: اللي يؤمن فيك لما تشك في نفسك.
+
+مين أول شخص آمن فيك؟ منشنه وقل له شكراً. 🤍`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #علم_النفس #تأثير_بيجماليون #رفقاء_الدرب #السعودية'},
+
+{id:12,t:'أنا رفيق درب لمين؟',ax:'علاقات وحدود',f:'r',
+idea:'ختام الشهر: نقلب السؤال. بدل «وين رفيق دربي؟» نسأل «أنا رفيق درب لمين؟» العلاقات الحلوة عطاء متبادل مو أخذ بس.',
+reel:[['0–3ث','كلنا نبي «رفيق درب».. بس قليل يسألون: أنا رفيق درب لمين؟','أنا رفيق درب لمين؟'],
+['3–25ث','رفيق الدرب الحقيقي، مثل ما تقول ناهد أحمد: يؤمن فيك لما تشك.. يفرح لنجاحك بصدق.. ينصحك لما تغلط.. ويمد يده بدون مقابل.','يؤمن · يفرح · ينصح · يمد يده'],
+['25–40ث','طيب.. كم واحد يقدر يقول عنك كذا؟ العلاقات الحلوة ما تقوم على الأخذ بس، تقوم على عطاء وتفاهم واحترام.','العطاء قبل الأخذ'],
+['40–52ث','وما يهم نوصل لنهاية الطريق بسرعة.. المهم نوصل وقلوبنا مطمئنة، ومعنا ناس يستاهلون الرحلة.','ناس يستاهلون الرحلة'],
+['52–60ث','منشن رفيق دربك.. وقل له إنه منهم.','منشن رفيق دربك 🤍']],
+note:'ريل حديث مباشر لعهود (talking head) بإضاءة دافية، والأربع صفات تظهر كقائمة تنبني على الشاشة وحدة وحدة.',
+cap:`نسأل كثير: «وين ألقى رفيق درب يفهمني؟»
+بس السؤال الأصدق: أنا رفيق درب لمين؟ 🤍
+
+في «أحلام على كرسي هزاز» تقول ناهد أحمد إن رفيق الدرب الحقيقي يؤمن فيك لما تشك، ويفرح لنجاحك بصدق، وينصحك لما تغلط، ويمد يده بدون انتظار مقابل.
+
+والعلاقات الحلوة ما تقوم على الأخذ وحده.. تقوم على عطاء وتفاهم واحترام متبادل.
+
+فكون الشخص اللي تتمنى تلقاه.
+
+منشن رفيق دربك، وقل له إنه من أجمل نعم حياتك.`,
+tags:'#عهود #عهود_المطلق #أحلام_على_كرسي_هزاز #رفقاء_الدرب #علاقات_صحية #الصداقة #السعودية'}
+];
+Object.assign(P[3],{f:'c',slides:[['«شاطر.. ذكي»','ولا «تعبت عليها»؟'],['تجربة كارول دويك:','نص الأطفال انمدحوا على ذكائهم.. والنص على تعبهم.'],['بعدها خيّروهم:','لغز سهل؟ ولا صعب؟'],['اللي انمدحوا على ذكائهم..','اختاروا السهل، خافوا يغلطون.'],['واللي انمدحوا على تعبهم..','اختاروا التحدي.'],['امدح المحاولة..','يكبر وهو مو خايف يحاول.']]});
+Object.assign(P[7],{f:'s',art:['العمر..<br>قوس مطر.','ولكل لون جماله.']});
+Object.assign(P[10],{f:'c',slides:[['تقدر تخلي أحد ينجح..','بس لأنك صدّقت فيه؟'],['في 1968 قالوا لمعلمين','إن طلاب معيّنين «راح يزهرون».'],['الحقيقة؟','الأسماء كانت عشوائية.'],['بعد سنة..','كثير منهم تحسّنوا أكثر من غيرهم.'],['السر؟','المعلمين عاملوهم بثقة أكبر.'],['كن أنت التوقع الحلو..','لأحد.']]});
+Object.assign(P[11],{f:'s',art:['أنا رفيق درب<br>لمين؟','قبل لا تدوّر عليه.. كونه.']});
+const FN={c:['Carousel','f-c'],s:['Single Image','f-s'],r:['Reels','f-r']};
+const DF='<svg viewBox="0 0 40 40" fill="currentColor"><path d="M20 4c1.2 0 2 1 2 2.2v27.6c0 1-.9 2.2-2 2.2s-2-1.2-2-2.2V6.2C18 5 18.8 4 20 4z"/><path d="M20 12c-4-5-13-7-15-4s7 6 15 5zM20 12c4-5 13-7 15-4s-7 6-15 5zM20 15c-5 1-13 7-11 10s9-3 11-9zM20 15c5 1 13 7 11 10s-9-3-11-9z" opacity=".85"/></svg>';
+const SC=['<svg class="sc" style="width:30%;bottom:7%;inset-inline-start:8%" viewBox="0 0 120 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 30c30-8 70-10 112-4M8 36c34-6 66-7 104-2M10 24c30-6 70-6 96-2"/></svg>',
+'<svg class="sc" style="width:22%;top:56%;inset-inline-end:6%" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2"><path d="M40 10c-20 4-30 30-10 40s40-10 30-25-40-5-35 15 30 30 45 10S60 5 35 20"/></svg>',
+'<svg class="sc" style="width:30%;bottom:9%;left:35%" viewBox="0 0 120 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16c34-10 76-10 112-2M6 22c36-8 72-8 108 0"/></svg>'];
+const esc=s=>s;
+const art=o=>{const k=o.k||0;
+ return `<div class="art${o.src?' hs':''}"><img class="lg" src="img/logo.png" alt="">${o.num?`<span class="num">${o.num}</span>`:''}${o.h1?`<div class="h1">${o.h1}</div>`:''}<div class="h2">${o.h2}</div>${o.h3?`<div class="h1">${o.h3}</div>`:''}
+ ${o.noblob?'':'<div class="cut"><div class="blob"></div></div>'}${SC[k%3]}<i class="df a">${DF}</i><i class="df b">${DF}</i>${o.src?BK:''}<span class="ft">OHOUD</span><span class="xx">× ×</span></div>`};
+const IMG={1:'امرأة بفستان أبيض يلفها شريط قياس طويل',2:'أقدام طفل صغيرة وأثر خطوات',3:'يدين ممسكات ببعض، وحدة منهم ترخي',4:'يد طفل تركّب قطعة بزل',5:'امرأة بنظارة دائرية كبيرة',6:'سجادة ملفوفة تنفرش قدام باب',7:'رأس امرأة من جنب تطلع منه زهور',8:'سماء وغيوم بعد المطر',9:'وجه نصفي ويد على الخد',10:'يد أم تمسك يد طفل صغيرة',11:'يد تسقي نبتة صغيرة',12:'اثنين يمشون جنب بعض من ورا'};
+const chips=p=>`<div class="chips"><span class="chip ${FN[p.f][1]}">${FN[p.f][0]}</span><span class="chip">${p.ax}</span></div>`;
+const wk=['الأسبوع الأول','الأسبوع الثاني','الأسبوع الثالث','الأسبوع الرابع'];
+if(0)document.getElementById('cal').innerHTML=wk.map((w,i)=>`<div class="wk"><h3>${w}</h3>${P.slice(i*3,i*3+3).map(p=>`<a class="ci" href="#post-${p.id}"><span>بوست ${p.id}</span><b>${p.t}</b>${chips(p)}</a>`).join('')}</div>`).join('');
+const vis=p=>{
+ if(p.f==='s')return `<div><p class="lbl">النص على التصميم</p>${art({h2:p.art[0],h3:p.art[1],img:IMG[p.id],k:p.id,src:1})}</div>`;
+ if(p.f==='c')return `<div><div class="cap-top" style="margin-bottom:6px"><p class="lbl">النص على التصميم · ${p.slides.length} شرائح</p><div class="carnav"><button data-d="1" aria-label="السابق">→</button><button data-d="-1" aria-label="التالي">←</button></div></div><div class="car" tabindex="0">${p.slides.map((s,i)=>art(Object.assign(s[1]?{h1:s[0],h2:s[1]}:{h2:s[0]},{num:`${i+1}/${p.slides.length}`,k:i%2?2:0,src:i===p.slides.length-1,noblob:i>0}))).join('')}</div></div>`;
+ return `<div class="rv"><div><p class="lbl">غلاف الريل</p>${art({h2:p.reel[0][2],img:IMG[p.id],k:p.id,src:1})}</div><div><p class="lbl">سكريبت الريل · 60 ثانية</p><ol class="reel">${p.reel.map(r=>`<li><span class="t">${r[0]}</span><div class="v">${r[1]}<span class="o">${r[2]}</span></div></li>`).join('')}</ol></div></div>`;
+};
+document.getElementById('posts').innerHTML=P.map(p=>`<article class="post" id="post-${p.id}">
+<div class="ph"><div class="pn">${p.id}</div><div><h3>${p.t}</h3>${chips(p)}</div></div>
+<div class="pb"><div class="col">${vis(p)}</div>
+<div class="col"><div class="cap"><div class="cap-top"><p class="lbl">الكابشن + الهاشتاجات</p><button class="copy" data-i="${p.id}">نسخ</button></div><pre>${p.cap}</pre><div class="tags">${p.tags}</div></div></div></div></article>`).join('');
+const fit=()=>{for(const a of document.querySelectorAll('.art')){const hs=a.querySelectorAll('.h1,.h2');hs.forEach(h=>h.style.fontSize='');let n=0;while(a.scrollHeight>a.clientHeight+2&&n<30){hs.forEach(h=>{h.style.fontSize=(parseFloat(getComputedStyle(h).fontSize)*.93)+'px'});n++}}};
+fit();const fro=new ResizeObserver(()=>requestAnimationFrame(fit));fro.observe(document.body);document.fonts&&document.fonts.ready.then(fit);
+document.addEventListener('click',async e=>{
+ const b=e.target.closest('.copy');
+ if(b){const p=P.find(x=>x.id==b.dataset.i);const txt=p.cap+'\n\n'+p.tags;
+  try{await navigator.clipboard.writeText(txt);b.textContent='تم النسخ ✓'}catch(_){const r=document.createRange();r.selectNodeContents(b.closest('.cap').querySelector('pre'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='حدد النص وانسخه'}
+  setTimeout(()=>b.textContent='نسخ',1800);return}
+ const n=e.target.closest('.carnav button');
+ if(n){const c=n.closest('div').parentElement.nextElementSibling;c.scrollBy({left:Number(n.dataset.d)*186,behavior:'smooth'})}
+});
+}
+</script>
+</body>
+</html>

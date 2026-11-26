@@ -1,0 +1,612 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Strategy</title>
+<meta name="viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
+<style>
+/* Layout: one long RTL scroll; the Asiri triangle band frames the page, each section is a "row" with a red side label, the client's own ink illustrations punctuate the reading. Deliberately single-theme: the brand's cream paper. */
+:root{
+  --paper:#FFFCF1;      /* brand cream */
+  --paper-2:#F6F0DD;    /* deeper cream for panels */
+  --ink:#1B1917;        /* illustration ink */
+  --ink-2:#5A524A;      /* secondary text, warm */
+  --line:#E3D9BF;
+  --red:#BF3F34;        /* brand red */
+  --green:#118742;      /* asiri green */
+  --mustard:#C5912B;    /* asiri mustard */
+  --navy:#2D4E85;       /* band rule */
+  --display:"Aref Ruqaa", "Amiri", serif;
+  --body:"IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --label:"Reem Kufi", "IBM Plex Sans Arabic", sans-serif;
+  color-scheme: only light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;direction:rtl}
+.band{height:46px;background:url(assets/image-f7ae67da15dd.png) repeat-x center/auto 46px;border-bottom:3px solid var(--navy)}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--red)}
+.eyebrow{font-family:var(--label);font-weight:600;letter-spacing:.02em;color:var(--red);font-size:.95rem}
+
+/* hero */
+.hero{padding-block:48px 0;text-align:center}
+.hero h1{font-family:var(--display);font-weight:700;color:var(--red);font-size:clamp(5rem,16vw,10rem);line-height:1.05;margin-top:8px}
+.hero .sub{font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:500;max-width:34ch;margin:10px auto 0;line-height:1.6}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;color:var(--ink-2);font-size:.92rem;margin-top:18px}
+.hero .meta span{display:inline-flex;gap:6px;align-items:center}
+.hero .meta span::before{content:"";width:7px;height:7px;background:var(--mustard);transform:rotate(45deg)}
+.village{display:block;width:100%;max-width:1120px;margin:28px auto 0;mix-blend-mode:multiply}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.facts div{padding:18px 14px;text-align:center;border-inline-start:1px solid var(--line)}
+.facts div:first-child{border-inline-start:0}
+.facts b{display:block;font-family:var(--label);font-size:2rem;line-height:1.2;font-variant-numeric:tabular-nums}
+.facts.f3{grid-template-columns:repeat(3,1fr)}
+.facts small{color:var(--ink-2);font-size:.85rem}
+@media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}.facts div:nth-child(3){border-inline-start:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* nav */
+.toc{display:flex;flex-wrap:wrap;gap:6px 14px;padding-block:18px;font-size:.9rem}
+.toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px dotted var(--ink-2)}
+.toc a:hover{color:var(--red);border-color:var(--red)}
+
+/* sections */
+section.row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px 48px;padding-block:56px;border-top:1px solid var(--line)}
+.row > header .num{font-family:var(--label);color:var(--mustard);font-weight:700;font-size:.9rem}
+.row > header h2{font-family:var(--display);font-weight:700;font-size:2.2rem;line-height:1.3;color:var(--red)}
+.row > header p{color:var(--ink-2);font-size:.92rem;margin-top:8px;line-height:1.7}
+.row > .body{min-width:0;display:flex;flex-direction:column;gap:28px}
+@media (max-width:820px){section.row{grid-template-columns:1fr;padding-block:40px}}
+h3{font-size:1.15rem;font-weight:700}
+.lead{font-size:1.2rem;font-weight:500;line-height:1.75;max-width:60ch}
+.muted{color:var(--ink-2)}
+.note{font-size:.88rem;color:var(--ink-2)}
+
+/* positioning */
+.statement{font-family:var(--display);font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.6;color:var(--ink)}
+.statement em{font-style:normal;color:var(--red)}
+.quote{border-inline-start:4px solid var(--red);padding-inline-start:18px;font-size:1.05rem}
+.quote cite{display:block;font-style:normal;color:var(--ink-2);font-size:.85rem;margin-top:6px}
+.pillars3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pillars3 > div{border-top:3px solid var(--ink);padding-top:12px}
+.pillars3 > div:nth-child(2){border-color:var(--green)}
+.pillars3 > div:nth-child(3){border-color:var(--mustard)}
+@media (max-width:700px){.pillars3{grid-template-columns:1fr}}
+.alert{background:var(--paper-2);border:1px solid var(--line);padding:16px 18px;border-radius:4px;display:flex;gap:14px;align-items:flex-start}
+.alert .tag{flex:none;font-family:var(--body);font-weight:600;background:var(--red);color:var(--paper);padding:2px 10px;border-radius:2px;font-size:.85rem;margin-top:4px}
+
+/* tables */
+.tbl{overflow-x:auto;border-top:2px solid var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:620px}
+th{font-family:var(--label);font-weight:600;text-align:start;padding:10px 12px;background:var(--paper-2);font-size:.88rem;color:var(--ink-2)}
+td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+td:first-child{font-weight:600}
+.pf td:first-child{width:34%}
+.pf td:first-child::before{content:"✕ ";color:var(--red);font-weight:700}
+.pf td:last-child::before{content:"← ";color:var(--green);font-weight:700}
+
+/* tiktok audit */
+.tt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tt > div{border:1px solid var(--line);background:#fff;padding:14px;border-radius:4px;display:flex;flex-direction:column;gap:6px}
+.tt .t{font-weight:700}
+.verdict{font-family:var(--body);font-weight:600;font-size:.8rem;align-self:flex-start;padding:1px 8px;border-radius:2px}
+.v-good{background:var(--green);color:#fff}
+.v-fix{background:var(--mustard);color:var(--ink)}
+.v-bad{background:var(--red);color:var(--paper)}
+.acct td:first-child{white-space:nowrap}
+.acct td:nth-child(2){width:80px}
+@media (max-width:820px){.tt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.tt{grid-template-columns:1fr}}
+
+/* personas */
+.personas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px}
+.personas > div{display:flex;flex-direction:column;gap:6px}
+.personas .who{font-family:var(--display);font-size:1.5rem;font-weight:700;line-height:1.4}
+.personas .pain{font-size:.92rem}
+.personas .pain b{color:var(--red);font-weight:600}
+@media (max-width:700px){.personas{grid-template-columns:1fr}}
+
+/* voice */
+.voice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.voice ul{margin:6px 0 0;padding-inline-start:20px}
+.say{background:#fff;border:1px solid var(--line);padding:14px 16px;border-radius:4px}
+.say h3{color:var(--green)}
+.nosay h3{color:var(--red)}
+@media (max-width:700px){.voice{grid-template-columns:1fr}}
+.words{display:flex;flex-wrap:wrap;gap:8px}
+.words span{border:1px solid var(--ink);padding:2px 12px;border-radius:999px;font-size:.92rem}
+
+/* platforms */
+.plat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.plat > div{border-top:3px solid var(--ink);padding-top:14px;display:flex;flex-direction:column;gap:8px}
+.plat ul{margin:0;padding-inline-start:20px}
+@media (max-width:700px){.plat{grid-template-columns:1fr}}
+.bio{font-family:var(--body);background:var(--ink);color:var(--paper);padding:16px 18px;border-radius:6px;line-height:1.9;font-size:.95rem;white-space:pre-line}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:420px}
+.grid9 div{aspect-ratio:4/5;max-width:100%;background:var(--paper-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-size:.78rem;padding:6px;line-height:1.5}
+.grid9 div.r{background:var(--red);color:var(--paper);border-color:var(--red)}
+.grid9 div.k{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:760px){.ig{grid-template-columns:1fr}}
+.hl{display:flex;flex-wrap:wrap;gap:12px}
+.hl span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.8rem}
+.hl i{width:54px;height:54px;border-radius:50%;border:2px solid var(--red);background:var(--paper-2);display:block}
+
+/* pillars mix bar */
+.mix{display:flex;height:16px;border-radius:2px;overflow:hidden}
+.mix i{display:block}
+.pl{display:flex;flex-direction:column}
+.pl > div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:16px;padding-block:16px;border-bottom:1px solid var(--line)}
+.pl .pct{font-family:var(--label);font-size:1.6rem;font-weight:700;line-height:1.2}
+.sw{display:inline-block;width:12px;height:12px;border-radius:2px;margin-inline-end:6px;vertical-align:middle}
+
+/* idea bank */
+.boost{font-family:var(--body);font-weight:600;font-size:.8rem;white-space:nowrap;padding:2px 8px;border-radius:2px;display:inline-block}
+.b-f{background:var(--red);color:var(--paper)}
+.b-e{background:var(--green);color:#fff}
+.b-n{border:1px solid var(--line);color:var(--ink-2)}
+.plan td:first-child{text-align:center;color:var(--ink-2);font-weight:500;width:56px}
+.plan td:nth-child(2){white-space:nowrap;font-weight:600}
+.plan tr.vid td{background:var(--paper-2)}
+.plan tr.vid td:nth-child(2){color:var(--red)}
+.plan td:nth-child(5){font-size:.85rem;color:var(--ink-2)}
+
+/* week */
+.week td:first-child{white-space:nowrap}
+
+/* boost rules */
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rules > div{background:#fff;border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.rules ul{margin:0;padding-inline-start:18px;font-size:.93rem}
+@media (max-width:820px){.rules{grid-template-columns:1fr}}
+
+/* photo direction */
+.must{display:inline-block;background:var(--red);color:var(--paper);font-family:var(--body);font-weight:600;padding:2px 12px;border-radius:2px;font-size:.9rem}
+.photo-hero{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.photo-hero figure{margin:0;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column}
+.photo-hero img{width:100%;height:220px;object-fit:contain;mix-blend-mode:multiply;padding:10px}
+.photo-hero figcaption{font-size:.82rem;color:var(--ink-2);padding:8px 10px;border-top:1px solid var(--line)}
+@media (max-width:640px){.photo-hero{grid-template-columns:1fr}.photo-hero img{height:200px}}
+.palette{display:flex;flex-wrap:wrap;gap:10px}
+.palette div{display:flex;flex-direction:column;gap:4px;font-size:.8rem;width:110px}
+.palette i{display:block;height:54px;border-radius:3px;border:1px solid var(--line)}
+.props{columns:2;column-gap:36px;margin:0;padding-inline-start:20px}
+.props li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:600px){.props{columns:1}}
+.shots{counter-reset:s;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.shots > div{counter-increment:s;padding-block:14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px}
+.shots > div::before{content:counter(s);font-family:var(--label);font-weight:700;color:var(--red);font-size:1.3rem;line-height:1.4}
+@media (max-width:700px){.shots{grid-template-columns:1fr}}
+
+/* competitor */
+.comp-head{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline}
+.comp-head h3{font-family:var(--display);font-size:1.8rem}
+.prices td:nth-child(2),.prices td:nth-child(3){font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* season */
+.season{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+.season > div{padding:16px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.season > div:first-child{border-inline-start:0}
+.season h3{font-family:var(--display);font-size:1.6rem;color:var(--red)}
+.season ul{margin:0;padding-inline-start:18px;font-size:.93rem}
+@media (max-width:760px){.season{grid-template-columns:1fr}.season > div{border-inline-start:0;border-top:1px solid var(--line)}}
+
+.kpi td:nth-child(n+2){font-variant-numeric:tabular-nums;text-align:center}
+.tags{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:.93rem;color:var(--green);font-weight:500}
+.needs{margin:0;padding-inline-start:20px;columns:2;column-gap:36px}
+.needs li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:600px){.needs{columns:1}}
+
+footer{padding-block:40px 0;text-align:center;color:var(--ink-2);font-size:.85rem}
+footer .band{margin-top:24px}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+</style>
+
+<div class="band" role="presentation"></div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">استراتيجية سوشيال ميديا · تيك توك + إنستجرام · نوفمبر 2026 – يناير 2027 · 12 بوست + 3 فيديوهات شهريًا</div>
+    <h1>رضيف</h1>
+    <p class="sub">نخلّي العريكة ضيافة كل بيت سعودي وخليجي، زي ما القهوة العربي في كل مجلس.</p>
+    <div class="meta"><span>طحين العريكة الجاهز · خلطة بن قبطيه</span><span>الحاروقة</span><span>كيس العجن الحراري</span><span>شحن لكل المملكة والخليج</span></div>
+  </div>
+</div>
+<img class="village" src="assets/image-8a12f2ab2529.jpg" alt="رسم حبر لقرية جبلية جنوبية برجالها في العرضة وامرأة بقبعة الخوص، من هوية رضيف">
+<div class="wrap">
+  <div class="facts">
+    <div><b>294</b><small>متابع على تيك توك</small></div>
+    <div><b>577</b><small>لايك إجمالي</small></div>
+    <div><b>0</b><small>إنستجرام (هنطلقه)</small></div>
+    <div><b>12 + 3</b><small>بوست + فيديو كل شهر</small></div>
+  </div>
+  <nav class="toc" aria-label="أقسام الاستراتيجية">
+    <a href="#brand">البراند</a><a href="#audit">الوضع الحالي</a><a href="#audience">الجمهور</a><a href="#voice">نبرة الصوت</a><a href="#platforms">المنصات</a><a href="#pillars">محاور المحتوى</a><a href="#ideas">خطة الشهر والترويج</a><a href="#boost">قواعد الترويج</a><a href="#photo">صور المنتجات</a><a href="#competitor">المنافس</a><a href="#season">خطة 90 يوم</a><a href="#kpi">المطلوب من العميل</a>
+  </nav>
+
+  <!-- 1 BRAND -->
+  <section class="row" id="brand">
+    <header><div class="num">01</div><h2>البراند في جملة</h2><p>الأساس اللي كل بوست وكل فيديو لازم يرجع له.</p></header>
+    <div class="body">
+      <p class="statement">رضيف هو <em>أصل العريكة الجنوبية</em>، بخلطة جاهزة تخلّي أي بيت يقدّمها لضيوفه بنفس طعم بيوت الجنوب، حتى لو أول مرة يسويها.</p>
+      <div class="quote">"من عمق الجنوب الأصيل، ودفء البيوت القديمة، تتولد نكهة العريكة بطريقتنا اللي ما تتغير مهما تغيّر الزمن… وعلى قول بن قبطيه: عريكة تقدمها الرجال للرجال"<cite>من كارت البراند الحالي. القصة موجودة، ناقصها بس إنها تتحكي على السوشيال.</cite></div>
+      <div class="pillars3">
+        <div><h3>الأصالة</h3><p class="muted">خلطة بن قبطيه، وصفة بيت جنوبي حقيقي ووراها شيف وعائلة، مش منتج مصنع.</p></div>
+        <div><h3>السهولة</h3><p class="muted">"اخلط، اطبخ، قدّم". الخلطة جاهزة والحاروقة وكيس العجن يشيلوا عنك الخبرة.</p></div>
+        <div><h3>الكرم</h3><p class="muted">العريكة واجب ضيافة. بنبيع لحظة المجلس والضيف قبل ما نبيع كيس طحين.</p></div>
+      </div>
+      <div class="alert"><span class="tag">مهم</span><p><b>الاسم رضيف (بالضاد).</b> اللوجو مرسوم بحرف الظاء، فالناس هتدوّر بالطريقتين. في كل كابشن وبايو نكتب "رضيف" ونضيف الهاشتاق #رظيف مرة في البايو أو أول تعليق، عشان أي حد يدوّر بالشكل اللي شافه على الكيس يلاقينا.</p></div>
+    </div>
+  </section>
+
+  <!-- 2 AUDIT -->
+  <section class="row" id="audit">
+    <header><div class="num">02</div><h2>الوضع الحالي والمشاكل</h2><p>تحليل عام لحساب تيك توك @ratheef.sa والمتجر، وإزاي نحل كل مشكلة.</p></header>
+    <div class="body">
+      <p class="lead">المحتوى الموجود فيه دليل قوي (لوحة إعلانية في الشارع، شحنة وصلت إيطاليا، نقطة بيع في ملعقة)، بس متقدّم كتوثيق للحظة من غير هوك ولا قصة ولا حد بيحكي، فما بيجيبش متابعين. مش هنعدّل على الشغل اللي نازل. هنحلل الغلط فيه ونعمل الصح في المحتوى الجديد.</p>
+      <h3>تحليل حساب تيك توك @ratheef.sa</h3>
+      <div class="facts">
+        <div><b>294</b><small>متابع</small></div>
+        <div><b>577</b><small>لايك على الحساب كله</small></div>
+        <div><b>~2</b><small>لايك لكل متابع</small></div>
+        <div><b>0</b><small>Following</small></div>
+      </div>
+      <div class="tbl"><table class="acct">
+        <thead><tr><th>المحور</th><th>التقييم</th><th>الوضع الحالي</th><th>الصح في شغلنا</th></tr></thead>
+        <tbody>
+          <tr><td>البروفايل والبايو</td><td><span class="verdict v-bad">ضعيف</span></td><td>البايو "طحين عريكة فاخر"، والطلب برقم تليفون من غير رابط للمتجر. مفيش ذكر للشحن ولا للجنوب. صورة البروفايل لوجو مكتوب "رظيف" والاسم "رضيف".</td><td>نحوّل الحساب لحساب أعمال ونضيف رابط صفحة المنتجات، ونكتب البايو الجديد (القسم 05).</td></tr>
+          <tr><td>نوع المحتوى</td><td><span class="verdict v-bad">ضعيف</span></td><td>أغلب المحتوى ورا الكواليس ودليل (شحن، طلبات، لوحة، نقطة بيع). مفيش تعريف بالعريكة ولا طريقة تحضير ولا قصة البراند.</td><td>توزيع ثابت على خمس محاور، وأكبرهم المطبخ والحكاية (القسم 06).</td></tr>
+          <tr><td>شكل الفيديو</td><td><span class="verdict v-fix">متوسط</span></td><td>فيه حركة وصوت، بس الفيديو ماشي كتصوير توثيقي من غير سكريبت ولا ترتيب. مفيش حد بيحكي أو بيشرح، والنص المكتوب هو اللي شايل الرسالة كلها.</td><td>سكريبت لكل فيديو (هوك، قصة، دعوة)، ووش بيحكي، والأولوية لبن قبطيه.</td></tr>
+          <tr><td>الهوية البصرية</td><td><span class="verdict v-bad">ضعيف</span></td><td>النصوص كل مرة بستايل شكل (صندوق أصفر، صندوق أحمر، أبيض بإطار). مفيش خط ولا ألوان الهوية، والحساب مش باين إنه لبراند واحد.</td><td>قالب ثابت بخط وألوان رضيف، والنص في نفس المكان كل مرة.</td></tr>
+          <tr><td>الهوك والدعوة</td><td><span class="verdict v-bad">ضعيف</span></td><td>الفيديوهات بتبدأ من غير هوك وبتخلص من غير خطوة للمشاهد (تابع، احفظ، اطلب).</td><td>هوك في أول ثانيتين، ودعوة واضحة في الآخر.</td></tr>
+          <tr><td>الظهور في البحث</td><td><span class="verdict v-fix">متوسط</span></td><td>فيه كلام عن العريكة في بعض النصوص، بس مش ثابت، ومفيش هاشتاقات أو كلمات بحث مقصودة.</td><td>كلمة "عريكة" تتقال وتتكتب في كل فيديو، و3–5 هاشتاقات ثابتة.</td></tr>
+          <tr><td>التفاعل</td><td><span class="verdict v-bad">ضعيف</span></td><td>577 لايك على الحساب كله مقابل 294 متابع، يعني أقل من لايكين لكل متابع. الحساب ما بيتابعش حد (0 Following) ومفيش تفاعل ظاهر مع مجتمع الأكل والجنوب.</td><td>أسئلة في الكومنت، ورد يومي، وتفاعل مع حسابات الأكل الجنوبي والضيافة.</td></tr>
+          <tr><td>نقاط القوة</td><td><span class="verdict v-good">جيد</span></td><td>فيه حقائق حقيقية تبني ثقة: لوحة إعلانية في الشارع، شحن لإيطاليا، نقطة بيع في خميس مشيط، وطلبات بالكمية. ولقطات الطبق الجاهز حلوة.</td><td>نحوّل الحقائق دي لقصص جديدة بالشكل الصح، ونصوّر الطبق بالستايل الجنوبي.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">التحليل من صفحة الحساب الظاهرة. أرقام المشاهدات لكل فيديو ومعدل النشر محتاجين دخول على الحساب (Analytics) بعد استلام الصلاحيات.</p>
+      <h3>قواعد ثابتة لكل محتوى جديد</h3>
+      <div class="tbl"><table class="pf">
+        <thead><tr><th>الغلط المتكرر في القديم</th><th>القاعدة في شغلنا</th></tr></thead>
+        <tbody>
+          <tr><td>مفيش هوك، والفيديو بيبدأ بلقطة ساكتة.</td><td>هوك مكتوب ومسموع في أول ثانيتين.</td></tr>
+          <tr><td>تصوير توثيقي من غير سكريبت ولا قصة.</td><td>سكريبت مكتوب لكل فيديو قبل التصوير: هوك، قصة قصيرة، دعوة.</td></tr>
+          <tr><td>مفيش حد بيتكلم للكاميرا ويحكي.</td><td>وش بيحكي في أغلب الفيديوهات، والأولوية لبن قبطيه.</td></tr>
+          <tr><td>المنتج مش ظاهر أو بيبان متأخر.</td><td>الكيس أو الطبق يبان في أول 3 ثواني.</td></tr>
+          <tr><td>نص صغير، وخطوطه وألوانه بتتغير كل مرة.</td><td>نص كبير بخط وألوان الهوية، في نفس المكان كل مرة.</td></tr>
+          <tr><td>ما فيهوش كلمة "عريكة" ولا شرح.</td><td>كلمة "عريكة" تتقال وتتكتب في كل فيديو عشان البحث.</td></tr>
+          <tr><td>مفيش دعوة للطلب أو للمتابعة.</td><td>كل فيديو ينتهي بخطوة: تابع، احفظ، أو اطلب من البايو.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="tbl"><table class="pf">
+        <thead><tr><th>المشكلة</th><th>الحل</th></tr></thead>
+        <tbody>
+          <tr><td>المبيعات كانت جاية من سناب الوالد (Mom_q7)، ولما وقف الدفع من هناك وقفت المبيعات.</td><td>نبني جمهور خاص بحساب رضيف، ونطلّع الوالد (الشيف بن قبطيه) كوجه البراند في سلسلة ثابتة. نستفيد من جمهوره من غير ما نعتمد عليه.</td></tr>
+          <tr><td>ناس كتير برا الجنوب مش عارفين يعني إيه عريكة أصلًا.</td><td>محتوى تعريفي قصير ومتكرر: "وش هي العريكة؟"، "من وين جت؟"، "تنأكل مع إيه؟". ده بيفتح السوق كله مش الجنوبيين بس.</td></tr>
+          <tr><td>أكبر عائق للشراء: "ما أعرف أسويها".</td><td>فيديو تحضير (من الكيس للصحن في 30 ثانية) + كاروسيل للأخطاء الشائعة وكاروسيل لكيس العجن. ده أكتر محتوى بيتحفظ (Saves).</td></tr>
+          <tr><td>الفيديوهات من غير هوك ولا سكريبت، والنص صغير وألوانه مختلفة كل مرة.</td><td>قالب ثابت: هوك مكتوب في أول ثانيتين، خط وألوان الهوية، فويس أوفر بلهجة جنوبية خفيفة، ونهاية فيها "الرابط في البايو".</td></tr>
+          <tr><td>الاسم مكتوب بطريقتين (رضيف / رظيف).</td><td>نثبّت "رضيف" في كل مكان ونغطي "رظيف" في البحث (شوف ملاحظة البراند).</td></tr>
+          <tr><td>مفيش إنستجرام.</td><td>نطلقه بخطة إطلاق جاهزة (القسم 05) يبقى هو بيت البراند والكتالوج والثقة.</td></tr>
+          <tr><td>المتجر: البانرات صور من غير نص، وفيه رسالة "غير موجود" ظاهرة، ومفيش روابط سوشيال غير واتساب.</td><td>رابط البايو يودّي لصفحة المنتجات مباشرة مش للرئيسية، ونبلّغ فريق المتجر يصلّحوا الرسالة ويضيفوا روابط تيك توك وإنستجرام.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- 3 AUDIENCE -->
+  <section class="row" id="audience">
+    <header><div class="num">03</div><h2>بنكلّم مين؟</h2><p>السعودية والخليج، من 20 سنة وطالع. أربع شخصيات بتغطي السوق.</p></header>
+    <div class="body">
+      <div class="personas">
+        <div><span class="eyebrow">الحنين</span><div class="who">الجنوبي المغترب</div><p>من أبها أو خميس مشيط أو الباحة، ساكن في الرياض أو جدة أو الشرقية. العريكة بالنسبة له ريحة بيت أمه.</p><p class="pain"><b>اللي يحركه:</b> الحنين والفخر. <b>المحتوى:</b> قصص الجنوب، شتاء أبها، "طعم البيت وصلك".</p></div>
+        <div><span class="eyebrow">المضيّفة</span><div class="who">صاحبة البيت والعزايم</div><p>من 25 لـ45 سنة، بتحب تقدّم حاجة مختلفة وأصيلة للضيوف من غير تعقيد.</p><p class="pain"><b>اللي يحركه:</b> "أبغى أبيّض وجهي قدام الضيوف". <b>المحتوى:</b> طريقة التحضير، التقديم، أفكار للعزايم.</p></div>
+        <div><span class="eyebrow">الفضول</span><div class="who">الفودي اللي ما جربها</div><p>شباب في المدن الكبيرة، بيتابعوا الأكل الشعبي والتجارب والتريندات.</p><p class="pain"><b>اللي يحركه:</b> التجربة الجديدة والمشاركة. <b>المحتوى:</b> ردود فعل أول تذوق، تحديات، مقارنات.</p></div>
+        <div><span class="eyebrow">المناسبات</span><div class="who">الخليجي والهدايا</div><p>في الكويت والإمارات وقطر، أو أي حد بيدوّر على هدية تراثية للشتاء ورمضان.</p><p class="pain"><b>اللي يحركه:</b> شكل التغليف والقصة. <b>المحتوى:</b> الكيس في الشنطة المطبوعة، "هدية من الجنوب"، الشحن للخليج.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 VOICE -->
+  <section class="row" id="voice">
+    <header><div class="num">04</div><h2>نبرة الصوت</h2><p>زي مضيّف جنوبي كريم بيستقبلك في بيته: دافي وفخور ومن غير تكلّف.</p></header>
+    <div class="body">
+      <div class="voice">
+        <div class="say"><h3>نقول كده</h3><ul>
+          <li>"مرحبا الساع… العريكة جاهزة"</li>
+          <li>"ما تحتاج تكون جنوبي عشان تسويها"</li>
+          <li>"صب الحاروقة في النص، والباقي عليك وعلى ضيوفك"</li>
+          <li>"من بيت بن قبطيه لبيتك"</li>
+        </ul></div>
+        <div class="say nosay"><h3>ما نقولش كده</h3><ul>
+          <li>لغة إعلانات جامدة: "أفضل منتج بأقل سعر!!"</li>
+          <li>لهجة جنوبية تقيلة مش مفهومة لباقي المملكة</li>
+          <li>خصومات وأسعار في كل بوست (ده شغل الحملات)</li>
+          <li>هجوم أو تلميح ضد المنافس</li>
+        </ul></div>
+      </div>
+      <div><h3 style="margin-bottom:10px">كلمات من قاموس البراند</h3>
+        <div class="words"><span>مرحبا الساع</span><span>حيّ الله الضيف</span><span>واجب</span><span>المجلس</span><span>الحاروقة</span><span>السمن البري</span><span>عسل السدر</span><span>شتاء الجنوب</span><span>خلطة بن قبطيه</span><span>طعم البيت</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 PLATFORMS -->
+  <section class="row" id="platforms">
+    <header><div class="num">05</div><h2>دور كل منصة</h2><p>تيك توك يجيب ناس جديدة، وإنستجرام يقنعهم ويحوّلهم للمتجر.</p></header>
+    <div class="body">
+      <div class="plat">
+        <div><h3>تيك توك · @ratheef.sa</h3><p class="muted">الوصول والانتشار والبحث.</p><ul>
+          <li>الـ3 فيديوهات الشهرية، من 15 لـ35 ثانية</li>
+          <li>الكاروسيلات تنزل كمان كـ Photo Mode عشان الحساب يفضل نشط بين الفيديوهات</li>
+          <li>نقول كلمة "عريكة" في الفويس وفي النص على الشاشة، لأن تيك توك بيقرأهم في البحث</li>
+          <li>رد يومي على الكومنتات وتثبيت أحسن كومنت</li>
+          <li>نستخدم أصوات من مكتبة تيك توك التجارية عشان الفيديو يبقى قابل للترويج</li>
+        </ul></div>
+        <div><h3>إنستجرام · جديد</h3><p class="muted">بيت البراند والثقة والكتالوج.</p><ul>
+          <li>12 بوست في الشهر (3 في الأسبوع) + الـ3 فيديوهات كريلز</li>
+          <li>الريلز نفس فيديوهات تيك توك من غير علامة مائية</li>
+          <li>ستوري من غير إنتاج زيادة: إعادة نشر كل بوست + تصويت أسبوعي</li>
+          <li>كاروسيل "دليل" يتحفظ: طريقة التحضير، تنأكل مع إيه</li>
+          <li>هايلايتس ثابتة للأسئلة المتكررة والآراء</li>
+        </ul></div>
+      </div>
+      <div class="ig">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h3>بايو مقترح (للمنصتين)</h3>
+          <div class="bio">رضيف | طحين العريكة الجنوبية الجاهز
+خلطة بن قبطيه من بيوت الجنوب لبيتك
+اخلط، اطبخ، قدّم 🍯
+شحن لكل السعودية والخليج
+اطلب من هنا ↓</div>
+          <h3>الهايلايتس</h3>
+          <div class="hl"><span><i></i>الحكاية</span><span><i></i>طريقة التحضير</span><span><i></i>المنتجات</span><span><i></i>آراءكم</span><span><i></i>الشحن</span><span><i></i>نقاط البيع</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <h3>أول 9 بوستات (شبكة الإطلاق)</h3>
+          <div class="grid9" aria-label="ترتيب أول تسع بوستات على إنستجرام">
+            <div>9 · صورة: العريكة في المجلس</div><div class="r">8 · ريل: من الكيس للصحن</div><div>7 · صورة: صحن الضيافة</div>
+            <div>6 · تصميم: عسل ولا تمر ولا سمن؟</div><div class="k">5 · كاروسيل: دليل العريكة</div><div>4 · صورة: المنتج على الجدار العسيري</div>
+            <div class="k">3 · كاروسيل: حكاية بن قبطيه</div><div class="r">2 · ريل: وش هي العريكة؟</div><div>1 · صورة: رضيف وصل إنستجرام</div>
+          </div>
+          <p class="note">دي أول 9 قطع من خطة نوفمبر (القسم 07)، والرقم هو ترتيب النشر، فأحدث بوست بيبان فوق. الأحمر ريلز، والأسود كاروسيل، والكريمي صور، عشان الشبكة تبان بألوان الهوية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 PILLARS -->
+  <section class="row" id="pillars">
+    <header><div class="num">06</div><h2>محاور المحتوى</h2><p>15 قطعة في الشهر (12 بوست + 3 فيديوهات) موزّعة على خمس محاور.</p></header>
+    <div class="body">
+      <div class="mix" role="img" aria-label="توزيع 15 قطعة: 4 مطبخ، 3 حكاية، 3 ضيافة، 3 تجربة الناس، 2 ثقة">
+        <i style="width:26.67%;background:var(--red)"></i><i style="width:20%;background:var(--ink)"></i><i style="width:20%;background:var(--green)"></i><i style="width:20%;background:var(--mustard)"></i><i style="width:13.33%;background:var(--navy)"></i>
+      </div>
+      <div class="pl">
+        <div><span class="pct" style="color:var(--red)">4</span><div><h3><span class="sw" style="background:var(--red)"></span>مطبخ العريكة <span class="muted note">· فيديو + 3 بوستات</span></h3><p class="muted">التحضير خطوة بخطوة، الحاروقة، كيس العجن، أخطاء شائعة، لقطات ASMR من فوق. هدفه نكسر حاجز "ما أعرف أسويها".</p></div></div>
+        <div><span class="pct">3</span><div><h3><span class="sw" style="background:var(--ink)"></span>حكاية الجنوب <span class="muted note">· فيديو + 2 بوست</span></h3><p class="muted">بن قبطيه والخلطة، أصل العريكة، شتاء أبها، العرضة والقط العسيري. فيديوهات AI بالرسومات الموجودة في الهوية + لقطات حقيقية.</p></div></div>
+        <div><span class="pct" style="color:var(--green)">3</span><div><h3><span class="sw" style="background:var(--green)"></span>الضيافة والمناسبات <span class="muted note">· 3 بوستات</span></h3><p class="muted">العريكة في المجلس جنب الدلة، العزايم، فطور الجمعة، السحور. بنبيع اللحظة مش المنتج.</p></div></div>
+        <div><span class="pct" style="color:var(--mustard)">3</span><div><h3><span class="sw" style="background:var(--mustard)"></span>تجربة الناس <span class="muted note">· فيديو + 2 بوست</span></h3><p class="muted">أول تذوق، ردود فعل، فيديوهات العملاء (UGC)، تصويت وأسئلة في الكومنت. ده أسرع محور بيجيب متابعين.</p></div></div>
+        <div><span class="pct" style="color:var(--navy)">2</span><div><h3><span class="sw" style="background:var(--navy)"></span>الثقة وورا الكواليس <span class="muted note">· 2 بوست</span></h3><p class="muted">تجهيز الطلبات، الشحن لمدن ودول، نقاط البيع، اللوحة الإعلانية. بيطمّن اللي متردد يشتري أونلاين.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 IDEAS -->
+  <section class="row" id="ideas">
+    <header><div class="num">07</div><h2>خطة الشهر الأول وترشيحات الترويج</h2><p>نوفمبر: 12 بوست + 3 فيديوهات حسب العقد. كل قطعة عليها ترشيح: ترويج لهدف متابعين، أو تفاعل، أو أورجانيك.</p></header>
+    <div class="body">
+      <div style="display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.88rem"><span><span class="boost b-f">ترويج · متابعين</span> هدف "متابعين أكثر" / "زيارات البروفايل"</span><span><span class="boost b-e">ترويج · تفاعل</span> هدف "تفاعل" / "مشاهدات"</span><span><span class="boost b-n">أورجانيك</span> من غير ترويج</span></div>
+      <div class="tbl"><table class="plan">
+        <thead><tr><th>الأسبوع</th><th>القطعة</th><th>المحور</th><th>الفكرة والهوك</th><th>المنصات</th><th>الترويج</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>بوست 1 · صورة</td><td>حكاية</td><td>رضيف وصل إنستجرام: صورة البطل مع "مرحبا الساع"</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr class="vid"><td>1</td><td>فيديو 1 · ريل</td><td>حكاية</td><td>وش هي العريكة؟ هوك: "لو ما تعرف العريكة… فاتك نص كرم الجنوب". AI بالرسومات + لقطة الطبق</td><td>تيك توك + ريلز</td><td><span class="boost b-f">ترويج · متابعين</span></td></tr>
+          <tr><td>1</td><td>بوست 2 · كاروسيل</td><td>حكاية</td><td>حكاية بن قبطيه والخلطة من بيت جنوبي لبيتك</td><td>إنستجرام + Photo Mode</td><td><span class="boost b-f">ترويج · متابعين</span></td></tr>
+          <tr><td>1</td><td>بوست 3 · صورة</td><td>ثقة</td><td>لقطة البطل: الكيس على مصطبة حجر والجدار العسيري وراه</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr><td>2</td><td>بوست 4 · كاروسيل</td><td>مطبخ</td><td>دليل العريكة خطوة بخطوة. "احفظ البوست، بتحتاجه في أول عزيمة"</td><td>إنستجرام + Photo Mode</td><td><span class="boost b-e">ترويج · تفاعل</span></td></tr>
+          <tr><td>2</td><td>بوست 5 · تصميم</td><td>تجربة الناس</td><td>"عسل ولا تمر ولا سمن؟ قول في الكومنت"</td><td>إنستجرام + Photo Mode</td><td><span class="boost b-e">ترويج · تفاعل</span></td></tr>
+          <tr><td>2</td><td>بوست 6 · صورة</td><td>ضيافة</td><td>صحن الضيافة: التقديم مع العسل والتمر والسمن</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr class="vid"><td>3</td><td>فيديو 2 · ريل</td><td>مطبخ</td><td>من الكيس للصحن في 30 ثانية. هوك: "طحين + موية + نار… وشوف النتيجة"</td><td>تيك توك + ريلز</td><td><span class="boost b-e">ترويج · تفاعل</span></td></tr>
+          <tr><td>3</td><td>بوست 7 · صورة</td><td>ضيافة</td><td>العريكة في المجلس جنب الدلة: "واجب الضيف"</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr><td>3</td><td>بوست 8 · كاروسيل</td><td>مطبخ</td><td>3 أخطاء تخرب العريكة: "لو عريكتك تطلع ناشفة…"</td><td>إنستجرام + Photo Mode</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr><td>3</td><td>بوست 9 · كاروسيل</td><td>ثقة</td><td>من أبها لإيطاليا والخليج: خريطة الأماكن اللي وصلتها رضيف بتصميم الهوية</td><td>إنستجرام + Photo Mode</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr class="vid"><td>4</td><td>فيديو 3 · ريل</td><td>تجربة الناس</td><td>أول تذوق: "أول مرة يذوق العريكة… شوف وجهه"</td><td>تيك توك + ريلز</td><td><span class="boost b-f">ترويج · متابعين</span></td></tr>
+          <tr><td>4</td><td>بوست 10 · صورة</td><td>مطبخ</td><td>كيس العجن الحراري: "يدك ما عاد تحترق وأنت تعرك"</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr><td>4</td><td>بوست 11 · تصميم</td><td>تجربة الناس</td><td>آراء العملاء: رسائل وتقييمات حقيقية بتصميم الهوية</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+          <tr><td>4</td><td>بوست 12 · صورة</td><td>ضيافة</td><td>"أول برد في الجنوب = عريكة": طبق ساخن وبخار</td><td>إنستجرام</td><td><span class="boost b-n">أورجانيك</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">فيه 6 قطع مرشحة للترويج، ومنهم بنروّج 3–4 بس في الشهر حسب أداء أول 24–48 ساعة. لو العميل عايز بوست لعرض الوايت فرايداي (27 نوفمبر)، بيتحسب من الـ12 وبياخد مكان بوست 12. وأي فيديو يصوّره العميل بنفسه وينزل زي ما هو يبقى إضافي خارج الـ3 فيديوهات.</p>
+    </div>
+  </section>
+
+  <!-- 8 BOOST RULES -->
+  <section class="row" id="boost">
+    <header><div class="num">08</div><h2>إمتى نروّج البوست؟</h2><p>ترويج من جوه التطبيق (Promote / Boost) لبوستات أثبتت نفسها. ده منفصل عن الحملات الإعلانية.</p></header>
+    <div class="body">
+      <div class="rules">
+        <div><h3>يتروّج لو…</h3><ul>
+          <li>عدى 24–48 ساعة وأداؤه أعلى من متوسط الحساب</li>
+          <li>نسبة التفاعل (لايك + كومنت + شير + حفظ ÷ مشاهدات) فوق 6٪</li>
+          <li>الناس كملت نص الفيديو أو أكتر</li>
+          <li>جاب 3 متابعين أو أكتر لكل 1000 مشاهدة</li>
+        </ul></div>
+        <div><h3>نختار الهدف كده</h3><ul>
+          <li><b>متابعين:</b> فيديوهات التعريف والقصة وأول تذوق → "متابعين أكثر" في تيك توك، "زيارات البروفايل" في إنستجرام</li>
+          <li><b>تفاعل:</b> الوصفات والأسئلة والكاروسيل → "تفاعل" أو "مشاهدات"</li>
+          <li>الاستهداف: السعودية + الخليج، 20+، اهتمامات أكل وطبخ وضيافة</li>
+          <li>المدة: من 3 لـ5 أيام</li>
+        </ul></div>
+        <div><h3>ما يتروّجش لو…</h3><ul>
+          <li>فيه موسيقى مش من المكتبة التجارية (تيك توك هيرفضه)</li>
+          <li>فيه سعر أو عرض أو كود خصم (ده شغل فريق الحملات)</li>
+          <li>جودة الصورة ضعيفة أو أول ثانيتين بطيئين</li>
+          <li>نفس الفكرة اتروّجت في نفس الأسبوع</li>
+        </ul></div>
+      </div>
+      <p class="note">اقتراح مبدئي للميزانية: من 75 لـ150 ر.س لكل بوست، بحد أقصى 3–4 قطع في الشهر من المرشحين في خطة الشهر. القرار النهائي للعميل وفريق الإعلانات.</p>
+    </div>
+  </section>
+
+  <!-- 9 PHOTO -->
+  <section class="row" id="photo">
+    <header><div class="num">09</div><h2>صور المنتجات: ستايل جنوبي عسيري</h2><p><span class="must">ضروري</span><br>طلب أساسي من العميل. كل صورة منتج لازم يبان إنها من الجنوب من غير ما نقول.</p></header>
+    <div class="body">
+      <p class="lead">الصور تكمّل الرسومات الموجودة في الهوية: الطفشة، الحنا والأساور، الصحن الخشب، وبيوت الحجر. اللي في الرسمة الأبيض والأسود نصوّره حقيقي وبالألوان.</p>
+      <div class="photo-hero">
+        <figure><img src="assets/image-84c0d93eb2f0.jpg" alt="رسم امرأة بقبعة الخوص تعرك العريكة"><figcaption>المرجع: العرك بالإيد ← لقطة كيس العجن الحراري</figcaption></figure>
+        <figure><img src="assets/image-3975d40a25bc.jpg" alt="رسم امرأة جنوبية تحمل صحن العريكة"><figcaption>المرجع: الصحن في الإيد ← لقطة التقديم</figcaption></figure>
+        <figure><img src="assets/image-4ea0ad7522d9.jpg" alt="رسم يد مزينة بالأساور تفرد العجين"><figcaption>المرجع: الأساور والحنا ← لقطات الإيد القريبة</figcaption></figure>
+      </div>
+      <div><h3 style="margin-bottom:10px">ألوان الصورة (من الهوية)</h3>
+        <div class="palette">
+          <div><i style="background:var(--red)"></i>أحمر رضيف<br><span class="muted">قماش، حاروقة</span></div>
+          <div><i style="background:var(--green)"></i>أخضر عسيري<br><span class="muted">ريحان، بعيثران</span></div>
+          <div><i style="background:var(--mustard)"></i>خردلي<br><span class="muted">عسل، سمن، خوص</span></div>
+          <div><i style="background:var(--paper)"></i>كريمي<br><span class="muted">جدار جبس أبيض</span></div>
+          <div><i style="background:#8A6A4F"></i>خشب وحجر<br><span class="muted">صحن، مصطبة</span></div>
+          <div><i style="background:var(--ink)"></i>أسود حبر<br><span class="muted">ظلال، أساور</span></div>
+        </div>
+        <p class="note" style="margin-top:8px">الألوان تيجي من الإكسسوارات والخلفية، مش من فلتر.</p>
+      </div>
+      <div><h3>الإكسسوارات والخلفيات</h3>
+        <ul class="props">
+          <li>جدار مرسوم بفن القط العسيري (مثلثات وخطوط أحمر وأخضر وأصفر)</li>
+          <li>حجر بيوت رجال ألمع ومصاطب الحجر</li>
+          <li>صحن خشب تقليدي للعريكة</li>
+          <li>دلة قهوة وفناجيل ومبخرة في المجلس</li>
+          <li>سمن بري في إناء فخار، عسل سدر، تمر</li>
+          <li>ريحان وبعيثران وكادي (الأخضر والعطر الجنوبي)</li>
+          <li>قماش مطرّز جنوبي تحت المنتج</li>
+          <li>قبعة الخوص (الطفشة) في الكادر أو على الحيطة</li>
+          <li>أيد بحنا وأساور فضة زي رسومات الهوية</li>
+          <li>شنطة رضيف الورقية المطبوعة لصور الهدايا</li>
+        </ul>
+      </div>
+      <div><h3>قائمة اللقطات (جلسة تصوير واحدة)</h3>
+        <div class="shots">
+          <div><p><b>لقطة البطل:</b> كيس الطحين على مصطبة حجر، والجدار العسيري وراه. ضوء شمس صباحي من الجنب.</p></div>
+          <div><p><b>فلات لاي المنتجات الـ3:</b> الطحين + الحاروقة + كيس العجن على قماش مطرّز، حواليهم عسل وسمن وتمر.</p></div>
+          <div><p><b>الصحن من فوق:</b> العريكة مكوّرة والحاروقة في النص، وإيد بحنا بتقطع منها.</p></div>
+          <div><p><b>صبّة الحاروقة:</b> لقطة قريبة سلو موشن (فيديو + صورة).</p></div>
+          <div><p><b>العرك:</b> الإيدين جوه كيس العجن الحراري والبخار طالع.</p></div>
+          <div><p><b>المجلس:</b> الصحن جنب الدلة والفناجيل، ورجال بالثوب في الخلفية ("تقدمها الرجال للرجال").</p></div>
+          <div><p><b>الطبيعة:</b> الكيس على سور حجري وضباب السودة أو أبها ورا.</p></div>
+          <div><p><b>الهدية:</b> الكيس طالع من شنطة رضيف المطبوعة، وكارت البراند جنبه.</p></div>
+        </div>
+      </div>
+      <div class="voice">
+        <div class="say"><h3>نعمل</h3><ul><li>ضوء طبيعي دافي (الصبح أو قبل المغرب)</li><li>مواد طبيعية: حجر، خشب، فخار، خوص</li><li>بخار وحركة ولمسة إيد حقيقية</li><li>مساحة فاضية للكتابة في الصور اللي هتبقى بوستات</li></ul></div>
+        <div class="say nosay"><h3>ما نعملش</h3><ul><li>خلفية بيضاء ستوديو بس (تنفع للمتجر فقط)</li><li>رخام وصحون بورسلين حديثة وستايل غربي</li><li>فلاتر باردة أو مشبعة زيادة</li><li>إكسسوارات من مناطق تانية (نجدي، حجازي) تلخبط الهوية</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 COMPETITOR -->
+  <section class="row" id="competitor">
+    <header><div class="num">10</div><h2>تحليل المنافس</h2><p>متجر أبو حور (abohoor.com)، من متجره وحساباته على إنستجرام وإكس وسناب، حسب لقطات الشاشة يوم 2 نوفمبر 2026.</p></header>
+    <div class="body">
+      <div class="comp-head"><h3>متجر أبو حور</h3><a href="https://abohoor.com/" target="_blank" rel="noopener">abohoor.com</a><span class="muted">من أبها، عسير · متجر عسل بالأساس، وبيبيع قهوة وعطور وعود، وضاف البر والعريكة</span></div>
+      <div class="facts f3">
+        <div><b>2M</b><small>سناب bu70r (حساب المالك الشخصي)</small></div>
+        <div><b>54.4K</b><small>إنستجرام asl_abohor · 259 بوست</small></div>
+        <div><b>2,112</b><small>إكس · آخر تغريدة 30 أغسطس</small></div>
+      </div>
+      <div class="tbl"><table class="pf">
+        <thead><tr><th>اللي شايفينه في محتواه</th><th>المعنى بالنسبة لنا</th></tr></thead>
+        <tbody>
+          <tr><td>قوته الحقيقية في سناب المالك (2 مليون متابع). صاحب المتجر بيظهر بوشه في فيديوهات سيلفي بشماغ، من شنطة العربية وفي المجلس والبر.</td><td>نفس نموذج رضيف بالظبط (والد العميل على سناب)، بس على نطاق أكبر بكتير. ما ننافسوش في حجم الجمهور. ننافس في التخصص والقصة، وننقل جمهور الوالد لحساب البراند.</td></tr>
+          <tr><td>إنستجرام فيه نوعين ما بيركبوش على بعض: فيديوهات خام للمالك، وتصميمات عسل ذهبي وأسود فاخرة شبه أي براند عسل.</td><td>هوية بصرية واحدة لرضيف: جنوبية عسيرية في كل بوست وفيديو. أي حد يشوف البوست يعرف إنه رضيف من غير اللوجو.</td></tr>
+          <tr><td>العريكة عنده عرض مش قصة: "اشتري 10 كيلو بر عريكة وكيلو سمن واحصل على كيلو شوكة مجانًا"، و"بكج العريكة فقط بـ318".</td><td>محدش بيحكي حكاية العريكة. رضيف ياخد المساحة دي بالكامل: الأصل، والتحضير، والضيافة.</td></tr>
+          <tr><td>كل التصميمات عروض: "اشتري 2 كيلو واحصل على ربع مجانًا"، "عرض الصيف". المتجر نفسه عليه خصومات من 11٪ لـ44٪.</td><td>نبيع بالقيمة والتجربة. المحتوى الأورجانيك من غير خصومات، والعروض للمواسم بس.</td></tr>
+          <tr><td>البراند مربوط بشخص المالك، وسنابه فيه حياته الشخصية والأكل والإعلانات ورخصة عقارية.</td><td>بن قبطيه يظهر كشيف وصاحب وصفة جوه محتوى رضيف، والحساب يفضل للبراند. كده البراند يعيش من غير ما يعتمد على حساب شخص.</td></tr>
+          <tr><td>بيبيع بر خام 10 كيلو بـ139 ر.س. التزام كبير ومحتاج خبرة خلط.</td><td>خلطة جاهزة + حاروقة + كيس عجن. رسالتنا "ما تحتاج تكون جنوبي ولا خبير"، وده جمهور هو مش بيكلمه.</td></tr>
+          <tr><td>مفيش تيك توك في روابطه، وإكس واقف من 30 أغسطس.</td><td>فرصة نمتلك كلمة "عريكة" في بحث تيك توك قبل ما يدخل.</td></tr>
+          <tr><td>بايو إنستجرام فيه "مسجل في هيئة الغذاء والدواء" ورقم تواصل.</td><td>نقطة ثقة لازم نعمل زيها: لو رضيف مسجل في الهيئة أو في "معروف" أو "موثوق"، نكتبها في البايو.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="tbl"><table class="prices">
+        <thead><tr><th>منتجاته اللي بتنافسنا</th><th>السعر</th><th>قبل الخصم</th></tr></thead>
+        <tbody>
+          <tr><td>بكج العريكة (10 ك بر عريكة + ك سمن + ك عسل شوكة)</td><td>318 ر.س</td><td>567 ر.س (‎-44٪)</td></tr>
+          <tr><td>بر سنابل حور، عريكة 10 كيلو</td><td>139 ر.س</td><td>189 ر.س (‎-27٪)</td></tr>
+          <tr><td>كيلو سمن بلدي</td><td>179 ر.س</td><td>199 ر.س</td></tr>
+        </tbody>
+      </table></div>
+      <div class="alert"><span class="tag">نتعلم منه</span><p><b>الوش والبكج.</b> فيديوهات المالك بوشه هي اللي بتبني الثقة عنده، فالأولوية عندنا فيديو بن قبطيه. والبكج فكرة ذكية، فنقترح على العميل "صحن الضيافة": طحين + حاروقة + كيس عجن في شنطة رضيف، كهدية للشتاء ورمضان.</p></div>
+      <p class="note">العميل قال إن المنافس قلّد فكرة البراند. ردّنا على السوشيال ما يكونش هجوم. نثبّت إننا الأصل بالقصة والوجه والتخصص، وده بيبان لوحده. الأرقام من لقطات الشاشة، ونسب التفاعل والمشاهدات عنده محتاجة متابعة يدوية.</p>
+    </div>
+  </section>
+
+  <!-- 11 SEASON -->
+  <section class="row" id="season">
+    <header><div class="num">11</div><h2>خطة الـ90 يوم</h2><p>العريكة أكلة شتا، والعقد واقع في عز موسمها.</p></header>
+    <div class="body">
+      <div class="season">
+        <div><span class="eyebrow">الشهر الأول</span><h3>نوفمبر · الإطلاق</h3><ul>
+          <li>إطلاق إنستجرام بشبكة الـ9 بوستات</li>
+          <li>جلسة التصوير الجنوبية (تكفي بوستات 3 شهور)</li>
+          <li>الفيديوهات: وش هي العريكة، من الكيس للصحن، أول تذوق</li>
+          <li>تطبيق دروس تحليل المحتوى القديم من أول فيديو</li>
+          <li>محتوى تمهيدي للوايت فرايداي (27 نوفمبر)</li>
+        </ul></div>
+        <div><span class="eyebrow">الشهر الثاني</span><h3>ديسمبر · الشتا</h3><ul>
+          <li>الفيديوهات: بن قبطيه يحكي قصة الخلطة، "أول برد = عريكة" مع المربعانية، الحاروقة وكيس العجن</li>
+          <li>البوستات: العزايم وجلسات الشتا وآراء العملاء</li>
+          <li>إعادة نشر فيديوهات العملاء (UGC) في الستوري</li>
+        </ul></div>
+        <div><span class="eyebrow">الشهر الثالث</span><h3>يناير · التحضير لرمضان</h3><ul>
+          <li>الفيديوهات: العريكة في السحور (رمضان يبدأ تقريبًا 8 فبراير 2027)، صحن الضيافة كهدية، أفضل فيديو عميل</li>
+          <li>البوستات: الهدايا والتغليف وتحضيرات رمضان</li>
+          <li>تمهيد ليوم التأسيس (22 فبراير)</li>
+          <li>مراجعة الأرقام وتثبيت أنجح الصيغ</li>
+        </ul></div>
+      </div>
+      <div class="tbl"><table class="week">
+        <thead><tr><th>إيقاع الشهر</th><th>الأحد</th><th>الثلاثاء</th><th>الخميس</th></tr></thead>
+        <tbody>
+          <tr><td>الأسبوع 1</td><td>بوست</td><td>فيديو + بوست</td><td>بوست</td></tr>
+          <tr><td>الأسبوع 2</td><td>بوست</td><td>بوست</td><td>بوست</td></tr>
+          <tr><td>الأسبوع 3</td><td>بوست</td><td>فيديو + بوست</td><td>بوست</td></tr>
+          <tr><td>الأسبوع 4</td><td>بوست</td><td>بوست</td><td>فيديو + بوست</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">12 بوست = 3 في الأسبوع. الـ3 فيديوهات تنزل على تيك توك وريلز في نفس اليوم. الستوري اليومي إعادة نشر من غير إنتاج زيادة.</p>
+      <p class="note">أوقات النشر المبدئية بتوقيت السعودية: 1–3 الضهر و8–11 بالليل، والخميس بالليل أقوى وقت. نختبرها أول أسبوعين ونثبّت الأحسن.</p>
+      <div><h3 style="margin-bottom:8px">الهاشتاقات والكلمات المفتاحية</h3>
+        <div class="tags"><span>#عريكة</span><span>#العريكة</span><span>#عريكة_جنوبية</span><span>#رضيف</span><span>#رظيف</span><span>#اكلات_جنوبية</span><span>#اكلات_شعبية</span><span>#ضيافة</span><span>#ابها</span><span>#عسير</span><span>#خميس_مشيط</span><span>#شتاء_الجنوب</span><span>#فطور_سعودي</span><span>#عزايم</span></div>
+        <p class="note" style="margin-top:6px">3 لـ5 هاشتاقات في البوست. الأهم إن كلمة "عريكة" تتقال وتتكتب في الفيديو نفسه.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 KPI -->
+  <section class="row" id="kpi">
+    <header><div class="num">12</div><h2>المطلوب من العميل</h2><p>الحاجات اللي محتاجينها عشان نبدأ تنفيذ خطة نوفمبر.</p></header>
+    <div class="body">
+      <div>
+        <ul class="needs">
+          <li>أكواد التحقق وقت تسجيل الدخول على الحسابات</li>
+          <li>موافقة الوالد (بن قبطيه) على الظهور في سلسلة ثابتة</li>
+          <li>جلسة تصوير واحدة بالإكسسوارات الجنوبية</li>
+          <li>فيديوهات خام: تحضير، تقديم، تجهيز طلبات</li>
+          <li>معلومات وصور شحنة إيطاليا والخليج (للبوست والقصة)</li>
+          <li>أي تسجيل رسمي (هيئة الغذاء والدواء، معروف، موثوق) عشان نكتبه في البايو</li>
+          <li>تأكيد مواعيد عرض الوايت فرايداي</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">رضيف · استراتيجية السوشيال ميديا · نوفمبر 2026</div>
+  <div class="band" role="presentation"></div>
+</footer>
+
+<style>#competitor .body,#audit .pf:last-of-type tbody tr:first-child{filter:blur(7px);pointer-events:none;user-select:none}</style></body></html>
+

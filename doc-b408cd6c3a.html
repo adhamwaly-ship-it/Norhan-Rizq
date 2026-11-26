@@ -1,0 +1,817 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Content plan</title>
+<meta name="viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: brand cream paper, Asiri triangle band; overview calendar, then one "post sheet" per post: brief on the right, ready-to-copy caption on the left. Single-theme by choice (client identity). */
+:root{--strip:url(assets/image-f7ae67da15dd.png);
+  --paper:#FFFCF1; --paper-2:#F6F0DD; --ink:#1B1917; --ink-2:#5A524A; --line:#E3D9BF;
+  --red:#BF3F34; --green:#118742; --mustard:#C5912B; --navy:#2D4E85;
+  --display:"Aref Ruqaa","Amiri",serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  color-scheme:only light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;direction:rtl}
+.band{height:46px;background:var(--strip) repeat-x center/auto 46px;border-bottom:3px solid var(--navy)}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--red)}
+.eyebrow{font-weight:600;color:var(--red);font-size:.95rem}
+.muted{color:var(--ink-2)}
+.hero{padding-block:44px 8px;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:end}
+.hero h1{font-family:var(--display);font-weight:700;color:var(--red);font-size:clamp(3rem,9vw,5.6rem);line-height:1.15;margin-top:6px}
+.hero .sub{font-size:1.15rem;max-width:52ch;margin-top:10px}
+.hero img{width:100%;max-width:260px;mix-blend-mode:multiply;justify-self:end}
+@media (max-width:720px){.hero{grid-template-columns:1fr}.hero img{display:none}}
+.mixrow{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);margin-top:24px}
+.mixrow div{padding:16px 12px;text-align:center;border-inline-start:1px solid var(--line)}
+.mixrow div:first-child{border-inline-start:0}
+.mixrow b{display:block;font-size:2rem;line-height:1.2;font-variant-numeric:tabular-nums}
+.mixrow small{color:var(--ink-2);font-size:.85rem}
+@media (max-width:600px){.mixrow{grid-template-columns:repeat(2,1fr)}.mixrow div:nth-child(3){border-inline-start:0}.mixrow div:nth-child(n+3){border-top:1px solid var(--line)}}
+section.blk{padding-block:48px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:22px}
+section.blk > h2{font-family:var(--display);font-size:2.2rem;color:var(--red);line-height:1.3}
+.lead{font-size:1.1rem;max-width:68ch}
+/* funnel */
+.funnel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
+.funnel > div{padding:14px 14px 4px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.funnel > div:first-child{border-inline-start:0}
+.funnel b{font-size:1.05rem}
+@media (max-width:760px){.funnel{grid-template-columns:1fr 1fr}.funnel > div:nth-child(3){border-inline-start:0}}
+/* keywords */
+.kwgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.kwgrid > div{display:flex;flex-direction:column;gap:8px}
+.kwgrid h3{font-size:1rem}
+@media (max-width:760px){.kwgrid{grid-template-columns:1fr}}
+.kw{display:flex;flex-wrap:wrap;gap:6px}
+.kw span{border:1px solid var(--green);color:var(--green);padding:1px 10px;border-radius:999px;font-size:.88rem;font-weight:500;background:#fff}
+.where{margin:0;padding-inline-start:20px;columns:2;column-gap:36px}
+.where li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:640px){.where{columns:1}}
+/* calendar */
+.cal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.cal-wk{display:flex;flex-direction:column;gap:8px}
+.cal-wk h3{font-size:.9rem;color:var(--ink-2);font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.cal-item{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px}
+.cal-item:hover{border-color:var(--red)}
+.cal-d{font-size:.78rem;color:var(--ink-2)}
+.cal-t{font-weight:600;line-height:1.5}
+.cal-item .chip{align-self:flex-start;margin-top:4px}
+@media (max-width:860px){.cal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.cal{grid-template-columns:1fr}}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:.78rem;font-weight:600;padding:1px 9px;border-radius:2px;background:var(--paper-2);border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
+.c-car{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.g-buy{background:#fff;border-color:var(--red);color:var(--red)}
+.g-fol{background:#fff;border-color:var(--navy);color:var(--navy)}
+.g-eng{background:#fff;border-color:var(--mustard);color:#8a6418}
+.boost{font-size:.78rem;font-weight:600;white-space:nowrap;padding:1px 9px;border-radius:2px;display:inline-block}
+.b-f{background:var(--red);color:var(--paper)}
+.b-e{background:var(--green);color:#fff}
+.b-n{border:1px solid var(--line);color:var(--ink-2)}
+/* post sheets */
+.posts{display:flex;flex-direction:column;gap:0}
+.post{padding-block:36px;border-top:1px solid var(--line);scroll-margin-top:16px}
+.post-h{display:flex;gap:18px;align-items:flex-start}
+.pnum{font-family:var(--display);font-size:3.2rem;line-height:1;color:var(--mustard);font-weight:700;min-width:64px}
+.post-meta{min-width:0}
+.pdate{font-size:.85rem;color:var(--ink-2)}
+.post-meta h3{font-family:var(--display);font-size:1.9rem;line-height:1.35}
+.post-b{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;margin-top:20px}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+@media (max-width:820px){.post-b{grid-template-columns:1fr}}
+.idea{font-size:1.02rem}
+.lbl{font-size:.8rem;font-weight:600;color:var(--ink-2);margin-bottom:4px}
+.vis{font-size:.95rem}
+.mock{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background-image:linear-gradient(var(--paper-2),var(--paper-2)),var(--strip);background-repeat:no-repeat,repeat-x;background-size:100% calc(100% - 14px),auto 14px;background-position:top,bottom}
+.mock-h{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--red);line-height:1.4}
+.mock-sub{font-size:.95rem;color:var(--ink)}
+.slides h4{font-size:.8rem;color:var(--ink-2);font-weight:600;margin-bottom:6px}
+.slides ol{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+.slides li{counter-increment:s;display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:10px;padding-block:9px;border-bottom:1px solid var(--line)}
+.slides li::before{content:counter(s);grid-row:span 2;font-weight:700;color:var(--red);font-size:1.05rem}
+.slides li b{font-weight:600}
+.slides li span{font-size:.9rem;color:var(--ink-2)}
+.pnote{font-size:.88rem;background:#fff;border:1px dashed var(--mustard);padding:8px 12px;border-radius:4px}
+.cap-wrap{background:var(--ink);color:var(--paper);border-radius:6px;padding:14px 16px}
+.cap-top{display:flex;justify-content:space-between;align-items:center}
+.cap-wrap .lbl{color:#cfc6b4;margin:0}
+.cap{white-space:pre-wrap;font-family:var(--body);font-size:.95rem;line-height:1.9;margin:8px 0 0}
+.copy{font-family:var(--body);font-size:.8rem;font-weight:600;background:var(--paper);color:var(--ink);border:0;border-radius:3px;padding:3px 12px;cursor:pointer}
+.copy:hover{background:var(--mustard)}
+.alt{font-size:.88rem;color:var(--ink-2)}
+.boostbox{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.boostbox > a{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:4px}
+@media (max-width:760px){.boostbox{grid-template-columns:1fr 1fr}}
+footer{padding-block:32px 0;text-align:center;color:var(--ink-2);font-size:.85rem}
+footer .band{margin-top:20px}
+
+/* designer mockups (4:5 artboards) */
+.art{position:relative;aspect-ratio:4/5;width:100%;max-width:340px;max-height:none;background:var(--paper);border:1px solid var(--line);box-shadow:0 1px 0 var(--line),0 8px 24px -16px rgba(27,25,23,.35);overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:9% 7% 12%;gap:4px}
+.art-logo{position:absolute;top:4%;inset-inline-start:5%;font-family:var(--display);font-weight:700;color:var(--red);font-size:1rem;line-height:1}
+.art-num{position:absolute;top:4%;inset-inline-end:5%;font-weight:700;font-size:.75rem;color:var(--mustard)}
+.art-strip{position:absolute;bottom:0;left:0;right:0;height:9%;background:var(--strip) repeat-x center/auto 100%;border-top:2px solid var(--navy)}
+.art-h{font-family:var(--display);font-weight:700;color:var(--red);font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.35;margin-top:6%}
+.art-sub{font-style:normal;font-size:.85rem;color:var(--ink);line-height:1.6}
+.art img{flex:1;min-height:0;width:100%;object-fit:contain;mix-blend-mode:multiply;margin-top:4px}
+.art-red{background:var(--red)}
+.art-red .art-h,.art-red .art-logo{color:var(--paper)}
+.art-red .art-sub{color:var(--paper)}
+.art-red img{mix-blend-mode:screen;filter:invert(1);opacity:.9}
+.art-red .art-num{color:var(--paper)}
+.art-ph{position:absolute;inset:0 0 9% 0;background:repeating-linear-gradient(135deg,var(--paper-2) 0 12px,#EDE3C8 12px 13px);display:flex;align-items:center;justify-content:center;padding:18% 10% 30%}
+.art-ph span{font-size:.8rem;color:var(--ink-2);background:var(--paper);border:1px dashed var(--mustard);padding:6px 10px;border-radius:3px;line-height:1.6}
+.art-ph-sm{position:relative;inset:auto;flex:1;width:100%;padding:8%;margin-top:6px}
+.art-band{position:absolute;left:0;right:0;bottom:9%;background:var(--paper);padding:5% 6% 4%;display:flex;flex-direction:column;gap:2px;border-top:3px solid var(--red)}
+.art-band b{font-family:var(--display);color:var(--red);font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.35}
+.art-band i{font-style:normal;font-size:.85rem}
+.art-photo{padding:0}
+.bowls{display:flex;gap:4%;justify-content:center;margin-top:12%;width:100%}
+.bowls span{display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:600;font-size:.85rem}
+.bowls i{width:62px;height:30px;border:2px solid var(--ink);border-top:0;border-radius:0 0 60px 60px;position:relative}
+.bowls i::before{content:"";position:absolute;left:-6px;right:-6px;top:-2px;border-top:2px solid var(--ink)}
+.bowls span:nth-child(1) i{background:linear-gradient(transparent 40%,#6E6A64 40%)}
+.bowls span:nth-child(4) i{background:linear-gradient(transparent 40%,#E3A93B 40%)}
+.bowls span:nth-child(2) i{background:linear-gradient(transparent 40%,#F2D27A 40%)}
+.bowls span:nth-child(3) i{background:linear-gradient(transparent 40%,#7A3E22 40%)}
+.route{position:relative;margin-top:10%;width:80%;display:flex;flex-direction:column;gap:8px;align-items:flex-start;border-inline-start:2px dashed var(--ink);padding-inline-start:14px}
+.route span{position:relative;font-weight:600;font-size:.85rem}
+.route span::before{content:"";position:absolute;inset-inline-start:-21px;top:.55em;width:10px;height:10px;border-radius:50%;background:var(--red)}
+.carousel{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+.art-sm{flex:0 0 170px;max-width:170px;scroll-snap-align:start;padding:12% 8% 14%}
+.art-sm .art-h{font-size:.98rem;margin-top:10%}
+.art-sm .art-sub{font-size:.68rem}
+.art-sm .art-logo{font-size:.75rem}
+.art-sm img{position:absolute;left:0;right:0;bottom:9%;height:40%;width:100%;margin:0;object-position:center bottom}
+.art-bowls{justify-content:center}
+.art-map{justify-content:center}
+/* designer guide */
+.guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.guide > div{display:flex;flex-direction:column;gap:8px}
+.guide ul{margin:0;padding-inline-start:18px;font-size:.93rem}
+@media (max-width:820px){.guide{grid-template-columns:1fr}}
+.sw{display:flex;flex-wrap:wrap;gap:8px}
+.sw span{display:flex;flex-direction:column;gap:2px;font-size:.75rem;width:76px}
+.sw span i{height:40px;border-radius:3px;border:1px solid var(--line);display:block}
+.sw code{font-family:ui-monospace,Consolas,monospace;font-size:.72rem;direction:ltr;text-align:start}
+
+/* designer files */
+.files-links{display:flex;flex-wrap:wrap;gap:12px}
+.files-links a{display:flex;flex-direction:column;gap:2px;background:var(--ink);color:var(--paper);text-decoration:none;padding:12px 16px;border-radius:4px;min-width:220px}
+.files-links a small{color:#cfc6b4;direction:ltr;text-align:right;font-size:.8rem;word-break:break-all}
+.files-links a:hover{background:var(--red)}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.thumbs figure{margin:0;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+.thumbs img{width:100%;height:160px;object-fit:contain;padding:8px;background:var(--paper)}
+.thumbs figcaption{font-size:.82rem;padding:6px 10px;border-top:1px solid var(--line)}
+@media (max-width:760px){.thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.prods{display:flex;flex-wrap:wrap;gap:8px}
+.prods a{display:flex;flex-direction:column;gap:0;border:1px solid var(--red);background:#fff;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:4px;line-height:1.6}
+.prods a b{color:var(--red);font-size:.92rem}
+.prods a small{color:var(--ink-2);font-size:.78rem}
+.prods a:hover{background:var(--paper-2)}
+.prod-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.prod-cards a{display:flex;flex-direction:column;gap:2px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);border-radius:4px;padding:12px 14px;text-decoration:none;color:var(--ink)}
+.prod-cards a b{font-size:1.05rem}
+.prod-cards a small{color:var(--ink-2)}
+.prod-cards a span{direction:ltr;text-align:right;font-size:.78rem;color:var(--red);word-break:break-all}
+.prod-cards a:hover{border-color:var(--red)}
+@media (max-width:700px){.prod-cards{grid-template-columns:1fr}}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{background:var(--navy);color:#fff;padding:1px 10px;border-radius:3px;font-size:.88rem;font-weight:500}
+.copy-l{background:var(--paper-2);border:1px solid var(--line)}
+.confirm{background:#fff;border:2px solid var(--green);border-radius:6px;padding:14px 16px}
+.confirm label{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start;cursor:pointer}
+.confirm input{position:absolute;opacity:0;width:1px;height:1px}
+.confirm .box{width:28px;height:28px;border:2px solid var(--green);border-radius:4px;background:var(--paper);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.confirm input:checked + .box{background:var(--green)}
+.confirm input:checked + .box::after{content:"✓";color:#fff;font-weight:700;font-size:1.1rem;line-height:1}
+.confirm input:focus-visible + .box{outline:2px solid var(--red);outline-offset:2px}
+.confirm .ctext{font-weight:500}
+.cstatus{font-size:.82rem;color:var(--ink-2);margin-top:8px;padding-inline-start:42px}
+.cstatus:empty{display:none}
+
+/* ===== full designs ===== */
+.art{container-type:inline-size;max-width:400px}
+.art .art-logo{font-size:5cqw}
+.art .art-num{font-size:3.6cqw}
+.art .art-h{font-size:8.4cqw;margin-top:7cqw}
+.art .art-sub{font-size:4cqw}
+.art-sm{flex:0 0 210px;max-width:210px}
+.art-sm .art-h{font-size:9cqw;margin-top:9cqw}
+.art-sm .art-sub{font-size:5cqw}
+.art-sm .art-logo{font-size:6cqw}
+.art-ill{flex:1;min-height:0;width:100%;object-fit:contain;mix-blend-mode:multiply;margin-top:2cqw}
+.scene{position:absolute;inset:0 0 9% 0;overflow:hidden}
+.art-band{position:absolute;left:0;right:0;bottom:9%;background:var(--paper);padding:4cqw 6cqw 3cqw;display:flex;flex-direction:column;gap:0;border-top:1cqw solid var(--red);z-index:3}
+.art-band b{font-family:var(--display);color:var(--red);font-size:8.6cqw;line-height:1.3}
+.art-band i{font-style:normal;font-size:4cqw}
+.art-wall .art-logo,.art-window .art-logo,.art-gift .art-logo,.art-flat .art-logo{z-index:4;background:var(--paper);padding:1cqw 2.4cqw;border-radius:1cqw}
+/* product: bag */
+.pbag{position:relative;width:30cqw;aspect-ratio:3/4;background:linear-gradient(180deg,#FFFDF5,#F1E8CE);border:.4cqw solid #d8c9a3;border-radius:1.6cqw 1.6cqw .8cqw .8cqw;box-shadow:0 2cqw 3cqw -1.5cqw rgba(40,25,10,.45);display:flex;flex-direction:column;align-items:center;overflow:hidden;padding-top:9cqw}
+.pbag::before{content:"";position:absolute;top:0;left:0;right:0;height:3.4cqw;background:repeating-linear-gradient(90deg,#e7dbb9 0 1cqw,#f6efda 1cqw 2cqw);border-bottom:.3cqw solid #d8c9a3}
+.pbag .pb-strip{position:absolute;top:3.6cqw;left:0;right:0;height:3.6cqw;background:var(--strip) repeat-x center/auto 100%}
+.pbag b{font-family:var(--display);color:var(--red);font-size:8cqw;line-height:1.2;font-weight:700}
+.pbag i{font-style:normal;font-size:2.4cqw;color:var(--ink)}
+.pbag img{position:absolute;bottom:0;left:0;width:100%;height:42%;object-fit:cover;object-position:center top;mix-blend-mode:multiply}
+/* product: jar (harooqa) */
+.pjar{position:relative;width:15cqw;aspect-ratio:4/5;background:linear-gradient(90deg,#b4741f,#e8b24c 45%,#c4842a);border-radius:2cqw 2cqw 1.6cqw 1.6cqw;box-shadow:0 1.6cqw 2.4cqw -1cqw rgba(40,25,10,.45);margin-top:3cqw}
+.pjar::before{content:"";position:absolute;top:-3cqw;left:-.6cqw;right:-.6cqw;height:3.6cqw;background:var(--red);border-radius:1cqw}
+.pjar span{position:absolute;left:0;right:0;top:35%;background:var(--paper);color:var(--red);font-family:var(--display);font-weight:700;font-size:3.2cqw;text-align:center;padding:.6cqw 0;border-top:.4cqw solid var(--green);border-bottom:.4cqw solid var(--green)}
+.pjar.top{width:17cqw;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--red) 0 55%,#9c2f26 56% 62%,#d9a54a 63% 100%);margin:0}
+.pjar.top::before{display:none}
+.pjar.top span{top:40%;font-size:3cqw;border:0;background:transparent;color:var(--paper)}
+/* product: kneading bag */
+.pkb{position:relative;width:20cqw;aspect-ratio:4/5;background:linear-gradient(135deg,#cfd2d4,#f7f7f7 38%,#b9bdc0 70%,#e6e7e8);border-radius:1cqw;border-top:1.4cqw solid #8e9396;box-shadow:0 1.6cqw 2.4cqw -1cqw rgba(30,30,30,.4);display:flex;align-items:center;justify-content:center}
+.pkb span{font-size:2.6cqw;font-weight:700;color:var(--ink);text-align:center;line-height:1.4;background:rgba(255,255,255,.7);padding:.6cqw 1cqw;border-radius:.6cqw}
+/* areeka plate */
+.plate{position:relative;width:40cqw;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#e7a93a 0 15%,#c99a5c 16% 50%,#ad7f45 51% 54%,#7a4a26 55% 62%,#5c3519 63% 68%,transparent 69%)}
+.plate i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse 4% 2.6% at 50% 22%,#4a2412 99%,transparent),radial-gradient(ellipse 4% 2.6% at 76% 40%,#4a2412 99%,transparent),radial-gradient(ellipse 4% 2.6% at 72% 68%,#4a2412 99%,transparent),radial-gradient(ellipse 4% 2.6% at 46% 78%,#4a2412 99%,transparent),radial-gradient(ellipse 4% 2.6% at 25% 60%,#4a2412 99%,transparent),radial-gradient(ellipse 4% 2.6% at 28% 34%,#4a2412 99%,transparent)}
+.plate.tilt{transform:scaleY(.48)}
+.plate.big{width:58cqw}
+.steam{position:absolute;width:26cqw;left:37cqw;bottom:39%;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;opacity:.9;z-index:2}
+/* scene: Asiri painted wall + stone ledge */
+.qatt{background:
+  var(--strip) repeat-x 0 6%/auto 9%,
+  repeating-linear-gradient(90deg,var(--red) 0 4cqw,var(--mustard) 4cqw 8cqw,var(--green) 8cqw 12cqw,var(--ink) 12cqw 13cqw) 0 22%/100% 7% no-repeat,
+  var(--strip) repeat-x 0 36%/auto 9%,
+  linear-gradient(var(--ink),var(--ink)) 0 46%/100% .8cqw no-repeat,
+  #FFF9EA}
+.ledge{position:absolute;left:0;right:0;bottom:0;height:34%;background:
+  repeating-linear-gradient(0deg,transparent 0 6.6cqw,rgba(60,40,20,.35) 6.6cqw 7cqw),
+  repeating-linear-gradient(90deg,transparent 0 14cqw,rgba(60,40,20,.25) 14cqw 14.4cqw),
+  linear-gradient(#bfa985,#8f7a5c)}
+.ledge::before{content:"";position:absolute;left:0;right:0;top:0;height:2.2cqw;background:#d4c3a2}
+.on-ledge{position:absolute;left:50%;bottom:22%;transform:translateX(-30%);width:34cqw}
+.side-plate{position:absolute;left:4cqw;bottom:16%;width:30cqw}
+.side-plate .plate{width:36cqw}
+/* scene: flat lay on embroidered cloth */
+.cloth{inset:0 0 9% 0;background:
+  repeating-linear-gradient(45deg,transparent 0 5cqw,rgba(255,252,241,.16) 5cqw 5.5cqw),
+  repeating-linear-gradient(-45deg,transparent 0 5cqw,rgba(255,252,241,.16) 5cqw 5.5cqw),
+  linear-gradient(90deg,transparent 0 8%,var(--mustard) 8% 9.5%,var(--green) 9.5% 11%,transparent 11% 89%,var(--green) 89% 90.5%,var(--mustard) 90.5% 92%,transparent 92%),
+  #a8342b}
+.art-top{position:absolute;left:0;right:0;top:0;background:var(--paper);padding:13cqw 6cqw 3cqw;text-align:center;border-bottom:1cqw solid var(--red);z-index:3}
+.art-top b{font-family:var(--display);color:var(--red);font-size:7.6cqw;line-height:1.3}
+.fl{position:absolute}
+.fl-bag{left:38cqw;top:36%;transform:rotate(-6deg)}
+.fl-jar{left:10cqw;top:40%}
+.fl-kb{left:12cqw;top:64%;transform:rotate(8deg)}
+.fl-honey{left:70cqw;top:38%;width:18cqw;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#f0b43c 0 52%,#fff7e3 53% 62%,#d9cba5 63% 66%,transparent 67%)}
+.fl-dates{left:70cqw;top:64%;width:18cqw;aspect-ratio:1;border-radius:50%;background:radial-gradient(ellipse 14% 9% at 40% 40%,#4a2412 99%,transparent),radial-gradient(ellipse 14% 9% at 62% 52%,#5a2c15 99%,transparent),radial-gradient(ellipse 14% 9% at 42% 64%,#4a2412 99%,transparent),radial-gradient(circle,#fff7e3 0 62%,#d9cba5 63% 66%,transparent 67%)}
+.fl-leaf,.fl-leaf2{width:9cqw;height:4cqw;border-radius:50%;background:var(--green);left:30cqw;top:80%;transform:rotate(-30deg)}
+.fl-leaf2{left:62cqw;top:31%;transform:rotate(25deg)}
+/* scene: stone window, fog, winter */
+.stonewall{background:repeating-linear-gradient(0deg,transparent 0 9cqw,rgba(70,50,30,.18) 9cqw 9.4cqw),linear-gradient(#e9dcc2,#cdb995)}
+.win{position:absolute;left:20cqw;right:20cqw;top:12%;height:46%;border:3cqw solid #8f7a5c;border-bottom-width:4cqw;border-radius:30cqw 30cqw 0 0;background:linear-gradient(#cfd8da,#f2f2ee 70%);overflow:hidden}
+.win .mtn{position:absolute;left:-10%;right:-10%;bottom:0;height:55%;background:#a9b6b8;clip-path:polygon(0 100%,0 55%,18% 30%,32% 52%,50% 15%,66% 48%,82% 28%,100% 50%,100% 100%);opacity:.8}
+.win::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(255,255,255,.7))}
+.art-window .plate{position:absolute;left:21cqw;bottom:14%}
+/* scene: gift bag */
+.giftbg{background:radial-gradient(circle at 50% 40%,#fffdf6,#efe4c8)}
+.gbag{position:absolute;left:24cqw;top:22%;width:46cqw;height:52%}
+.gbag .peek{position:absolute;left:12cqw;top:-14cqw;width:24cqw;transform:rotate(-4deg)}
+.gb-body{position:absolute;inset:0;background:linear-gradient(180deg,#FFFDF5,#efe5c8);border:.4cqw solid #d8c9a3;border-radius:.8cqw;box-shadow:0 3cqw 4cqw -2cqw rgba(40,25,10,.45);display:flex;flex-direction:column;align-items:center;padding-top:9cqw;overflow:hidden}
+.gb-body .pb-strip{position:absolute;top:2cqw;left:0;right:0;height:5cqw;background:var(--strip) repeat-x center/auto 100%}
+.gb-body b{font-family:var(--display);color:var(--red);font-size:11cqw;line-height:1.2}
+.gb-body img{position:absolute;bottom:0;left:0;width:100%;height:46%;object-fit:cover;object-position:center top;mix-blend-mode:multiply}
+.gbag::before{content:"";position:absolute;left:14cqw;right:14cqw;top:-7cqw;height:9cqw;border:1cqw solid #8f7a5c;border-bottom:0;border-radius:9cqw 9cqw 0 0;z-index:0}
+.gb-body{z-index:1}
+.gcard{position:absolute;right:6cqw;bottom:26%;width:24cqw;aspect-ratio:3/2;background:var(--red);color:var(--paper);transform:rotate(8deg);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 1.6cqw 2.4cqw -1cqw rgba(40,25,10,.45);border-radius:.8cqw}
+.gcard b{font-family:var(--display);font-size:6cqw;line-height:1.2}
+.gcard i{font-style:normal;font-size:2.4cqw}
+/* red teaser */
+.art-redbag{background:var(--red)}
+.art-redbag .art-h,.art-redbag .art-logo,.art-redbag .art-sub{color:var(--paper)}
+.red-stage{position:relative;z-index:2;margin-top:4cqw}
+.red-stage .glow{width:34cqw;box-shadow:0 0 0 2cqw rgba(255,252,241,.12),0 0 10cqw 4cqw rgba(255,220,150,.35)}
+.red-village{position:absolute;left:0;right:0;bottom:9%;width:100%;height:30%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;opacity:.35}
+/* small extras inside slides */
+.mini-prods{display:flex;align-items:flex-end;justify-content:center;gap:3cqw;margin-top:auto;margin-bottom:6cqw}
+.mini-prods .pbag{width:28cqw}
+.mini-prods .pjar{width:14cqw}
+.mini-prods .pkb{width:18cqw}
+.mini-plate{margin-top:auto;margin-bottom:8cqw}
+.mini-plate .plate{width:52cqw}
+.art-sm .art-ill{position:absolute;left:0;right:0;bottom:9%;height:42%;width:100%;margin:0;object-position:center bottom}
+.art-red .mini-prods .pbag{box-shadow:none}
+
+/* offer post */
+.art-offer{background:var(--red)}
+.art-offer .art-h,.art-offer .art-logo{color:var(--paper)}
+.art-offer .art-h{font-size:8cqw;margin-top:9cqw}
+.offer-prods{display:flex;align-items:flex-end;justify-content:center;gap:3cqw;margin-top:5cqw;position:relative;z-index:2}
+.offer-prods .pbag{width:30cqw}
+.offer-prods .pjar{width:15cqw}
+.offer-prods .pkb{width:19cqw}
+.price{position:absolute;left:6cqw;top:56%;z-index:3;width:28cqw;aspect-ratio:1;border-radius:50%;background:var(--paper);color:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-10deg);border:1.2cqw dashed var(--mustard);box-shadow:0 2cqw 4cqw -2cqw rgba(0,0,0,.4)}
+.price b{font-size:12cqw;line-height:1;font-weight:700;font-variant-numeric:tabular-nums}
+.price span{font-size:4cqw;font-weight:700}
+.ribbon{position:absolute;left:0;right:0;bottom:17%;margin:auto;width:fit-content;background:var(--green);color:#fff;font-weight:700;font-size:5cqw;padding:1.4cqw 5cqw;border-radius:6cqw;z-index:3}
+.wf{position:absolute;left:0;right:0;bottom:11%;text-align:center;color:var(--paper);font-size:3.6cqw;font-weight:600;z-index:3}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+</style>
+
+<div class="band" role="presentation"></div>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">خطة محتوى · إنستجرام + تيك توك (Photo Mode)</div>
+      <h1>رضيف · 13 بوست</h1>
+      <p class="sub">خطة الشهر الأول من الاستراتيجية: بوستات وكاروسيل بس من غير فيديوهات. كل بوست معاه تصميمه بهوية رضيف، والكابشن جاهز للنسخ، وكلمات البحث والهاشتاقات.</p>
+    </div>
+    <img src="assets/image-3975d40a25bc.jpg" alt="رسم امرأة جنوبية تحمل صحن العريكة">
+  </div>
+  <div class="mixrow">
+    <div><b>13</b><small>بوست في الشهر</small></div>
+    <div><b>4</b><small>كاروسيل</small></div>
+    <div><b>9</b><small>تصميم وصورة منتج</small></div>
+    <div><b>3</b><small>بوستات في الأسبوع</small></div>
+  </div>
+
+
+  <section class="blk" id="files">
+    <h2>ملفات المصمم</h2>
+    <p class="lead">قبل ما تبدأ: افتح الموقع وفولدر البراندينج. اللوجو والرسومات والشنط والكارت كلها هناك بجودة الطباعة، وكل التصميمات بتطلع منها.</p>
+    <div class="files-links">
+      <a href="#" target="_blank" rel="noopener"><b>موقع رضيف</b><small>ratheef.com</small></a>
+      <a href="#" target="_blank" rel="noopener"><b>فولدر البراندينج (Drive)</b><small>drive.google.com · Branding</small></a>
+    </div>
+    <h3 style="font-size:1.05rem">منتجات رضيف</h3>
+    <div class="prod-cards">
+      <a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>خلطة بن قبطيه · 99 ر.س</small><span>ratheef.com/-/p1267677676</span></a>
+      <a href="#" target="_blank" rel="noopener"><b>حاروقة رضيف</b><small>250 أو 500 جرام · من 17 ر.س</small><span>ratheef.com/-/p890155971</span></a>
+      <a href="#" target="_blank" rel="noopener"><b>كيس العجن الحراري</b><small>12 ر.س</small><span>ratheef.com/-/p635900307</span></a>
+    </div>
+    <div class="thumbs">
+      <figure><img src="assets/image-bd50446666e0.jpg" alt="لوجو رضيف"><figcaption>اللوجو · Logo</figcaption></figure>
+      <figure><img src="assets/image-9e607d5cf42a.jpg" alt="تصميم الشنطة الكبيرة"><figcaption>الشنطة الكبيرة · Big Bag</figcaption></figure>
+      <figure><img src="assets/image-ba0e062c7d23.jpg" alt="تصميم الشنطة الصغيرة"><figcaption>الشنطة الصغيرة · Small Bag</figcaption></figure>
+      <figure><img src="assets/image-51f2756de0f6.jpg" alt="كارت البراند"><figcaption>كارت البراند · Card</figcaption></figure>
+    </div>
+    <p class="muted" style="font-size:.88rem">الاسم "رضيف" بالضاد في كل حاجة: البوستات والكابشن واللوجو. اللوجو هيتعدّل للضاد، فاستخدم النسخة المعدّلة أول ما توصل، ولحد ما توصل ما تحطش اللوجو القديم المكتوب بالظاء في أي تصميم جديد.</p>
+  </section>
+  <section class="blk">
+    <h2>إزاي البوستات بتشتغل مع بعض</h2>
+    <p class="lead">الترتيب مقصود: الناس تتعرّف على العريكة الأول، بعدين تتعلم تسويها، بعدين تصدّق القصة، وفي الآخر تشتري. وفي كل أسبوع بوست بيجيب تفاعل عشان الحساب يكبر.</p>
+    <div class="funnel">
+      <div><span class="muted">الأسبوع 1</span><b>يعرفنا ويتابع</b><span class="muted">مرحبا ألف · وش هي العريكة · عريكتك مع إيش</span></div>
+      <div><span class="muted">الأسبوع 2</span><b>يتعلم ويرغب</b><span class="muted">أول عريكة لك · 3 أشياء بس · الجمعة البيضاء · العرض</span></div>
+      <div><span class="muted">الأسبوع 3</span><b>يصدّق ويتعلق</b><span class="muted">حكاية رضيف · الرجال للرجال · من أبها لإيطاليا</span></div>
+      <div><span class="muted">الأسبوع 4</span><b>يشتري ويهدي</b><span class="muted">العريكة علاج البرد · 5 مواقف · ودّ له ريحة الجنوب</span></div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="blk" id="guide">
+    <h2>دليل المصمم</h2>
+    <p class="lead">كل البوستات بهوية رضيف نفسها: ورق كريمي، أحمر رضيف، رسومات الحبر من ملف الهوية، وشريط المثلثات العسيري. الريفرنس جنب كل بوست بيوضّح التكوين، والصور الحقيقية من جلسة التصوير الجنوبية.</p>
+    <div class="guide">
+      <div><h3 style="font-size:1rem">الألوان</h3>
+        <div class="sw">
+          <span><i style="background:#FFFCF1"></i>كريمي<code>#FFFCF1</code></span>
+          <span><i style="background:#BF3F34"></i>أحمر رضيف<code>#BF3F34</code></span>
+          <span><i style="background:#1B1917"></i>حبر<code>#1B1917</code></span>
+          <span><i style="background:#118742"></i>أخضر عسيري<code>#118742</code></span>
+          <span><i style="background:#C5912B"></i>خردلي<code>#C5912B</code></span>
+          <span><i style="background:#2D4E85"></i>كحلي<code>#2D4E85</code></span>
+        </div>
+        <p class="muted" style="font-size:.88rem">الأخضر والخردلي والكحلي في الشريط والتفاصيل بس، مش خلفيات.</p>
+      </div>
+      <div><h3 style="font-size:1rem">المقاسات والخطوط</h3><ul>
+        <li>إنستجرام: 1080×1350 (4:5)</li>
+        <li>تيك توك Photo Mode: نفس التصميم، والنص المهم جوه النص الأوسط عشان أزرار التطبيق</li>
+        <li>العناوين: خط رقعة قريب من اللوجو (زي Aref Ruqaa)</li>
+        <li>النصوص الصغيرة: خط عربي بسيط واضح (زي IBM Plex Sans Arabic)</li>
+        <li>العنوان ما يزيدش عن 7 كلمات</li>
+      </ul></div>
+      <div><h3 style="font-size:1rem">ثوابت في كل تصميم</h3><ul>
+        <li>اسم "رضيف" فوق في الركن نفسه كل مرة</li>
+        <li>شريط المثلثات العسيري تحت، بنفس الارتفاع</li>
+        <li>رسومات الحبر من ملف الهوية، من غير تلوين</li>
+        <li>الصور دافية وطبيعية، من غير فلاتر باردة</li>
+        <li>الغلاف الأحمر لبوستات الشراء والدعوة بس</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="blk" id="posts">
+    <h2>البوستات</h2>
+    <div class="posts">
+
+  <article class="post" id="p1">
+    <header class="post-h">
+      <span class="pnum">01</span>
+      <div class="post-meta">
+        <h3>مرحبا ألف</h3>
+        <div class="chips"><span class="chip ">صورة منتج</span><span class="chip">حكاية</span><span class="chip g-fol">الهدف: متابعة</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-wall"><span class="art-logo">رضيف</span><div class="scene qatt"><div class="ledge"></div><div class="pbag on-ledge"><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="side-plate"><div class="plate tilt"><i></i></div></div></div><div class="art-band"><b>مرحبا ألف</b><i>العريكة الجنوبية… صارت في بيتك</i></div><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap1">نسخ</button></div><pre class="cap" id="cap1">عريكة جنوبية أصلية، من بيت بن قبطيه لبيتك 🌾
+رضيف طحين عريكة جاهز: تخلطه وتطبخه وتقدّمه لضيوفك بطعم بيوت الجنوب، حتى لو أول مرة تسويها.
+تابعنا… هنا بنعلّمك العريكة من الألف للياء.
+الطلب من الرابط في البايو، والشحن لكل السعودية والخليج.
+
+#عريكة #العريكة #رضيف #اكلات_جنوبية #ضيافة</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>عريكة جنوبية</span><span>طحين عريكة</span><span>عريكة جاهزة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag1">نسخ</button></div><div class="tags" id="tag1"><span>#عريكة</span> <span>#العريكة</span> <span>#رضيف</span> <span>#اكلات_جنوبية</span> <span>#ضيافة</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p2">
+    <header class="post-h">
+      <span class="pnum">02</span>
+      <div class="post-meta">
+        <h3>وش هي العريكة؟</h3>
+        <div class="chips"><span class="chip c-car">كاروسيل</span><span class="chip">حكاية</span><span class="chip g-fol">الهدف: متابعة + حفظ</span><span class="boost b-f">ترويج · متابعين</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 7 شرايح · اسحب ←</p><div class="carousel"><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">1</span><b class="art-h">لو ما تعرف العريكة… فاتك نص كرم الجنوب</b><img class="art-ill" src="assets/image-3975d40a25bc.jpg" alt=""><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">2</span><b class="art-h">وش هي؟</b><i class="art-sub">عجينة بر دافية تنطبخ على النار وتنعرك باليد، وتتقدّم مكوّرة في الصحن.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">3</span><b class="art-h">من وين؟</b><i class="art-sub">من جبال عسير والجنوب. أكلة الضيف وليالي الشتا في بيوت الجنوب.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">4</span><b class="art-h">ليش اسمها عريكة؟</b><i class="art-sub">لأنها تنعرك باليد وهي حارة.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">5</span><b class="art-h">تنأكل مع إيش؟</b><i class="art-sub">سمن بلدي، عسل، تمر… والرضيفة في النص.</i><div class="mini-plate"><div class="plate "><i></i></div></div><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">6</span><b class="art-h">طيب ما أعرف أسويها؟</b><i class="art-sub">رضيف: الخلطة جاهزة، والحاروقة جاهزة، وكيس العجن يحمي يدك.</i><div class="mini-prods"><div class="pbag "><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="pjar "><span>حاروقة</span></div><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><span class="art-strip"></span></div><div class="art art-red art-sm"><span class="art-logo">رضيف</span><span class="art-num">7</span><b class="art-h">احفظ البوست وتابع رضيف</b><span class="art-strip"></span></div></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a><a href="#" target="_blank" rel="noopener"><b>حاروقة رضيف</b><small>17 ر.س · 250 أو 500 جرام</small></a><a href="#" target="_blank" rel="noopener"><b>كيس العجن الحراري</b><small>12 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap2">نسخ</button></div><pre class="cap" id="cap2">العريكة مو بس أكلة… هي طريقة الجنوب في قول &quot;حيّ الله الضيف&quot; 🤎
+اسحب وتعرّف على أشهر أكلة جنوبية، وقول لنا في الكومنت: ذقتها قبل؟
+احفظ البوست وأرسله لأحد ما يعرف العريكة 👀
+
+#عريكة #العريكة #عسير #ابها #اكلات_شعبية</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>وش هي العريكة</span><span>العريكة الجنوبية</span><span>اكلات عسير</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag2">نسخ</button></div><div class="tags" id="tag2"><span>#عريكة</span> <span>#العريكة</span> <span>#عسير</span> <span>#ابها</span> <span>#اكلات_شعبية</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p3">
+    <header class="post-h">
+      <span class="pnum">03</span>
+      <div class="post-meta">
+        <h3>عريكتك مع إيش؟</h3>
+        <div class="chips"><span class="chip ">تصميم</span><span class="chip">تجربة الناس</span><span class="chip g-eng">الهدف: تفاعل</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-bowls"><span class="art-logo">رضيف</span><b class="art-h">عريكتك مع إيش؟</b><div class="bowls"><span><i></i>1 رضيفة</span><span><i></i>2 سمن</span><span><i></i>3 تمر</span><span><i></i>4 عسل</span></div><i class="art-sub">اكتب رقمك في الكومنت</i><span class="art-strip"></span></div></div>
+        
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap3">نسخ</button></div><pre class="cap" id="cap3">السؤال اللي يفرّق البيوت الجنوبية 😄
+عريكتك مع إيش؟
+اكتب رقمك في الكومنت 👇
+1 رضيفة · 2 سمن · 3 تمر · 4 عسل
+
+#عريكة #ضيافة #فطور_سعودي #اكلات_جنوبية</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>عريكة بالعسل</span><span>عريكة بالسمن</span><span>عريكة بالتمر</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag3">نسخ</button></div><div class="tags" id="tag3"><span>#عريكة</span> <span>#ضيافة</span> <span>#فطور_سعودي</span> <span>#اكلات_جنوبية</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p4">
+    <header class="post-h">
+      <span class="pnum">04</span>
+      <div class="post-meta">
+        <h3>أول عريكة لك؟</h3>
+        <div class="chips"><span class="chip c-car">كاروسيل</span><span class="chip">مطبخ</span><span class="chip g-buy">الهدف: حفظ + شراء</span><span class="boost b-e">ترويج · تفاعل</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 8 شرايح · اسحب ←</p><div class="carousel"><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">1</span><b class="art-h">أول عريكة لك؟ احفظ البوست قبل تبدأ</b><img class="art-ill" src="assets/image-84c0d93eb2f0.jpg" alt=""><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">2</span><b class="art-h">1 · صب الطحين</b><i class="art-sub">في كيس العجن الحراري.</i><div class="mini-prods"><div class="pbag "><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="pjar "><span>حاروقة</span></div><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">3</span><b class="art-h">2 · أضف الماء</b><i class="art-sub">لكل 250 جرام طحين، 200 مل ماء.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">4</span><b class="art-h">3 · اعجن</b><i class="art-sub">جيدًا لين يصير القوام متماسك.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">5</span><b class="art-h">4 · على النار</b><i class="art-sub">حط العجين على نار متوسطة.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">6</span><b class="art-h">5 · اقلبها</b><i class="art-sub">بعد ما تستوي، اقلبها واتركها شوي لين تتحمر.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">7</span><b class="art-h">6 · اعركها</b><i class="art-sub">داخل كيس العجن الحراري، وأضف السمن والعسل… وبالعافية.</i><div class="mini-plate"><div class="plate "><i></i></div></div><span class="art-strip"></span></div><div class="art art-red art-sm"><span class="art-logo">رضيف</span><span class="art-num">8</span><b class="art-h">كل اللي تحتاجه في رضيف</b><i class="art-sub">الرابط في البايو.</i><span class="art-strip"></span></div></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a><a href="#" target="_blank" rel="noopener"><b>حاروقة رضيف</b><small>17 ر.س · 250 أو 500 جرام</small></a><a href="#" target="_blank" rel="noopener"><b>كيس العجن الحراري</b><small>12 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap4">نسخ</button></div><pre class="cap" id="cap4">العريكة مو صعبة… بس تبي أحد يدلّك أول مرة 🔥
+خطوة بخطوة من الكيس للصحن. احفظ البوست وارجع له يوم العزيمة.
+وإذا سويتها صوّرها ومنشن @ratheef.sa ونعيد نشرها 🤎
+
+#عريكة #طريقة_عمل_العريكة #وصفات_سعودية #اكلات_شعبية</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>طريقة عمل العريكة</span><span>طريقة العريكة الجنوبية</span><span>عريكة سهلة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag4">نسخ</button></div><div class="tags" id="tag4"><span>#عريكة</span> <span>#طريقة_عمل_العريكة</span> <span>#وصفات_سعودية</span> <span>#اكلات_شعبية</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p5">
+    <header class="post-h">
+      <span class="pnum">05</span>
+      <div class="post-meta">
+        <h3>3 أشياء بس</h3>
+        <div class="chips"><span class="chip ">صورة منتج</span><span class="chip">مطبخ</span><span class="chip g-buy">الهدف: شراء</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-flat"><span class="art-logo">رضيف</span><div class="scene cloth"><div class="fl fl-bag"><div class="pbag "><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div></div><div class="fl fl-jar"><div class="pjar top"><span>حاروقة</span></div></div><div class="fl fl-kb"><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><div class="fl fl-honey"></div><div class="fl fl-dates"></div><div class="fl fl-leaf"></div><div class="fl fl-leaf2"></div></div><div class="art-top"><b>3 أشياء بس… وعندك عريكة جنوبية</b></div><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a><a href="#" target="_blank" rel="noopener"><b>حاروقة رضيف</b><small>17 ر.س · 250 أو 500 جرام</small></a><a href="#" target="_blank" rel="noopener"><b>كيس العجن الحراري</b><small>12 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap5">نسخ</button></div><pre class="cap" id="cap5">خلطة رضيف (خلطة بن قبطيه) + حاروقة رضيف + كيس العجن الحراري
+هذي عدّتك كاملة لأول عريكة في بيتك.
+اطلبها الحين من الرابط في البايو، والشحن لكل السعودية والخليج 🚚
+
+#عريكة #طحين_عريكة #رضيف #ضيافة</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>طحين عريكة</span><span>خلطة عريكة</span><span>حاروقة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag5">نسخ</button></div><div class="tags" id="tag5"><span>#عريكة</span> <span>#طحين_عريكة</span> <span>#رضيف</span> <span>#ضيافة</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p6">
+    <header class="post-h">
+      <span class="pnum">06</span>
+      <div class="post-meta">
+        <h3>الجمعة البيضاء</h3>
+        <div class="chips"><span class="chip ">تصميم</span><span class="chip">ثقة</span><span class="chip g-buy">الهدف: متابعة + شراء</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-redbag"><span class="art-logo">رضيف</span><b class="art-h">بكرة… ريحة الجنوب بسعر غير</b><i class="art-sub">الجمعة البيضاء</i><div class="red-stage"><div class="pbag glow"><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div></div><img class="red-village" src="assets/image-8a12f2ab2529.jpg" alt=""><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap6">نسخ</button></div><pre class="cap" id="cap6">بكرة الجمعة البيضاء 👀
+جهّز سلة الشتا من الحين… وتابع رضيف عشان ما يفوتك اللي جاي.
+شغّل التنبيهات 🔔
+
+#عريكة #الجمعة_البيضاء #رضيف</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>عروض الجمعة البيضاء</span><span>طحين عريكة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag6">نسخ</button></div><div class="tags" id="tag6"><span>#عريكة</span> <span>#الجمعة_البيضاء</span> <span>#رضيف</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p7">
+    <header class="post-h">
+      <span class="pnum">07</span>
+      <div class="post-meta">
+        <h3>عرض الجمعة البيضاء</h3>
+        <div class="chips"><span class="chip ">تصميم</span><span class="chip">عرض</span><span class="chip g-buy">الهدف: شراء</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-offer"><span class="art-logo">رضيف</span><b class="art-h">عدّة العريكة كاملة بـ 89 ر.س</b><div class="offer-prods"><div class="pjar "><span>حاروقة</span></div><div class="pbag glow"><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><div class="price"><b>89</b><span>ر.س</span></div><div class="ribbon">🚚 التوصيل مجاني</div><span class="wf">عرض الجمعة البيضاء</span><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a><a href="#" target="_blank" rel="noopener"><b>حاروقة رضيف</b><small>17 ر.س · 250 أو 500 جرام</small></a><a href="#" target="_blank" rel="noopener"><b>كيس العجن الحراري</b><small>12 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap7">نسخ</button></div><pre class="cap" id="cap7">عرض الجمعة البيضاء وصل 🤍
+خلطة رضيف + حاروقة رضيف + كيس العجن الحراري
+كلها بـ 89 ريال… والتوصيل مجاني 🚚
+عدّة أول عريكة في بيتك كاملة، وتوصلك لين بابك.
+اطلب الحين من الرابط في البايو
+
+#عريكة #الجمعة_البيضاء #عروض_الجمعة_البيضاء #رضيف #طحين_عريكة</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>عروض الجمعة البيضاء</span><span>طحين عريكة</span><span>عريكة جاهزة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag7">نسخ</button></div><div class="tags" id="tag7"><span>#عريكة</span> <span>#الجمعة_البيضاء</span> <span>#عروض_الجمعة_البيضاء</span> <span>#رضيف</span> <span>#طحين_عريكة</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p8">
+    <header class="post-h">
+      <span class="pnum">08</span>
+      <div class="post-meta">
+        <h3>حكاية رضيف</h3>
+        <div class="chips"><span class="chip c-car">كاروسيل</span><span class="chip">حكاية</span><span class="chip g-fol">الهدف: متابعة + ولاء</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 7 شرايح · اسحب ←</p><div class="carousel"><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">1</span><b class="art-h">في الجنوب يسمونها… كبش بلا عظام</b><img class="art-ill" src="assets/image-8a12f2ab2529.jpg" alt=""><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">2</span><b class="art-h">في الجنوب…</b><i class="art-sub">الضيف ما يطلع إلا وقدّامه صحن عريكة.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">3</span><b class="art-h">خلطة بن قبطيه</b><i class="art-sub">وصفة بيت، نطبخها بطريقتنا اللي ما تتغير مهما تغيّر الزمن.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">4</span><b class="art-h">بس…</b><i class="art-sub">العريكة تبي خبرة، وكثير يخاف يجربها.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">5</span><b class="art-h">عشان كذا سوّينا رضيف</b><i class="art-sub">نفس الخلطة، جاهزة، وتوصلك لباب بيتك.</i><div class="mini-prods"><div class="pbag "><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="pjar "><span>حاروقة</span></div><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">6</span><b class="art-h">على قول بن قبطيه</b><i class="art-sub">&quot;عريكة تقدمها الرجال للرجال&quot;</i><span class="art-strip"></span></div><div class="art art-red art-sm"><span class="art-logo">رضيف</span><span class="art-num">7</span><b class="art-h">صرت جزء من الحكاية</b><i class="art-sub">تابع رضيف.</i><span class="art-strip"></span></div></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap8">نسخ</button></div><pre class="cap" id="cap8">من عمق الجنوب الأصيل، ودفء البيوت القديمة… هذي حكايتنا 🤎
+خلطة بن قبطيه بطريقتنا اللي ما تتغير مهما تغيّر الزمن، صارت بين يدينك.
+اسحب واعرف قصة رضيف.
+
+#عريكة #رضيف #تراث_الجنوب #عسير</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>عريكة اصلية</span><span>اكلات جنوبية</span><span>تراث عسير</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag8">نسخ</button></div><div class="tags" id="tag8"><span>#عريكة</span> <span>#رضيف</span> <span>#تراث_الجنوب</span> <span>#عسير</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p9">
+    <header class="post-h">
+      <span class="pnum">09</span>
+      <div class="post-meta">
+        <h3>الرجال للرجال</h3>
+        <div class="chips"><span class="chip ">تصميم</span><span class="chip">ضيافة</span><span class="chip g-eng">الهدف: تفاعل + منشن</span><span class="boost b-e">ترويج · تفاعل</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-cream"><span class="art-logo">رضيف</span><b class="art-h">عريكة تقدمها الرجال للرجال</b><i class="art-sub">على قول بن قبطيه</i><img class="art-ill" src="assets/image-8a12f2ab2529.jpg" alt=""><span class="art-strip"></span></div></div>
+        
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap9">نسخ</button></div><pre class="cap" id="cap9">على قول بن قبطيه… 🤝
+منشن الرجّال اللي يستاهل تقدّم له صحن عريكة هالشتا.
+
+#عريكة #ضيافة #الجنوب #رضيف</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>ضيافة جنوبية</span><span>عريكة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag9">نسخ</button></div><div class="tags" id="tag9"><span>#عريكة</span> <span>#ضيافة</span> <span>#الجنوب</span> <span>#رضيف</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p10">
+    <header class="post-h">
+      <span class="pnum">10</span>
+      <div class="post-meta">
+        <h3>من أبها… لين إيطاليا</h3>
+        <div class="chips"><span class="chip ">تصميم</span><span class="chip">ثقة</span><span class="chip g-buy">الهدف: ثقة + شراء</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-map"><span class="art-logo">رضيف</span><b class="art-h">من أبها… لين إيطاليا</b><i class="art-sub">وين ما كنت، عريكتك توصلك</i><div class="route"><span>أبها</span><span>الرياض</span><span>جدة</span><span>الشرقية</span><span>الخليج</span><span>إيطاليا</span></div><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a></div></div>
+        <div class="confirm" data-key="p10"><label><input type="checkbox" id="ok-p10"><span class="box" aria-hidden="true"></span><span class="ctext">محتاجين منكم تأكيد: المدن اللي على الخريطة (الرياض، جدة، الشرقية، الكويت، دبي، الدوحة، وإيطاليا) وصلها شحن رضيف فعلًا؟ لو تمام، علّموا على المربع.</span></label><p class="cstatus" aria-live="polite"></p></div>
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap10">نسخ</button></div><pre class="cap" id="cap10">وصلنا الرياض وجدة والشرقية والخليج… وحتى إيطاليا 🇮🇹
+وين ما كنت، ريحة الجنوب توصل لبابك.
+اكتب مدينتك في الكومنت 👇 ونشوف وين أكثر ناس تحب العريكة.
+
+#عريكة #الرياض #جدة #الخليج #رضيف</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>عريكة الرياض</span><span>عريكة جدة</span><span>طحين عريكة توصيل</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag10">نسخ</button></div><div class="tags" id="tag10"><span>#عريكة</span> <span>#الرياض</span> <span>#جدة</span> <span>#الخليج</span> <span>#رضيف</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p11">
+    <header class="post-h">
+      <span class="pnum">11</span>
+      <div class="post-meta">
+        <h3>العريكة علاج البرد</h3>
+        <div class="chips"><span class="chip ">صورة منتج</span><span class="chip">ضيافة</span><span class="chip g-buy">الهدف: متابعة + شراء</span><span class="boost b-f">ترويج · متابعين</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-window"><span class="art-logo">رضيف</span><div class="scene stonewall"><div class="win"><span class="mtn"></span></div><svg class="steam" viewBox="0 0 60 40" aria-hidden="true"><path d="M15 38c-6-8 6-12 0-20s4-12 0-18"/><path d="M30 38c-6-8 6-12 0-20s4-12 0-18"/><path d="M45 38c-6-8 6-12 0-20s4-12 0-18"/></svg><div class="plate tilt big"><i></i></div></div><div class="art-band"><b>العريكة علاج البرد</b></div><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a><a href="#" target="_blank" rel="noopener"><b>حاروقة رضيف</b><small>17 ر.س · 250 أو 500 جرام</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap11">نسخ</button></div><pre class="cap" id="cap11">المربعانية على الأبواب ❄️ وريحة العريكة لازم تدخل معها.
+علاج البرد = صحن عريكة حار وسمن وعسل.
+اطلب رضيف من الرابط في البايو قبل ما يشتد البرد.
+
+#عريكة #المربعانية #اكلات_شتوية #شتاء_الجنوب</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>اكلات شتوية</span><span>عريكة</span><span>المربعانية</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag11">نسخ</button></div><div class="tags" id="tag11"><span>#عريكة</span> <span>#المربعانية</span> <span>#اكلات_شتوية</span> <span>#شتاء_الجنوب</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p12">
+    <header class="post-h">
+      <span class="pnum">12</span>
+      <div class="post-meta">
+        <h3>5 مواقف تستاهل عريكة</h3>
+        <div class="chips"><span class="chip c-car">كاروسيل</span><span class="chip">ضيافة</span><span class="chip g-buy">الهدف: شراء + حفظ</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 7 شرايح · اسحب ←</p><div class="carousel"><div class="art art-red art-sm"><span class="art-logo">رضيف</span><span class="art-num">1</span><b class="art-h">5 مواقف ما يمشي معها إلا عريكة</b><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">2</span><b class="art-h">1 · ضيف جا فجأة</b><i class="art-sub">رضيف جاهز في الدولاب.</i><div class="mini-prods"><div class="pbag "><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="pjar "><span>حاروقة</span></div><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">3</span><b class="art-h">2 · فطور الجمعة مع العيلة</b><i class="art-sub">صحن واحد يجمع الكل.</i><div class="mini-plate"><div class="plate "><i></i></div></div><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">4</span><b class="art-h">3 · ليلة برد وكشتة</b><i class="art-sub">العريكة الحارة أحلى في البر.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">5</span><b class="art-h">4 · عزيمة الأهل</b><i class="art-sub">بيّض وجهك بأكلة الجنوب.</i><span class="art-strip"></span></div><div class="art art-cream art-sm"><span class="art-logo">رضيف</span><span class="art-num">6</span><b class="art-h">5 · مغترب مشتاق لطعم البيت</b><i class="art-sub">أرسلها له هدية.</i><div class="mini-prods"><div class="pbag "><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="pjar "><span>حاروقة</span></div><div class="pkb "><span>كيس العجن<br>الحراري</span></div></div><span class="art-strip"></span></div><div class="art art-red art-sm"><span class="art-logo">رضيف</span><span class="art-num">7</span><b class="art-h">أي موقف عندك هالأسبوع؟</b><i class="art-sub">رضيف جاهز · الرابط في البايو.</i><span class="art-strip"></span></div></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap12">نسخ</button></div><pre class="cap" id="cap12">العريكة ما تحتاج مناسبة… بس هذي أكثر 5 مواقف تستاهلها 😄
+أي واحد فيهم صار معك؟ قول رقمه في الكومنت.
+وجهّز كيسك من الرابط في البايو.
+
+#عريكة #ضيافة #فطور_سعودي #كشتات</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>ضيافة</span><span>فطور سعودي</span><span>كشتة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag12">نسخ</button></div><div class="tags" id="tag12"><span>#عريكة</span> <span>#ضيافة</span> <span>#فطور_سعودي</span> <span>#كشتات</span></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="post" id="p13">
+    <header class="post-h">
+      <span class="pnum">13</span>
+      <div class="post-meta">
+        <h3>ودّ له ريحة الجنوب</h3>
+        <div class="chips"><span class="chip ">صورة منتج</span><span class="chip">تجربة الناس</span><span class="chip g-buy">الهدف: شراء</span><span class="boost b-n">أورجانيك</span></div>
+      </div>
+    </header>
+    <div class="post-b">
+      <div class="col">
+        <div><p class="lbl">التصميم · 1080×1350</p><div class="art art-gift"><span class="art-logo">رضيف</span><div class="scene giftbg"><div class="gbag"><div class="pbag peek"><span class="pb-strip"></span><b>رضيف</b><i>خلطة بن قبطيه</i><img src="assets/image-8a12f2ab2529.jpg" alt=""></div><div class="gb-body"><span class="pb-strip"></span><b>رضيف</b><img src="assets/image-8a12f2ab2529.jpg" alt=""></div></div><div class="gcard"><b>رضيف</b><i>من عمق الجنوب</i></div></div><div class="art-band"><b>ودّ له ريحة الجنوب</b><i>هدية الشتا</i></div><span class="art-strip"></span></div></div>
+        <div><p class="lbl">المنتجات في التصميم (الصور من صفحة المنتج)</p><div class="prods"><a href="#" target="_blank" rel="noopener"><b>بكج خلطة رضيف</b><small>99 ر.س</small></a></div></div>
+        
+      </div>
+      <div class="col">
+        <div class="cap-wrap"><div class="cap-top"><p class="lbl">الكابشن</p><button type="button" class="copy" data-for="cap13">نسخ</button></div><pre class="cap" id="cap13">تعرف أحد جنوبي مغترب؟ أو أحد يحب الأكل الشعبي؟
+رضيف هدية الشتا اللي توصل للقلب قبل البيت 🎁
+اطلبها وأرسلها لعنوانه مباشرة من الرابط في البايو.
+
+#عريكة #هدايا #هدية #رضيف</pre></div>
+        <div><p class="lbl">كلمات البحث</p><div class="kw"><span>هدايا شتوية</span><span>هدية تراثية</span><span>عريكة</span></div></div>
+        <div><div class="cap-top"><p class="lbl">الهاشتاقات</p><button type="button" class="copy copy-l" data-for="tag13">نسخ</button></div><div class="tags" id="tag13"><span>#عريكة</span> <span>#هدايا</span> <span>#هدية</span> <span>#رضيف</span></div></div>
+      </div>
+    </div>
+  </article>
+    </div>
+  </section>
+  <section class="blk" id="keywords">
+    <h2>كلمات البحث</h2>
+    <p class="lead">إنستجرام وتيك توك بقوا بيقروا الكلام المكتوب في الكابشن وعلى التصميم. كل بوست فيه 2–3 كلمات من دول، وكلمة "عريكة" في كل بوست.</p>
+    <div class="kwgrid">
+      <div><h3>المنتج</h3><div class="kw"><span>طحين عريكة</span><span>خلطة عريكة</span><span>عريكة جاهزة</span><span>حاروقة</span><span>عريكة اصلية</span></div></div>
+      <div><h3>الوصفة</h3><div class="kw"><span>طريقة عمل العريكة</span><span>طريقة العريكة الجنوبية</span><span>عريكة سهلة</span><span>عريكة بالعسل</span><span>عريكة بالسمن</span></div></div>
+      <div><h3>الثقافة</h3><div class="kw"><span>العريكة الجنوبية</span><span>وش هي العريكة</span><span>اكلات جنوبية</span><span>اكلات عسير</span><span>اكلات شعبية</span></div></div>
+      <div><h3>المناسبة</h3><div class="kw"><span>ضيافة</span><span>فطور سعودي</span><span>اكلات شتوية</span><span>المربعانية</span><span>كشتة</span><span>هدايا شتوية</span></div></div>
+      <div><h3>المدن</h3><div class="kw"><span>عريكة الرياض</span><span>عريكة جدة</span><span>ابها</span><span>خميس مشيط</span><span>الخليج</span></div></div>
+      <div><h3>البراند</h3><div class="kw"><span>رضيف</span><span>رظيف</span><span>خلطة بن قبطيه</span></div></div>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">رضيف · خطة محتوى الشهر الأول · نوفمبر 2026</div>
+  <div class="band" role="presentation"></div>
+</footer>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.for); var t=el.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='اتحدد، انسخ يدوي';}
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent='اتنسخ';setTimeout(function(){b.textContent='نسخ'},1600)},sel)}catch(e){sel()}
+  });
+});
+
+(function(){
+  var boxes=[].slice.call(document.querySelectorAll('.confirm'));
+  if(!boxes.length) return;
+  function fmt(t){try{return new Date(t).toLocaleDateString('ar-EG',{day:'numeric',month:'long'})}catch(e){return ''}}
+  function status(c,msg){c.querySelector('.cstatus').textContent=msg}
+  var db=null, ready=false;
+  boxes.forEach(function(c){status(c,'جاري التحميل…')});
+  var timer=setTimeout(function(){if(!ready)boxes.forEach(function(c){status(c,'التأكيد مش متاح من الصفحة دي دلوقتي. لو تمام، ابعتولنا رسالة.')})},10000);
+  function wire(c){
+    var key=c.dataset.key, input=c.querySelector('input');
+    var ref=db.doc('confirmations/'+key), busy=false;
+    ref.onSnapshot(function(snap){
+      ready=true; clearTimeout(timer);
+      var d=snap.exists?snap.data():null;
+      input.checked=!!(d&&d.ok);
+      status(c, d&&d.ok ? 'تم التأكيد'+(d.at?' · '+fmt(d.at):'')+'. شكرًا!' : '');
+    },function(){status(c,'التأكيد مش متاح من الصفحة دي دلوقتي. لو تمام، ابعتولنا رسالة.')});
+    input.addEventListener('change',function(){
+      if(busy) return; busy=true;
+      var v=input.checked;
+      ref.set({ok:v, at:new Date().toISOString()}).then(function(){busy=false},function(e){
+        busy=false; input.checked=!v;
+        status(c,'مقدرناش نحفظ التأكيد من الحساب ده. لو تمام، ابعتولنا رسالة.');
+      });
+    });
+  }
+  var c0=window.__host;
+  if(!c0||!c0.use){clearTimeout(timer);boxes.forEach(function(c){status(c,'لو تمام، ابعتولنا رسالة.')});return;}
+  c0.use('db').then(function(d){
+    if(!d){clearTimeout(timer);boxes.forEach(function(c){status(c,'سجّل دخولك عشان التأكيد يوصلنا، أو ابعتولنا رسالة.')});return;}
+    db=d; boxes.forEach(wire);
+  });
+})();
+</script>
+
+</body></html>
+
